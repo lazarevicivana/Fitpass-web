@@ -1,9 +1,6 @@
 <template>
 <div class="container">
-  <h3>Hello</h3>
   <CreateManager :manager="manager"/>
-  
-
 </div>
 </template>
 

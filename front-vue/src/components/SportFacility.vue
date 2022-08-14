@@ -14,7 +14,7 @@
     </table>
       </div>
       <div class="col">
-        <img :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico"/>
+        <img  :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico size"/>
       </div>
     </div>
   </div>
@@ -55,5 +55,9 @@ import moment from "moment";
 </script>
 
 <style scoped>
+.size{
+  width: 200px;
+  height: 200px;
+}
 
 </style>
