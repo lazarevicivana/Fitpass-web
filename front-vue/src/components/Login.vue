@@ -1,21 +1,12 @@
 <template>
-  <div class="d-inline text-light justify-content-center align-items-center color-overlay  form rounded p-4 p-sm-3"  >
-  <form @submit.prevent="handleLogin">
-    <h3>Login</h3>
-    <div>
-    <div class="form-group">
+  <form  @submit.prevent="handleLogin">
+    <h1>Login</h1>
       <label>Username:</label>
       <input type="text" v-model="user.username">
-    </div>
-    <div class="form-group">
       <label>Password:</label>
       <input type="password" autocomplete="on" v-model="user.password">
-    </div>
-<!--    <button  type="button"  class="btn btn-primary"> Log in</button>-->
-    <input  type="submit" class="btn btn-primary" value="Log in"/>
-    </div>
+    <input  type="submit" class="btn btn-primary button-basic" value="Log in"/>
   </form>
-  </div>
 </template>
 
 <script>
@@ -61,20 +52,73 @@ export default {
 <style scoped>
 .color-overlay {
  position: absolute;
-background: #2f855a;
   height: 40%;
   width: 40%;
   mix-blend-mode: normal;
-
 }
 .masthed{
   min-height: 100vh;
   position: relative;
 
 }
-.form{
-  background: #263E51;
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+.center{
+  font-family: 'Roboto',Tahoma,Geneva,Verdana,SansSerif,'Gill Sans MT',Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+  text-align: center;
+  padding: 0 0 20px 0;
+  color: white;
+
 }
+form {
+  max-width: 500px;
+  margin: 30px auto;
+  background: #072238;
+  text-align: center;
+  padding: 40px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: white;
+}
+label {
+  color: white;
+  display: inline-block;
+  text-align: left;
+  margin: 25px 0 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  font-size: 15px;
+}input,select {
+   display: block;
+   padding-left: 10px;
+   padding-right: 10px;
+   margin-left: 48px;
+   width: 80%;
+   box-sizing: border-box;
+   border: none;
+   border-bottom: 1px solid #ddd;
+   color: #555;
+   font-size: 20px;
+ }
+.button-basic{
+  color: white;
+  margin-top: 40px;
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 55px;
+  font-size: 24px;
+  width: 50%;
+  vertical-align: center;
+  box-sizing: border-box;
+  border: none;
+  position: relative;
+  -ms-transform: translateX(-50%);
+  transform: translateX(25%);
+}
+.button-basic{
+  margin-top: 40px;
+}
+
 
 </style>
