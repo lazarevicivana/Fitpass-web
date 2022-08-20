@@ -11,6 +11,7 @@ public class Trainer extends User{
 			UserRole userRole) {
 		super(username, password, name, surname, birthdate, gender, userRole);
 		// TODO Auto-generated constructor stub
+		this.setUserRole(userRole.TRAINER);
 		trainingHistory = new ArrayList<String>();
 	}
 
