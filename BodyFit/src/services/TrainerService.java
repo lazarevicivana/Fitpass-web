@@ -14,7 +14,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Trainer;
+import beans.UserRole;
 import dao.TrainerDao;
+import dto.TrainerDto;
 
 @Path("trainers")
 public class TrainerService  {
@@ -50,12 +52,15 @@ public class TrainerService  {
 		return trainerDao.getAllToList();
 	}
 	@POST
-	@Path("/")	
+	@Path("/create")	
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createTrainer(Trainer trainer) {
+	public void createTrainer(TrainerDto trainer) {
 		trainerDao.setBasePath(getContext());
-		trainerDao.create(trainer);
+		Trainer newTrainer = new Trainer(trainer.username,trainer.password, trainer.name, trainer.surname, trainer.birthday, trainer.gerGenderEnum(),UserRole.TRAINER);
+		trainerDao.create(newTrainer);
+		System.out.println(getContext());
+		
 	}
 	
 

@@ -88,7 +88,6 @@ public class LoginService   {
 		if(loginState == UserState.SUCCESS) {
 			loginStatus = true;
 		}
-		System.out.println(ctx.getRealPath(""));
 		return loginStatus;
 		
 	}
@@ -125,6 +124,7 @@ public class LoginService   {
 	public UserState customerLogIn(User user) {
 		UserState state = UserState.ERROR;
 		customerDao.setBasePath(getContext());
+		//customerDao.getAllToList().stream().filter(user->)
 		for (Customer u : customerDao.getAllToList()) {
 			if (u.getUsername().equals(user.getUsername())) {
 				if (u.getPassword().equals(user.getPassword())) {
