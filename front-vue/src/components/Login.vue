@@ -28,10 +28,8 @@ export default {
               .then(
                   res =>{
                       if(res.data) {
-                        const loggIn = this.user;
                         console.log(this.user.username);
                         this.$emit('loggedUser',res.data);
-                        //console.log(res.data);
                       }
               }
           )
@@ -50,24 +48,6 @@ export default {
 </script>
 
 <style scoped>
-.color-overlay {
- position: absolute;
-  height: 40%;
-  width: 40%;
-  mix-blend-mode: normal;
-}
-.masthed{
-  min-height: 100vh;
-  position: relative;
-
-}
-.center{
-  font-family: 'Roboto',Tahoma,Geneva,Verdana,SansSerif,'Gill Sans MT',Calibri, 'Trebuchet MS', sans-serif, 'Arial Narrow', Arial, sans-serif, Courier, monospace;
-  text-align: center;
-  padding: 0 0 20px 0;
-  color: white;
-
-}
 form {
   max-width: 500px;
   margin: 30px auto;
@@ -99,6 +79,7 @@ label {
    border-bottom: 1px solid #ddd;
    color: #555;
    font-size: 20px;
+   border-radius: 15px;
  }
 .button-basic{
   color: white;

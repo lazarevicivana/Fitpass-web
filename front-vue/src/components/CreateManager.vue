@@ -100,6 +100,8 @@ label {
    border-bottom: 1px solid #ddd;
    color: #555;
    font-size: 20px;
+   border-radius: 15px;
+
  }
 .button-basic{
   color: white;

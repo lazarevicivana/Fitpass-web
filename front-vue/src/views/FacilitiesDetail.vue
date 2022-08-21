@@ -1,27 +1,10 @@
 <template>
-
-  <div class="row gy-2">
-    <h3>Facility details</h3>
-    <div class="col-sm"></div>
-    <div class="col-sm">
-    </div>
-    <div class="col-sm"></div>
-
-    <div  class="row gy-2 text-center bg-secondary text-white" >
-      <!--      <router-link to="/facilitiesDetail">-->
+    <h1 class="padding-style">Facility details</h1>
+    <div  class="row gy-2 row-style colorDiv " >
       <div  class="container-sm d-flex align-items-center justify-content-center">
-
         <SportFacility :sportFacility="sportFacility"></SportFacility>
-<!--        <h3>{{sportFacility.name}}</h3>
-        <p>{{sportFacility.location}}</p>
-        <p> {{convertStatus(sportFacility.worikng)}}</p>-->
-
       </div>
-      <!--      </router-link>-->
     </div>
-
-  </div>
-<!--  <SportFacilitieDetailPage :sportFacility="sportFacility"/>-->
 </template>
 
 <script>
@@ -49,14 +32,7 @@ export default {
   components: {SportFacility, SportFacilitieDetailPage},
   created() {
     console.log(this.sportFacility.name);
-    /*console.log(this.$route.params.data);
-    this.sportFacility = JSON.parse(JSON.stringify(this.$route.params.data));
-    console.log(this.sportFacility.name);*/
     this.sportFacility = JSON.parse(this.$route.params.data);
-  // this.sportFacility.name = this.$route.params.name;
-  // this.sportFacility.location = this.$route.params.location;
-    // this.sportFacility.worikng = this.$route.params.worikng;
-
 },methods: {
     convertStatus(sportFacility) {
       // console.log(typeof(sportFacility.isWorking))
@@ -70,5 +46,20 @@ export default {
 </script>
 
 <style scoped>
+.colorDiv{
+  background: #072238;
+  border-radius: 25px;
+  border: 2px solid;
+  padding: 20px;
+  color: white;
+}
+.padding-style{
+  margin-bottom: 80px;
+}
+.row-style{
+  margin-left: 80px;
+  width: 700px;
+}
+
 
 </style>

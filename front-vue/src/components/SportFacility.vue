@@ -14,7 +14,7 @@
     </table>
       </div>
       <div class="col">
-        <img  :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico size"/>
+        <img  :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico size border border-white"/>
       </div>
     </div>
   </div>
