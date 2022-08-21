@@ -4,15 +4,15 @@
       <nav @loggedUser="loggedInUser" class="navbar navbar-expand-xxl navbar-light" >
         <ul class="navbar-nav ms-auto text-center">
           <li>
-          <router-link v-if="!loggedin" class="nav-link"  to="/login">Login</router-link>
+          <router-link v-if="!loggedIn" class="nav-link"  to="/login">Login</router-link>
           </li>
           <li>
-            <router-link v-if="!loggedin" class="nav-link"  to="/register">Sign up</router-link>
+            <router-link v-if="!loggedIn" class="nav-link"  to="/register">Sign up</router-link>
           </li>
         </ul>
 
         <div>
-          <button @click="logOut" v-if="loggedin" style="float: right">Log out</button>
+          <button class="button-basic" @click="logOut" v-if="loggedIn" style="float: right">Log out</button>
         </div>
       </nav>
     </div>
@@ -46,31 +46,17 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.button-basic{
+background: #2c3e50;
+  color: white;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.button-basic{
+}
 </style>
-
-<!--<style>-->
-<!--#app {-->
-<!--  font-family: Avenir, Helvetica, Arial, sans-serif;-->
-<!--  -webkit-font-smoothing: antialiased;-->
-<!--  -moz-osx-font-smoothing: grayscale;-->
-<!--  text-align: center;-->
-<!--  color: #2c3e50;-->
-<!--}-->
-
-<!--nav {-->
-<!--  padding: 30px;-->
-<!--}-->
-
-<!--nav a {-->
-<!--  font-weight: bold;-->
-<!--  color: #2c3e50;-->
-<!--}-->
-
-<!--nav a.router-link-exact-active {-->
-<!--  color: #42b983;-->
-<!--}-->
-<!--</style>-->
-
 <script>
 import SideBarView from "@/components/SideBarView";
 import { sidebarWidth } from '@/components/state'
@@ -94,21 +80,16 @@ export default {
         deleted : false,
         banned : false
       },
-      loggedin : false
+      loggedIn : false
     }
   },
   created()
   {
-    // axios.get('http://localhost:8080/FitnessCenter/rest/login/loggedUser')
-    //     .then(response =>{
-    //       this.user =response.data
-    //       console.log(this.user.username)
-    //     })
   },
   methods :{
     loggedInUser(obj){
-     this.loggedin = obj;
-     if (this.loggedin === true){
+     this.loggedIn = obj;
+     if (this.loggedIn === true){
        this.GetCurrentUser();
      }
     },
@@ -120,8 +101,9 @@ export default {
     },
     logOut()
     {
-      this.loggedin = false;
+      this.loggedIn = false;
       this.user.userRole = '';
+      this.$router.push({name:"login"})
     }
   },
   setup(){

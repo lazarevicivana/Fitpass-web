@@ -1,6 +1,6 @@
 <template>
 <div class="container-md">
-<h1>All fitness centers</h1>
+<h1 class="padding-style">All fitness centers</h1>
 <!--  <div class="row"></div>-->
   <div class="row gy-2">
     <div class="col-sm"></div>
@@ -14,13 +14,13 @@
     <div class="col-sm"></div>
 
   </div>
-  <div class="row gy-2" v-for="sportFacility in filterSportsFacilities">
+  <div class="row row-style gy-2" v-for="sportFacility in filterSportsFacilities">
     <div class="col-sm"></div>
     <div class="col-sm">
     </div>
     <div class="col-sm"></div>
 
-    <div  class="row gy-2 text-center colorDiv text-black" >
+    <div  class="row gy-2 text-center colorDiv " >
 <!--      <router-link to="/facilitiesDetail">-->
         <div  class="container-sm d-flex align-items-center justify-content-center" >
 
@@ -41,9 +41,6 @@ import axios from "axios";
 export default {
   name: "Facilities",
   components: {SportFacility},
-  props:{
-    sportFacilities : Array
-  },
   data(){
     return{
       sportFacilities : [],
@@ -57,7 +54,6 @@ export default {
     filterSportsFacilities(){
       return this.sportFacilities.filter(sportFacility => sportFacility.name.toLowerCase().includes(this.search.toLocaleLowerCase()) || sportFacility.location.toLowerCase().includes(this.search.toLowerCase()) || sportFacility.averageGrade.toString().includes(this.search) || sportFacility.type.toLowerCase().includes(this.search.toLowerCase()) )
     }
-
   },
   methods:
   {
@@ -65,28 +61,32 @@ export default {
       axios.get('http://localhost:8080/FitnessCenter/rest/facilities/GetAll')
           .then(response =>{
             this.sportFacilities =response.data
-          })},
+          })
+     },
     FacilitieDetail(sportFacility)
     {
       console.log(sportFacility);
       this.$router.push({name:"facilitiesDetail",params:{data:JSON.stringify(sportFacility)}})
-/*
-      this.$router.push({name:"facilitiesDetail",params:{name:sportFacility.name, location : sportFacility.location, worikng: sportFacility.worikng}});
-*/
     }
-
   }
-
-
 }
 
 </script>
 
 <style scoped>
 .colorDiv{
-  background: #c7c9ca;
+  background: #072238;
   border-radius: 25px;
   border: 2px solid;
   padding: 20px;
+  color: white;
 }
+.padding-style{
+  margin-bottom: 80px;
+}
+.row-style{
+  margin-left: 80px;
+  width: 700px;
+}
+
 </style>
