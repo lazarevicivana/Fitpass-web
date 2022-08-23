@@ -28,7 +28,6 @@ export default {
               .then(
                   res =>{
                       if(res.data) {
-                        console.log(this.user.username);
                         this.$emit('loggedUser',res.data);
                       }
               }
@@ -39,8 +38,6 @@ export default {
                 console.log(error)
               }
           )
-
-      /*localStorage.setItem('token', user.data.token)*/
     }
   },
   emits:['loggedUser']

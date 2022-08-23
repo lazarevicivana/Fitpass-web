@@ -1,22 +1,36 @@
 <template>
 <div class="container-sm">
-  <table>
+  <table class="justify-content-end">
     <tr>
-      <td>
+      <td class="td-style">
         <label>Name:</label>
-        {{user.name}}
+      </td>
+      <td class="td-style">
+        <label>  {{user.name}}</label>
       </td>
     </tr>
     <tr>
-      <td>
+      <td class="td-style">
         <label>Surname:</label>
-        {{user.surname}}
+      </td>
+      <td class="td-style">
+        <label>{{user.surname}}</label>
+      </td>
+    </tr>
+    <tr>
+      <td class="td-style">
+        <label>Username:</label>
+      </td>
+      <td class="td-style">
+        <label>{{user.username}}</label>
       </td>
     </tr>
    <tr>
-     <td>
+     <td class="td-style">
        <label>Role:</label>
-       {{user.userRole}}
+     </td>
+     <td class="td-style">
+       <label>{{user.userRole}}</label>
      </td>
    </tr>
   </table>
@@ -31,12 +45,15 @@ export default {
   name: "UserPreviewComponent",
   props: {user: Object},
   created(){
-      console.log(this.user.name);
   }
 }
 
 </script>
-
-<style scoped>
+<style>
+.td-style{
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+}
 
 </style>
