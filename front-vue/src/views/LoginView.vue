@@ -19,23 +19,11 @@ export default {
   },
   created()
       {
-
-         /* axios.get('http://localhost:8080/FitnessCenter/rest/login/loggedUser')
-              .then(response =>{
-               /!* console.log('aaa')*!/
-                this.user =response.data
-                console.log(this.user.username)
-              })*/
-
       },
     methods: {
     emitLoggedUser(user) {
-      //this.user = event;
       this.logged = user
       this.$emit('loggedUser', this.logged);
-      console.log(this.logged);/*
-      this
-      console.log(this.user.username);*/
       this.$router.push('/')
     }
     },

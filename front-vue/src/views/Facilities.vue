@@ -1,35 +1,13 @@
 <template>
-<div class="container-md">
+<div class="container-fluid margin-style ">
 <h1 class="padding-style">All fitness centers</h1>
-<!--  <div class="row"></div>-->
-  <div class="row gy-2">
-    <div class="col-sm"></div>
-    <div class="col-sm">
-      <input type="text"  v-model="search" placeholder="search">
-    </div>
-    <div class="col-sm"></div>
-    <div class="col-sm">
-
-    </div>
-    <div class="col-sm"></div>
-
+  <div class="row padding-style ">
+      <input type="text" class="search"  v-model="search" placeholder="search">
   </div>
-  <div class="row row-style gy-2" v-for="sportFacility in filterSportsFacilities">
-    <div class="col-sm"></div>
-    <div class="col-sm">
-    </div>
-    <div class="col-sm"></div>
-
-    <div  class="row gy-2 text-center colorDiv " >
-<!--      <router-link to="/facilitiesDetail">-->
-        <div  class="container-sm d-flex align-items-center justify-content-center" >
-
+  <div class="row gy-4 row-style text-center colorDiv " v-for="sportFacility in filterSportsFacilities">
+        <div  class="col d-flex align-items-center justify-content-center" >
          <SportFacility @click="FacilitieDetail(sportFacility)" :sportFacility="sportFacility"/>
-
         </div>
-<!--      </router-link>-->
-    </div>
-
   </div>
 </div>
 </template>
@@ -87,6 +65,22 @@ export default {
 .row-style{
   margin-left: 80px;
   width: 700px;
+  margin-bottom: 60px;
 }
+.search {
+  display: block;
+  padding-right: 10px;
+  margin-left: 90px;
+  width: 25%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  color: #555;
+  font-size: 20px;
+  border-radius: 15px;
+}
+.margin-style{
+  margin-left: 120px;
+}
+
 
 </style>

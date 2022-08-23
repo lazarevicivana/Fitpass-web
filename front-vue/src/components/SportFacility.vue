@@ -3,8 +3,8 @@
   <div class="sportFacility">
     <div class="row">
       <div class="col-sm">
-    <table>
-      <tr><td>{{sportFacility.name}}</td></tr>
+    <table class="td-style">
+      <tr><td style="font-size: 30px">{{sportFacility.name}}</td></tr>
       <tr><td> Location : {{sportFacility.location}}</td></tr>
       <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
       <tr><td>Type: {{sportFacility.type}}</td></tr>
@@ -58,6 +58,11 @@ import moment from "moment";
 .size{
   width: 200px;
   height: 200px;
+}
+.td-style{
+  text-align: left;
+  font-size: 17px;
+
 }
 
 </style>
