@@ -26,18 +26,16 @@ export default {
     handleLogin(){
        axios.post('http://localhost:8080/FitnessCenter/rest/login/logInStatus',this.user)
               .then(
-                  res =>{
-                      if(res.data) {
-                        this.$emit('loggedUser',res.data);
-                      }
-              }
-          )
-          .catch(
-              error =>
-              {
-                console.log(error)
-              }
-          )
+                  res => {
+                    if (res.data) {
+                      this.$emit('loggedUser', res.data);
+                    }
+                  })
+            .catch(
+                error =>
+                {
+                  console.log(error)
+                })
     }
   },
   emits:['loggedUser']

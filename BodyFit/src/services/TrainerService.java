@@ -29,7 +29,7 @@ public class TrainerService  {
 	public void init() {
 		if (ctx.getAttribute("trainers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("trainers", new CustomerService());
+			ctx.setAttribute("trainers", new TrainerService());
 		}
 	}
 	public String getContext() {
@@ -41,14 +41,6 @@ public class TrainerService  {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Trainer> getAllTrainers() {
 		trainerDao.setBasePath(getContext());
-//
-//		ArrayList<Customer> customers = new ArrayList<Customer>();
-//
-//		for (Customer c : customerDao.getAllToList())
-//			customers.add(c);
-//
-//		System.out.println("Found " + customers.size() + " customers.");
-
 		return trainerDao.getAllToList();
 	}
 	@POST

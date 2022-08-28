@@ -4,17 +4,19 @@ import java.time.Duration;
 
 public class Training {
 	private String id;
-	private String type;
+	private String name;
+	private TrainingType type;
 	private String sportFacilityId;
-	private Duration duration;
+	private int duration;
 	private String trainerId;
 	private String description;
 	private boolean deleted;
 	
-	public Training(String id, String type, String sportFacilityId, Duration duration, String trainerId,
+	public Training(String id, String name,TrainingType type, String sportFacilityId, int duration, String trainerId,
 			String description) {
 		super();
 		this.id = id;
+		this.name = name;
 		this.type = type;
 		this.sportFacilityId = sportFacilityId;
 		this.duration = duration;
@@ -22,16 +24,22 @@ public class Training {
 		this.description = description;
 		this.deleted = false;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getType() {
+	public TrainingType getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(TrainingType type) {
 		this.type = type;
 	}
 	public String getSportFacilityId() {
@@ -40,10 +48,10 @@ public class Training {
 	public void setSportFacilityId(String sportFacilityId) {
 		this.sportFacilityId = sportFacilityId;
 	}
-	public Duration getDuration() {
+	public int getDuration() {
 		return duration;
 	}
-	public void setDuration(Duration duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 	public String getTrainerId() {
