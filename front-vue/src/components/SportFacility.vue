@@ -29,27 +29,24 @@ export default {
   },
   methods:{
     convertStatus(sportFacility) {
-     // console.log(typeof(sportFacility.isWorking))
       if (sportFacility.worikng === true)
         return "Open";
       else
         return "Closed";
     },
     dateTime(value) {
-      return moment(value).format('MM/DD/YYYY hh:mm');
+      return moment(value).format('hh:mm');
     },
     getImgUrl(facility){
+      console.log(facility)
+      if(facility === ''){
+        return
+      }
       let images = require.context('../assets/', false, /\.png$/);
       return images('./' + facility + ".png")
-
     }
 
-  }/*,
-  data(){
-    return{
-      sportFacility: null
-    }
-  }*/
+  }
 }
 import moment from "moment";
 </script>
