@@ -27,7 +27,8 @@ export default {
        averageGrade:'',
        facilityContent:[],
 
-    }}
+    }
+    }
   },
   components: {SportFacility, SportFacilitieDetailPage},
   created() {

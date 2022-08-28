@@ -8,9 +8,12 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.apache.tomcat.jni.User;
 
 import beans.Manager;
 import beans.UserRole;
@@ -48,6 +51,18 @@ public class MangerService {
 
 		return managerDao.getAllToList();
 	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Manager getManagerByUsername(@PathParam(value = "id") String username) {
+		managerDao.setBasePath(getContext());
+		
+		return managerDao.getAllToList().stream()
+				.filter(manager -> manager.getUsername().equals(username))
+				.findFirst().get();
+	}
+	
 	@POST
 	@Path("/create")	
 	@Produces(MediaType.APPLICATION_JSON)

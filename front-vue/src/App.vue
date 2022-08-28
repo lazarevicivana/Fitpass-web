@@ -16,11 +16,10 @@
         </div>
       </nav>
     </div>
-<!--  <router-view/>-->
   </div>
   <SideBarView :user="user" />
   <div class="container margin"  >
-    <router-view @loggedUser="loggedInUser"/>
+    <router-view @loggedUser="loggedInUser" :user="user"/>
   </div>
 </template>
 <style>
@@ -97,6 +96,7 @@ export default {
       axios.get('http://localhost:8080/FitnessCenter/rest/login/loggedUser')
           .then(response =>{
             this.user =response.data;
+            console.log(this.user.userRole);
           })
     },
     logOut()
