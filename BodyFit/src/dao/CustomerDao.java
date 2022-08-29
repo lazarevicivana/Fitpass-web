@@ -49,6 +49,6 @@ public class CustomerDao extends GenericDao<String,Customer, CustomerDao>{
 		return entity.getUsername();
 	}
 	
-	
+
 
 }

@@ -32,9 +32,7 @@
         <user-preview-component :user="user"></user-preview-component>
       </div>
     </div>
-
   </div>
-
 </div>
 </template>
 

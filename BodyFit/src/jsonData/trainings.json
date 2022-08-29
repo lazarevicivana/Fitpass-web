@@ -1,1 +1,52 @@
-{}
+{
+"0": {
+    "id": "0",
+    "name": "abs",
+    "type": "GROUP",
+    "sportFacilityId": "1",
+    "duration": 30,
+    "trainerId": "t",
+    "description": "kjhgf",
+    "deleted": false
+  },
+  "1": {
+    "id": "1",
+    "name": "gluteus",
+    "type": "GROUP",
+    "sportFacilityId": "1",
+    "duration": 60,
+    "trainerId": "t",
+    "description": "jytbfvdsxaz",
+    "deleted": false
+  },
+  "2": {
+    "id": "2",
+    "name": "relax",
+    "type": "YOGA",
+    "sportFacilityId": "1",
+    "duration": 60,
+    "trainerId": "t",
+    "description": "jytbfvdsxaz",
+    "deleted": false
+  },
+  "3": {
+    "id": "3",
+    "name": "relax",
+    "type": "YOGA",
+    "sportFacilityId": "1",
+    "duration": 60,
+    "trainerId": "t",
+    "description": "jytbfvdsxaz",
+    "deleted": false
+  },
+  "4": {
+    "id": "4",
+    "name": "relax",
+    "type": "YOGA",
+    "sportFacilityId": "1",
+    "duration": 60,
+    "trainerId": "t",
+    "description": "jytbfvdsxaz",
+    "deleted": false
+  }
+  }

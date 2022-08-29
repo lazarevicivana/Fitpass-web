@@ -2,12 +2,15 @@ package services;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -41,7 +44,7 @@ public class TrainingService {
 	@GET
 	@Path("/getAll")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<Training> getAllMangers() {
+	public ArrayList<Training> getAllTrainings() {
 		trainingDao.setBasePath(getContext());
 		return trainingDao.getAllToList();
 	}
@@ -55,6 +58,16 @@ public class TrainingService {
 		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description);
 		trainingDao.create(trainingrNew);
 		return trainingrNew;
+	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Training> getFacilityTrainings(@PathParam(value = "id") String id) {
+		trainingDao.setBasePath(getContext());
+		return (ArrayList<Training>) trainingDao.getAllToList().stream()
+				.filter(training -> training.getSportFacilityId().equals(id))
+				.collect(Collectors.toList());
 	}
 	
 	private String GenerateId() {
