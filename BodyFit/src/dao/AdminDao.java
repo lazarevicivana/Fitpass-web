@@ -48,4 +48,5 @@ public class AdminDao  extends GenericDao<String, Admin, AdminDao>{
 	}
 
 
+
 }

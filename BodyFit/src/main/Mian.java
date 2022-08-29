@@ -31,13 +31,7 @@ public class Mian {
 		// TODO Auto-generated method stub
 		CustomerDao dao = new CustomerDao();
 		Date date = new Date();
-//		Customer customer = new Customer("mikiia", "mikia", "m", "m",date, Gender.FEMALE, UserRole.CUSTOMER, 11);
-//		dao.create(customer);
-//		AdminDao adminDao = new AdminDao();
-//		Admin admin = new Admin("a", "a", "a", "a",  date,Gender.FEMALE, UserRole.ADMIN);
-//		adminDao.create(admin);
 		Customer customer = new Customer("laza", "lazarevic", "m", "m",date, Gender.MALE, UserRole.CUSTOMER, 11);
-		//dao.setBasePath("C:\\Users\\djord\\OneDrive\\Documents\\GitHub\\WebProject\\BodyFit\\src\\jsonData\\");	
 		dao.create(customer);
 		
 		
