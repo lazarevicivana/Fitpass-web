@@ -66,7 +66,7 @@ export default {
     }
   },
   created() {
-    if(this.training.trainerId !== ''){
+    if(this.training.trainerId !== null){
       axios.get('http://localhost:8080/FitnessCenter/rest/trainers/' + this.training.trainerId)
           .then(
               result => {
