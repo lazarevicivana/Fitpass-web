@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent="TrainingSubmit">
+  <form @submit.prevent="EditTrainingSubmit" >
     <h1>Add training</h1>
     <label>Name:</label>
-    <input type="text" v-model="training.name">
+    <input type="text" v-model="training.name" >
     <label>Type:</label>
-    <select v-model="training.type" >
+    <select v-model="training.type">
       <option>GROUP</option>
       <option>PERSONAL</option>
       <option>AEROBIC</option>
@@ -16,34 +16,33 @@
       <option>DANCE</option>
     </select>
     <label>Trainer:</label>
-    <select v-model="seletedValue" @change="onChange()">
-       <option v-for="trainer in trainers" :value="trainer">{{trainer.name}} {{trainer.surname}}</option>
+    <select v-model="selectedTrainer.username"  @change="onChange()">
+      <option></option>
+      <option v-for="trainer in trainers" v-bind:key="trainer.username" v-bind:value="trainer.username">{{trainer.name}} {{trainer.surname}}</option>
     </select>
     <label>Duration:</label>
-    <input type="number" v-model="training.duration">
+    <input type="number" v-model="training.duration" >
     <label>Description:</label>
-    <input type="text" v-model="training.description">
+    <input type="text" v-model="training.description"  >
     <div class="row">
       <div class="col">
         <label>Picture:</label>
         <input type="file" id="formFile" >
       </div>
       <div class="col ">
-        <button @click.prevent="OnFileUpload"  class="btn btn-primary mb-3 btn-lg  button-padding">Add photo</button>
+        <button @click.prevent="OnFileUpload" class="btn btn-primary mb-3 btn-lg  button-padding">Add photo</button>
       </div>
     </div>
-
-    <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
+    <input  type="submit" class="btn btn-primary button-basic" value="Edit"/>
   </form>
 </template>
-
 <script>
 import axios from "axios";
 
 export default {
-  name: "CreateTraining",
+  name: "EditTraining",
   data(){
-    return{
+    return {
       training:{
         id: '',
         name:'',
@@ -54,38 +53,23 @@ export default {
         description:'',
         deleted: false
       },
-      fileName: '',
-      isDisabled:true,
-      trainers: [],
-      seletedValue: '',
-      trainings:[]
+      trainers:[],
+      selectedTrainer :{}
     }
   },
   created() {
-    this.GetAll();
-    axios.get('http://localhost:8080/FitnessCenter/rest/trainers/')
+    this.training.id = this.$route.params.id;
+    axios.get('http://localhost:8080/FitnessCenter/rest/trainings/get-by/' + this.training.id)
         .then(
-            result => {
-              this.trainers = result.data
+            result =>{
+              this.training = result.data
+              this.getTrainers();
             }
         )
   },
   methods:{
-    TrainingSubmit(){
-        this.training.sportFacilityId = this.$route.params.id;
-        this.training.trainerId =this.seletedValue.username;
-        axios.post('http://localhost:8080/FitnessCenter/rest/trainings/create',this.training)
-            .then(
-                result =>{
-                  console.log(result.data)
-                }
-            )
-    },
-    onChange(){
-
-    },
     OnFileUpload(){
-      axios.post("http://localhost:8080/FitnessCenter/rest/files/uploadPhoto",this.trainings.length.toString())
+      axios.post("http://localhost:8080/FitnessCenter/rest/files/uploadPhoto",this.training.id)
           .then((response)=>{console.log("Success set up name" + response)})
           .catch((error) => console.log(error))
       let base64String = "";
@@ -99,14 +83,34 @@ export default {
       }
       reader.readAsDataURL(file);
     },
-    GetAll(){
-      axios.get("http://localhost:8080/FitnessCenter/rest/trainings/getAll")
+    EditTrainingSubmit(){
+      this.training.trainerId =this.selectedTrainer.username;
+      axios.put('http://localhost:8080/FitnessCenter/rest/trainings/',this.training)
           .then(
-              result => {
-                this.trainings = result.data
-                console.log(this.trainings.length)
+              result =>{
+                console.log(result.data)
               }
           )
+    },
+    getTrainers(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainers/')
+          .then(
+              result => {
+                this.trainers = result.data
+                this.getTrainer();
+              }
+          )
+    },
+    getTrainer(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainers/'+ this.training.trainerId)
+          .then(
+              result => {
+                this.selectedTrainer = result.data
+              }
+          )
+    },
+    onChange(){
+
     }
   }
 }
@@ -169,5 +173,4 @@ label {
 .button-padding{
   margin-top: 50px;
 }
-
 </style>

@@ -38,7 +38,7 @@ export default {
      getAll(){
       axios.get('http://localhost:8080/FitnessCenter/rest/facilities/GetAll')
           .then(response =>{
-            this.sportFacilities =response.data
+            this.sportFacilities = response.data
           })
      },
     FacilitieDetail(sportFacility)

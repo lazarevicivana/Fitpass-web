@@ -28,9 +28,10 @@
     </div>
   <div class="row row-style gy-4 row-cols-2 align-items-center" >
     <div v-for="training in trainings">
-      <div class="col-lg-8 colorDiv">
+      <div class="col colorDiv">
         <TrainingPreview :training="training"></TrainingPreview>
-      </div>
+        <button @click="onEdit(training)">Edit</button>
+      </div >
     </div>
   </div>
  </div>
@@ -83,6 +84,9 @@ export default {
                 this.trainings = result.data
               }
           )
+    },
+    onEdit(training){
+      this.$router.push(`/manager-trainings/${training.id}`);
     }
   }
 }
