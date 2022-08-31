@@ -12,6 +12,7 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -74,18 +75,20 @@ public class TrainerService  {
 			if(t.getTrainerId()!= null) {
 			Trainer trainer = getTrainerByUsername(t.getTrainerId());
 			trainersMap.put(trainer.getUsername(), trainer);
-			}
+		}
 		}
 		return trainersMap.values();
 	}
 	
 	private  Trainer getTrainerByUsername(String trainerId) {
+		  trainerDao.setBasePath(getContext());
 		 return trainerDao.getAllToList().stream()
 				.filter(trainer -> trainer.getUsername().equals(trainerId))
 				.findFirst()
 				.get();
 		
 	}
+	
 	@POST
 	@Path("/create")	
 	@Produces(MediaType.TEXT_PLAIN)
@@ -96,7 +99,6 @@ public class TrainerService  {
 		trainerDao.create(newTrainer);
 		System.out.println(getContext());
 		
-	}
-	
+	}	
 
 }

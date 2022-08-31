@@ -9,6 +9,7 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -61,6 +62,17 @@ public class TrainingService {
 	}
 	
 	@GET
+	@Path("/get-by/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Training getById(@PathParam( "id") String id) {
+		trainingDao.setBasePath(getContext());
+		
+		return  trainingDao.getAllToList().stream()
+				.filter(training -> training.getId().equals(id)).findFirst().get();
+	}
+	
+	
+	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<Training> getFacilityTrainings(@PathParam(value = "id") String id) {
@@ -68,6 +80,17 @@ public class TrainingService {
 		return (ArrayList<Training>) trainingDao.getAllToList().stream()
 				.filter(training -> training.getSportFacilityId().equals(id))
 				.collect(Collectors.toList());
+	}
+	
+	@PUT
+	@Path("/")	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Training updateTraining(TrainingDto training) {
+		trainingDao.setBasePath(getContext());
+		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description);
+		trainingDao.update(trainingrNew);
+		return trainingrNew;
 	}
 	
 	private String GenerateId() {
