@@ -21,6 +21,8 @@
     </select>
     <label>Duration:</label>
     <input type="number" v-model="training.duration">
+    <label>Price:</label>
+    <input type="number" v-model="training.price">
     <label>Description:</label>
     <input type="text" v-model="training.description">
     <div class="row">
@@ -52,6 +54,7 @@ export default {
         duration:'',
         trainerId:'',
         description:'',
+        price: '',
         deleted: false
       },
       fileName: '',

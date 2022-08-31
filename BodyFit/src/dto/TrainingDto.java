@@ -14,6 +14,7 @@ public class TrainingDto {
 	public String trainerId;
 	public String description;
 	public boolean deleted;
+	public String price;
 	
 	public TrainingType getTrainingType() {
 		if (type.equals("GROUP"))

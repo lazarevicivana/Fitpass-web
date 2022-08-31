@@ -11,9 +11,11 @@ public class Training {
 	private String trainerId;
 	private String description;
 	private boolean deleted;
+	private int price;
+	
 	
 	public Training(String id, String name,TrainingType type, String sportFacilityId, int duration, String trainerId,
-			String description) {
+			String description,int price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,7 +24,14 @@ public class Training {
 		this.duration = duration;
 		this.trainerId = trainerId;
 		this.description = description;
+		this.price = price;
 		this.deleted = false;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getName() {
 		return name;

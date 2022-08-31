@@ -56,7 +56,7 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training createTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description);
+		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
 		trainingDao.create(trainingrNew);
 		return trainingrNew;
 	}
@@ -88,7 +88,7 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training updateTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description);
+		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
 		trainingDao.update(trainingrNew);
 		return trainingrNew;
 	}
