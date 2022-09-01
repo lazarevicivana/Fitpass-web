@@ -15,6 +15,7 @@ import javax.ws.rs.core.Context;
 public class PhotoService {
 	private String path = "C:\\Users\\Ivana\\pythonProject\\OneDrive\\Desktop\\projekti\\web projekat\\front-vue\\src\\assets\\";
 	private String trainingPath = "C:\\Users\\Ivana\\pythonProject\\OneDrive\\Desktop\\projekti\\web projekat\\front-vue\\src\\assets\\training\\";
+	private String contentPath = "C:\\Users\\Ivana\\pythonProject\\OneDrive\\Desktop\\projekti\\web projekat\\front-vue\\src\\assets\\content\\";
 
 	@Context
 	ServletContext ctx;
@@ -30,6 +31,9 @@ public class PhotoService {
 	}
 	private String getTrainingPhotoPath() {
 		return trainingPath;
+	}
+	private String getContentPhotoPath() {
+		return contentPath;
 	}
 	@POST
 	@Path("uploadPhoto")
@@ -49,6 +53,19 @@ public class PhotoService {
 		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
 		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
 		File file = new File(getTrainingPhotoPath() + name + ".png");
+		ImageIO.write(buffImg, "png", file);
+		System.out.println("Image " + name + ".png" + " uploaded.");
+
+	}
+	@POST
+	@Path("uploadContentPhoto")
+	public void saveContentPhoto(String input) throws IOException {
+
+		String imageString = input;
+		String name = (String) ctx.getAttribute("file");
+		byte[] decodedBytes = Base64.getDecoder().decode(imageString);
+		BufferedImage buffImg = ImageIO.read(new ByteArrayInputStream(decodedBytes));
+		File file = new File(getContentPhotoPath() + name + ".png");
 		ImageIO.write(buffImg, "png", file);
 		System.out.println("Image " + name + ".png" + " uploaded.");
 

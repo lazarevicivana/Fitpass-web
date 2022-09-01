@@ -20,7 +20,7 @@ import beans.UserRole;
 import dao.ManagerDao;
 import dto.ManagerDto;
 @Path("/managers")
-public class MangerService {
+public class ManagerService {
 	ManagerDao managerDao = new ManagerDao();
 	
 	@Context
@@ -29,7 +29,7 @@ public class MangerService {
 	public void init() {
 		if (ctx.getAttribute("managers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("managers", new MangerService());
+			ctx.setAttribute("managers", new ManagerService());
 		}
 	}
 	public String getContext() {

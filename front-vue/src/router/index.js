@@ -62,6 +62,11 @@ const routes = [
     path: '/:id/add-training',
     name: ':id/add-training',
     component: () => import(/* webpackChunkName: "register" */ '../components/CreateTraining.vue')
+  },
+  {
+    path: '/:id/add-content',
+    name: ':id/add-content',
+    component: () => import(/* webpackChunkName: "register" */ '../components/CreateContent.vue')
   }
   ,
   {
