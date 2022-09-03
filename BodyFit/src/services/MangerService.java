@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,6 +20,7 @@ import beans.Manager;
 import beans.UserRole;
 import dao.ManagerDao;
 import dto.ManagerDto;
+import dto.UserDto;
 @Path("/managers")
 public class MangerService {
 	ManagerDao managerDao = new ManagerDao();
@@ -65,4 +67,23 @@ public class MangerService {
 		managerDao.create(managerNew);
 		return managerNew;
 	}
+	
+	@PUT
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager updateManager(UserDto manager) {
+		managerDao.setBasePath(getContext());
+		Manager m = managerDao.getById(manager.username);
+		m.setPassword(manager.password);
+		m.setName(manager.name);
+		m.setSurname(manager.surname);
+		//m.setBirthday(manager.birthday);
+		m.setGender(manager.gerGenderEnum());
+		//Manager managerNew = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, manager.sportFacilityId);
+		managerDao.update(m);
+		return m;
+	}
+	
+	
 }
