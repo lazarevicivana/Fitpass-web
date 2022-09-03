@@ -84,7 +84,7 @@ public class PhotoService {
 
 	}
 	@POST
-	@Path("uploadLogo")
+	@Path("uploadFacilityLogo")
 	public void saveImageLogo(String input) throws IOException {
 
 		String imageString = input;

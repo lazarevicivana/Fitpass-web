@@ -34,7 +34,6 @@
         <button @click.prevent="OnFileUpload"  class="btn btn-primary mb-3 btn-lg  button-padding">Add photo</button>
       </div>
     </div>
-
     <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>
@@ -107,7 +106,6 @@ export default {
           .then(
               result => {
                 this.trainings = result.data
-                console.log(this.trainings.length)
               }
           )
     }

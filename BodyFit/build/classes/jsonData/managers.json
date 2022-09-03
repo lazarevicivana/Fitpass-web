@@ -10,5 +10,17 @@
     "userRole": "MANAGER",
     "deleted": false,
     "banned": false
+  },
+  "m2": {
+    "sportFacilityId": "",
+    "username": "m2",
+    "password": "m2",
+    "name": "m2",
+    "surname": "m2",
+    "birthday": "Aug 10, 2022, 2:00:00 AM",
+    "gender": "FEMALE",
+    "userRole": "MANAGER",
+    "deleted": false,
+    "banned": false
   }
   }

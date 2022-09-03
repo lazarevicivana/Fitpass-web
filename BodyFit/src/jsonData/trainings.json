@@ -22,7 +22,7 @@
   },
   "2": {
     "id": "2",
-    "name": "relax",
+    "name": "mind",
     "type": "YOGA",
     "sportFacilityId": "1",
     "duration": 60,
@@ -44,7 +44,7 @@
   },
   "4": {
     "id": "4",
-    "name": "relax",
+    "name": "spirit",
     "type": "YOGA",
     "sportFacilityId": "1",
     "duration": 60,

@@ -1,8 +1,5 @@
 package dto;
 
-import java.time.Duration;
-
-import beans.Gender;
 import beans.TrainingType;
 
 public class TrainingDto {
