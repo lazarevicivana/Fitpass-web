@@ -10,7 +10,10 @@ public class ManagerDto {
 	public String name;
 	public String surname;
 	public String gender;
-	public Date birthday;	
+	public Date birthday;
+	public String birthdate;
+	public boolean deleted;
+	public boolean banned;
 	public String userRole;
 	public String sportFacilityId;
 	

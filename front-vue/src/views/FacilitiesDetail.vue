@@ -18,7 +18,7 @@ export default {
      sportFacility:{
        sportFacilityId: '',
        name : '',
-       location : '',
+       street : '',
        isWorking : false,
        type : '',
        worikng:false,

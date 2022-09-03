@@ -79,14 +79,12 @@ export default {
           .then(
               result => {
                 this.trainer = result.data
-                console.log(this.trainer.name)
               }
           )
     }
   },
   methods:{
     getImgUrl(training){
-      console.log(training)
       if(training === ''){
         return
       }

@@ -5,7 +5,7 @@
       <div class="col-sm">
     <table class="td-style">
       <tr><td style="font-size: 30px">{{sportFacility.name}}</td></tr>
-      <tr><td> Location : {{sportFacility.location}}</td></tr>
+      <tr><td> Location : {{sportFacility.street }}</td></tr>
       <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
       <tr><td>Type: {{sportFacility.type}}</td></tr>
       <tr><td> Average grade: {{sportFacility.averageGrade}}</td></tr>
@@ -14,7 +14,7 @@
     </table>
       </div>
       <div class="col">
-        <img  :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico size border border-white"/>
+        <img  :src="getImgUrl(sportFacility.sportFacilityId)" :alt="sportFacility.name" class="ico size border border-white"/>
       </div>
     </div>
   </div>
