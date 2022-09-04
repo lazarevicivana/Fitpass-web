@@ -6,7 +6,8 @@
     "duration": 30,
     "trainerId": "t",
     "description": "kjhgf",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "1": {
     "id": "1",
@@ -16,17 +17,19 @@
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "2": {
     "id": "2",
-    "name": "relax",
+    "name": "mind",
     "type": "YOGA",
     "sportFacilityId": "1",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "3": {
     "id": "3",
@@ -36,17 +39,19 @@
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "4": {
     "id": "4",
-    "name": "relax",
+    "name": "spirit",
     "type": "YOGA",
     "sportFacilityId": "1",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "5": {
     "id": "5",
@@ -55,7 +60,8 @@
     "sportFacilityId": "1",
     "duration": 50,
     "description": "hgfdx",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "6": {
     "id": "6",
@@ -64,7 +70,8 @@
     "sportFacilityId": "1",
     "duration": 40,
     "description": "jhgfd",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "7": {
     "id": "7",
@@ -74,7 +81,8 @@
     "duration": 60,
     "trainerId": "t2",
     "description": "mnbvcx",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
   },
   "8": {
     "id": "8",
@@ -84,6 +92,18 @@
     "duration": 45,
     "trainerId": "t2",
     "description": "gfcdx",
-    "deleted": false
+    "deleted": false,
+     "price": 1000
+  },
+  "9": {
+    "id": "9",
+    "name": "nanna",
+    "type": "AEROBIC",
+    "sportFacilityId": "1",
+    "duration": 30,
+    "trainerId": "t",
+    "description": "bnvcx",
+    "deleted": false,
+    "price": 1000
   }
   }

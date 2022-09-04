@@ -1,37 +1,33 @@
 package beans;
 
-import java.time.Duration;
-
-public class Training {
+public class FacilityContent {
 	private String id;
 	private String name;
-	private TrainingType type;
+	private FacilityContentType type;
 	private String sportFacilityId;
 	private int duration;
-	private String trainerId;
 	private String description;
 	private boolean deleted;
 	private int price;
 	
-	
-	public Training(String id, String name,TrainingType type, String sportFacilityId, int duration, String trainerId,
-			String description,int price) {
+	public FacilityContent(String id, String name, FacilityContentType type, String sportFacilityId, int duration,
+			String description, boolean deleted, int price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.sportFacilityId = sportFacilityId;
 		this.duration = duration;
-		this.trainerId = trainerId;
 		this.description = description;
+		this.deleted = deleted;
 		this.price = price;
-		this.deleted = false;
 	}
-	public int getPrice() {
-		return price;
+	
+	public String getId() {
+		return id;
 	}
-	public void setPrice(int price) {
-		this.price = price;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
@@ -39,16 +35,10 @@ public class Training {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public TrainingType getType() {
+	public FacilityContentType getType() {
 		return type;
 	}
-	public void setType(TrainingType type) {
+	public void setType(FacilityContentType type) {
 		this.type = type;
 	}
 	public String getSportFacilityId() {
@@ -63,12 +53,6 @@ public class Training {
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
-	public String getTrainerId() {
-		return trainerId;
-	}
-	public void setTrainerId(String trainerId) {
-		this.trainerId = trainerId;
-	}
 	public String getDescription() {
 		return description;
 	}
@@ -81,10 +65,12 @@ public class Training {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	@Override
-	public String toString() {
-		return "Training [id=" + id + ", type=" + type + ", sportFacilityId=" + sportFacilityId + ", duration="
-				+ duration + ", trainerId=" + trainerId + ", description=" + description + ", deleted=" + deleted + "]";
+	public int getPrice() {
+		return price;
 	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
 
 }

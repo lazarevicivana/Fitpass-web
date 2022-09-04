@@ -3,7 +3,7 @@
     <h1 class="padding-style">Trainings</h1>
     <div class="row padding-style">
       <div class="col">
-        <input type="text"  placeholder="search">
+        <input type="range" min="10" >
       </div>
       <div class="col">
         <select >
@@ -15,22 +15,26 @@
         </select>
       </div>
       <div class="col">
-        <select >
-          <option>Sort</option>
-          <option>Name asc</option>
-          <option>Name desc</option>
-          <option>Surname asc</option>
-          <option>Surname desc</option>
-          <option>Username asc</option>
-          <option>Username desc</option>
+        <select v-model="filter" @change="FilterUsers">
+          <option>All</option>
+          <option>GROUP</option>
+          <option>PERSONAL</option>
+          <option>AEROBIC</option>
+          <option>CARDIO</option>
+          <option>GYM</option>
+          <option>YOGA</option>
+          <option>HIIT</option>
+          <option>STRENGTH</option>
+          <option>DANCE</option>
         </select>
       </div>
     </div>
   <div class="row row-style gy-4 row-cols-2 align-items-center" >
-    <div v-for="training in trainings">
-      <div class="col-lg-8 colorDiv">
+    <div v-for="training in this.FilterTrainings()">
+      <div class="col colorDiv">
         <TrainingPreview :training="training"></TrainingPreview>
-      </div>
+        <button @click="onEdit(training)">Edit</button>
+      </div >
     </div>
   </div>
  </div>
@@ -60,11 +64,14 @@ export default {
         banned : false,
         sportFacilityId: ''
       },
-      trainings :[]
+      trainings :[],
+      filter: 'All',
+      filteredTrainings :[]
     }
   },
   created() {
-    this.getData()
+    this.getData();
+    this.filteredTrainings = this.trainings;
   },
   methods:{
     getData(){
@@ -83,6 +90,16 @@ export default {
                 this.trainings = result.data
               }
           )
+    },
+    onEdit(training){
+      this.$router.push(`/manager-trainings/${training.id}`);
+    },
+    FilterTrainings(){
+      this.filteredTrainings = this.trainings;
+      if(this.filter !== 'All'){
+        this.filteredTrainings = [...this.filteredTrainings.filter(training =>  training.type.toLowerCase().includes(this.filter.toLowerCase()))]
+      }
+      return this.filteredTrainings
     }
   }
 }

@@ -62,6 +62,11 @@ const routes = [
     path: '/:id/add-training',
     name: ':id/add-training',
     component: () => import(/* webpackChunkName: "register" */ '../components/CreateTraining.vue')
+  },
+  {
+    path: '/:id/add-content',
+    name: ':id/add-content',
+    component: () => import(/* webpackChunkName: "register" */ '../components/CreateContent.vue')
   }
   ,
   {
@@ -78,6 +83,22 @@ const routes = [
     path: '/trainer-trainings',
     name: 'trainer-trainings',
     component: () => import('../views/AllTrainingsTrainerView.vue')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/ProfileView.vue')
+  },
+  {
+    path: '/manager-trainings/:id',
+    name: 'manager-trainings/:id',
+    component: () => import(/* webpackChunkName: "register" */ '../components/EditTraining.vue')
+  },
+  {
+    path: '/add-facility',
+    name: 'add-facility',
+    component: () => import(/* webpackChunkName: "register" */ '../components/CreateSportFacility.vue')
+
   }
 ]
 

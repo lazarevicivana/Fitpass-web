@@ -43,7 +43,6 @@ export default {
   },
   methods : {
     ManagerSubmit(){
-      console.log(this.manager);
       axios.post('http://localhost:8080/FitnessCenter/rest/managers/create',this.manager)
           .then(
               res =>{

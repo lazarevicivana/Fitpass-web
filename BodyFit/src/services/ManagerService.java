@@ -2,25 +2,25 @@ package services;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
-import org.apache.tomcat.jni.User;
-
 import beans.Manager;
 import beans.UserRole;
 import dao.ManagerDao;
 import dto.ManagerDto;
+import dto.UserDto;
 @Path("/managers")
-public class MangerService {
+public class ManagerService {
 	ManagerDao managerDao = new ManagerDao();
 	
 	@Context
@@ -29,7 +29,7 @@ public class MangerService {
 	public void init() {
 		if (ctx.getAttribute("managers") == null) {
 			String contextPath = ctx.getRealPath("");
-			ctx.setAttribute("managers", new MangerService());
+			ctx.setAttribute("managers", new ManagerService());
 		}
 	}
 	public String getContext() {
@@ -65,4 +65,46 @@ public class MangerService {
 		managerDao.create(managerNew);
 		return managerNew;
 	}
+	
+
+	@PUT
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager updateManager(UserDto manager) {
+		managerDao.setBasePath(getContext());
+		Manager m = managerDao.getById(manager.username);
+		m.setPassword(manager.password);
+		m.setName(manager.name);
+		m.setSurname(manager.surname);
+		//m.setBirthday(manager.birthday);
+		m.setGender(manager.gerGenderEnum());
+		//Manager managerNew = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, manager.sportFacilityId);
+		managerDao.update(m);
+		return m;
+	}
+
+	@GET
+	@Path("available-managers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Manager> getAvailableManagers(){
+		managerDao.setBasePath(getContext());
+		return (ArrayList<Manager>) managerDao.getAllToList()
+				.stream()
+				.filter(manager -> manager.getSportFacilityId().isEmpty())
+				.collect(Collectors.toList());
+	}
+	
+	@PUT
+	@Path("/updateFacilityId")	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager updateManagerFacilityId(ManagerDto manager) {
+		managerDao.setBasePath(getContext());
+		Manager managerNew = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, manager.sportFacilityId);
+		managerDao.update(managerNew);
+	    return managerNew;
+	}
+	
+	
 }

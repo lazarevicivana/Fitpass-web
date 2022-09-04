@@ -1,13 +1,20 @@
 <template>
-<div class="container-fluid margin-style ">
+<div class="container-lg margin-style ">
 <h1 class="padding-style">All fitness centers</h1>
   <div class="row padding-style ">
       <input type="text" class="search"  v-model="search" placeholder="search">
   </div>
-  <div class="row gy-4 row-style text-center colorDiv " v-for="sportFacility in filterSportsFacilities">
-        <div  class="col d-flex align-items-center justify-content-center" >
-         <SportFacility @click="FacilitieDetail(sportFacility)" :sportFacility="sportFacility"/>
+  <div class="row div ">
+    <div class="col-4 scroll">
+      <div class="row  row-style text-center" v-for="sportFacility in filterSportsFacilities">
+        <div  class="col colorDiv" >
+          <SportFacility @click="FacilitieDetail(sportFacility)" :sportFacility="sportFacility"/>
         </div>
+      </div>
+    </div>
+    <div class="col map">
+        <Map :facilities="filterSportsFacilities"></Map>
+    </div>
   </div>
 </div>
 </template>
@@ -15,10 +22,14 @@
 <script>
 import SportFacility from "@/components/SportFacility";
 import axios from "axios";
+import Map from "@/components/Map";
 
 export default {
   name: "Facilities",
-  components: {SportFacility},
+  components: {
+    SportFacility,
+    Map
+  },
   data(){
     return{
       sportFacilities : [],
@@ -36,9 +47,9 @@ export default {
   methods:
   {
      getAll(){
-      axios.get('http://localhost:8080/FitnessCenter/rest/facilities/GetAll')
+      axios.get('http://localhost:8080/FitnessCenter/rest/facilities/get-all-dto')
           .then(response =>{
-            this.sportFacilities =response.data
+            this.sportFacilities = response.data
           })
      },
     FacilitieDetail(sportFacility)
@@ -59,12 +70,17 @@ export default {
   padding: 20px;
   color: white;
 }
+.col-style{
+  width: 100px;
+}
 .padding-style{
   margin-bottom: 80px;
 }
+.div{
+ width: 1800px;
+}
 .row-style{
-  margin-left: 80px;
-  width: 700px;
+  width: 600px;
   margin-bottom: 60px;
 }
 .search {
@@ -79,7 +95,17 @@ export default {
   border-radius: 15px;
 }
 .margin-style{
-  margin-left: 120px;
+
+}
+.scroll{
+  overflow-y: auto;
+  height: 1100px;
+  width: 700px;
+}
+.map{
+  width: 100px !important;
+  height: 700px !important;
+  margin-right: 500px;
 }
 
 
