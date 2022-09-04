@@ -121,6 +121,11 @@ const routes = [
     path: '/add-promo-code',
     name: '/add-promo-code',
     component: () => import(/* webpackChunkName: "register" */ '../components/CreatePromoCode.vue')
+  },
+  {
+    path: '/:id/buy-membership',
+    name: '/:id/buy-membership',
+    component: () => import(/* webpackChunkName: "register" */ '../components/BuyMembership.vue')
   }
 
 ]

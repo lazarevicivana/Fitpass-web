@@ -22,7 +22,7 @@ public class MembershipDao extends GenericDao<String,Membership, MembershipDao>{
 	@Override
 	protected String getFilePath() {
 		// TODO Auto-generated method stub
-		return "membership.json";
+		return "memberships.json";
 	}
 	public Map<String,Membership> getAllToMap(){
 		String json = "";
