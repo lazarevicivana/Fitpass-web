@@ -4,7 +4,14 @@
   <div class="row row-style gy-4 row-cols-2 align-items-center" >
     <div v-for="membership in memberships">
       <div class="col-lg-8 colorDiv">
-        <MembershipComponent :membership="membership"></MembershipComponent>      </div>
+        <div class="row">
+          <MembershipComponent :membership="membership"></MembershipComponent>
+        </div>
+        <div class="row ">
+        <button v-if="customer()" @click="onBuy(membership.id)" class="button" >Buy</button>
+      </div >
+      </div>
+
     </div>
   </div>
 </div>
@@ -16,6 +23,7 @@ import axios from "axios";
 export default {
   name: "MembershipsView",
   components: {MembershipComponent},
+  props:{user: Object},
   data(){
     return{
       memberships:{}
@@ -29,6 +37,14 @@ export default {
               console.log(this.memberships)
             }
         )
+  },
+  methods:{
+    customer(){
+      return this.user.userRole === 'CUSTOMER'
+    },
+    onBuy(id){
+      this.$router.push(`/${id}/buy-membership`)
+    }
   }
 }
 </script>
@@ -61,4 +77,21 @@ input,select {
   font-size: 20px;
   border-radius: 15px;
 }
+.button{
+   color: white;
+   background: #2c3e50;
+   margin-top: 40px;
+   display: block;
+   padding-right: 10px;
+   margin-left: 10px;
+   font-size: 24px;
+   vertical-align: center;
+   box-sizing: border-box;
+   border: none;
+   width: 60%;
+   border-radius: 15px;
+   position: relative;
+   -ms-transform: translateX(-50%);
+   transform: translateX(25%);
+ }
 </style>

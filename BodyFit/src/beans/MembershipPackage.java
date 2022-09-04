@@ -5,12 +5,20 @@ public class MembershipPackage {
 	private MembershipType type;
 	private int numberOfTrainings;
 	private String description;
-	public MembershipPackage(String id, MembershipType type, int numberOfTrainings, String description) {
+	private int price;
+	public MembershipPackage(String id, MembershipType type, int numberOfTrainings, String description,int price) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.numberOfTrainings = numberOfTrainings;
 		this.description = description;
+		this.price = price;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getId() {
 		return id;

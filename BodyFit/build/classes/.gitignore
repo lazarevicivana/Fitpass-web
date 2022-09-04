@@ -1,6 +1,5 @@
+/services/
+/jsonData/
+/dto/
 /beans/
 /dao/
-/dto/
-/main/
-/jsonData
-/services/

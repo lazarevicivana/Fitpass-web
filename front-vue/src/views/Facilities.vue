@@ -41,7 +41,9 @@ export default {
   },
   computed:{
     filterSportsFacilities(){
-      return this.sportFacilities.filter(sportFacility => sportFacility.name.toLowerCase().includes(this.search.toLocaleLowerCase()) || sportFacility.location.toLowerCase().includes(this.search.toLowerCase()) || sportFacility.averageGrade.toString().includes(this.search) || sportFacility.type.toLowerCase().includes(this.search.toLowerCase()) )
+      console.log(this.sportFacilities.forEach((s) => {console.log(s.averageGrade)}))
+      console.log(this.sportFacilities.length)
+      return this.sportFacilities.filter(sportFacility => sportFacility.name.toLowerCase().includes(this.search.toLowerCase()) || sportFacility.location.toLowerCase().includes(this.search.toLowerCase()) || sportFacility.averageGrade.toString().includes(this.search) || sportFacility.type.toLowerCase().includes(this.search.toLowerCase()) )
     }
   },
   methods:
@@ -50,6 +52,7 @@ export default {
       axios.get('http://localhost:8080/FitnessCenter/rest/facilities/get-all-dto')
           .then(response =>{
             this.sportFacilities = response.data
+            console.log(this.sportFacilities)
           })
      },
     FacilitieDetail(sportFacility)

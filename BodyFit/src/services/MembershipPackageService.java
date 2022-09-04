@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -36,6 +37,13 @@ public class MembershipPackageService {
 	public ArrayList<MembershipPackage> getAllMembershipPackages() {
 		membershipPackageDao.setBasePath(getContext());
 		return membershipPackageDao.getAllToList();
+	}
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public MembershipPackage getMembershipPackagesById(@PathParam(value = "id") String id) {
+		membershipPackageDao.setBasePath(getContext());
+		return membershipPackageDao.getById(id);
 	}
 
 }
