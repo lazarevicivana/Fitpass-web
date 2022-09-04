@@ -1,5 +1,6 @@
 package beans;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -9,17 +10,17 @@ public class SportFacility {
 	private FacilityType type;
 	private ArrayList<String> facilityContent;
 	private boolean isWorking;
-	private String location;
-	private double averageGrade;
-	private Date openTime;
-	private Date closeTime;
+	private Adress location;
+	private Double averageGrade;
+	private LocalTime openTime;
+	private LocalTime closeTime;
 	
 	
 	public SportFacility() {
 		super();
 	}
 	public SportFacility(String sportFacilityId, String name, FacilityType type, ArrayList<String> facilityContent,
-			boolean status, String location, double averageGrade, Date openTime, Date closeTime) {
+			boolean status, Adress location, double averageGrade, LocalTime openTime, LocalTime closeTime) {
 		super();
 		this.sportFacilityId = sportFacilityId;
 		this.name = name;
@@ -61,10 +62,10 @@ public class SportFacility {
 	public void setWorikng(boolean status) {
 		this.isWorking = status;
 	}
-	public String getLocation() {
+	public Adress getLocation() {
 		return location;
 	}
-	public void setLocation(String location) {
+	public void setLocation(Adress location) {
 		this.location = location;
 	}
 	public double getAverageGrade() {
@@ -73,16 +74,16 @@ public class SportFacility {
 	public void setAverageGrade(double averageGrade) {
 		this.averageGrade = averageGrade;
 	}
-	public Date getOpenTime() {
+	public LocalTime getOpenTime() {
 		return openTime;
 	}
-	public void setOpenTime(Date openTime) {
+	public void setOpenTime(LocalTime openTime) {
 		this.openTime = openTime;
 	}
-	public Date getCloseTime() {
+	public LocalTime getCloseTime() {
 		return closeTime;
 	}
-	public void setCloseTime(Date closeTime) {
+	public void setCloseTime(LocalTime closeTime) {
 		this.closeTime = closeTime;
 	}
 

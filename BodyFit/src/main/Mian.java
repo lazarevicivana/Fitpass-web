@@ -1,27 +1,10 @@
 package main;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-
-
-import beans.Admin;
-import beans.Adress;
 import beans.Customer;
-import beans.FacilityType;
 import beans.Gender;
-import beans.GeoLocation;
-import beans.Location;
-import beans.SportFacility;
 import beans.UserRole;
-import dao.AdminDao;
+
 import dao.CustomerDao;
 import dao.SportFacilityDao;
 
@@ -38,10 +21,10 @@ public class Mian {
 
 		SportFacilityDao facilityDao = new SportFacilityDao();
 
-		SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
+		//SportFacility facility = new SportFacility("7", "Flex", FacilityType.GYM, new ArrayList<>() , false, "dgasfdfsgdgasgf", 4.4, date, date);
 
 		
-		facilityDao.create(facility);
+		//facilityDao.create(facility);
 		}
 		
 

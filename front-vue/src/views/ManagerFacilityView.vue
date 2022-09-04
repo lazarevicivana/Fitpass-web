@@ -21,7 +21,7 @@
           <button class="btn btn-primary" @click="createTraining()" >Add training</button>
         </div>
         <div class="col">
-          <button class="btn btn-primary" >Add content</button>
+          <button class="btn btn-primary" @click="createContent()">Add content</button>
         </div>
       </div>
     </div>
@@ -102,6 +102,9 @@ export default {
     },
     createTraining(){
       this.$router.push(`/${this.sportFacility.sportFacilityId}/add-training`);
+    },
+    createContent(){
+      this.$router.push(`/${this.sportFacility.sportFacilityId}/add-content`);
     }
   }
 }

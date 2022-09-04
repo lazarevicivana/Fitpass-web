@@ -1,4 +1,5 @@
 package dao;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
@@ -7,22 +8,24 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.gson.reflect.TypeToken;
-import beans.Trainer;
 
-public class TrainerDao  extends GenericDao<String,Trainer, TrainerDao>{
+import beans.FacilityContent;
+
+   
+public class FacilityContentDao extends GenericDao<String,FacilityContent, FacilityContentDao>{
 
 	@Override
-	protected String getKey(Trainer entity) {
+	protected String getKey(FacilityContent entity) {
 		// TODO Auto-generated method stub
-		return entity.getUsername();
+		return entity.getId();
 	}
 
 	@Override
 	protected String getFilePath() {
 		// TODO Auto-generated method stub
-		return "trainers.json";
+		return "facilityContent.json";
 	}
-	public Map<String,Trainer> getAllToMap(){
+	public Map<String,FacilityContent> getAllToMap(){
 		String json = "";
 		try {
 			json = new String(Files.readAllBytes(Paths.get(getPath())));
@@ -30,19 +33,17 @@ public class TrainerDao  extends GenericDao<String,Trainer, TrainerDao>{
 			e.printStackTrace();
 		}
 
-		Type empMapType = new TypeToken<Map<String, Trainer>>() {
+		Type empMapType = new TypeToken<Map<String, FacilityContent>>() {
 		}.getType();
 
-		Map<String, Trainer> map = gs.fromJson(json, empMapType);
+		Map<String, FacilityContent> map = gs.fromJson(json, empMapType);
 		return map;
 		
 	}
 
 	@Override
-	public ArrayList<Trainer> getAllToList() {
+	public ArrayList<FacilityContent> getAllToList() {
 		// TODO Auto-generated method stub
-		return new ArrayList<Trainer>(getAllToMap().values());
+		return new ArrayList<FacilityContent>(getAllToMap().values());
 	}
-
-
 }

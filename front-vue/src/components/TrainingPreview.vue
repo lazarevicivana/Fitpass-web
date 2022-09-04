@@ -40,6 +40,14 @@
             <label>{{trainer.name}} {{trainer.surname}}</label>
           </td>
         </tr>
+        <tr>
+          <td class="td-style">
+            <label>Price:</label>
+          </td>
+          <td class="td-style">
+            <label>{{training.price}}</label>
+          </td>
+        </tr>
       </table>
       </div>
       <div class="col">
@@ -71,14 +79,12 @@ export default {
           .then(
               result => {
                 this.trainer = result.data
-                console.log(this.trainer.name)
               }
           )
     }
   },
   methods:{
     getImgUrl(training){
-      console.log(training)
       if(training === ''){
         return
       }
