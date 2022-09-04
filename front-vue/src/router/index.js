@@ -100,6 +100,29 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../components/CreateSportFacility.vue')
 
   }
+  ,
+  {
+    path: '/:id/buy-training',
+    name: '/:id/buy-training',
+    component: () => import(/* webpackChunkName: "register" */ '../components/BuyTrainingComponent.vue')
+  },
+  {
+    path: '/memberships',
+    name: '/memberships',
+    component: () => import(/* webpackChunkName: "register" */ '../views/MembershipsView.vue')
+  },
+  {
+    path: '/promo-codes',
+    name: '/promo-codes',
+    component: () => import(/* webpackChunkName: "register" */ '../views/PromoCodeAdminView.vue')
+  }
+  ,
+  {
+    path: '/add-promo-code',
+    name: '/add-promo-code',
+    component: () => import(/* webpackChunkName: "register" */ '../components/CreatePromoCode.vue')
+  }
+
 ]
 
 const router = createRouter({

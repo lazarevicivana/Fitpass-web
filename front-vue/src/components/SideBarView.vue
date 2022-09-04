@@ -32,11 +32,13 @@ export default {
 
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" >Add manager</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-trainer" icon="fas fa-home" >Add trainer</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/promo-codes" icon="fas fa-home" >Promo code</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/all-users" icon="fas fa-home" >Users</SideBarLink>
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-facility" icon="fas fa-home" >Facility</SideBarLink>
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainings" icon="fas fa-home" >Trainings</SideBarLink>
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainers" icon="fas fa-home" >Trainers</SideBarLink>
     <SideBarLink v-if="user.userRole === 'TRAINER'" to="/trainer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/memberships" icon="fas fa-home" >Memberships</SideBarLink>
     <SideBarLink to="/about" icon="fas fa-home" >About</SideBarLink>
 
 <!--    <SidebarLink to="/friends" icon="fas fa-users">Friends</SidebarLink>-->
