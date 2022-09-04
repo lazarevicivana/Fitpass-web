@@ -80,7 +80,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../views/ManagerTrainersView.vue')
   },
   {
-
+    path: '/trainer-trainings',
+    name: 'trainer-trainings',
+    component: () => import('../views/AllTrainingsTrainerView.vue')
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => import('../views/ProfileView.vue')

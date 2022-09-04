@@ -82,6 +82,26 @@ public class TrainingService {
 				.collect(Collectors.toList());
 	}
 	
+	@GET
+	@Path("/trainer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Training> getTrainingsForTrainer(@PathParam(value = "id") String id) {
+		trainingDao.setBasePath(getContext());
+		ArrayList<Training> trainings  = new ArrayList<Training>();
+         for (Training training : trainingDao.getAllToList()) {
+        	 if(training.getTrainerId() != null) {
+		    	 if(training.getTrainerId().equals(id)) {
+		    		 trainings.add(training);
+		    	 }
+        	 }
+		}
+         return trainings;
+		//return 
+//				(ArrayList<Training>) trainingDao.getAllToList().stream()
+//				.filter(training -> training.getTrainerId().equals(id))
+//				.collect(Collectors.toList());
+	}
+	
 	@PUT
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
