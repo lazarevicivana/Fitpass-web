@@ -15,7 +15,7 @@
         </select>
       </div>
       <div class="col">
-        <select >
+        <select v-model="filter" @change="FilterUsers">
           <option>Sort</option>
           <option>Name asc</option>
           <option>Name desc</option>
@@ -49,16 +49,50 @@ export default {
   data(){
       return{
         trainer:{
-            username: '',
+          username: '',
+          password : '',
+          name : '',
+          surname : '',
+          birthday : '',
+          gender : '',
+          userRole : '',
+          deleted : false,
+          banned : false,
         },
-        trainings :[]
+        trainings :[],
+        filter: 'All',
+        filteredTrainings :[]
       }
   },
   created() {
-
+    this.getData();
+    this.filteredTrainings = this.trainings;
   },
   methods:{
+    getData(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainers/'+this.user.username)
+          .then(
+              result => {
+                this.trainer = result.data
+                this.getFacilityTrainings(this.trainer.username)
 
+              })
+    },
+    getFacilityTrainings(trainerId){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainings/trainer/'+ trainerId)
+          .then(
+              result => {
+                this.trainings = result.data
+              }
+          )
+    },
+    FilterTrainings(){
+      this.filteredTrainings = this.trainings;
+      if(this.filter !== 'All'){
+        this.filteredTrainings = [...this.filteredTrainings.filter(training =>  training.type.toLowerCase().includes(this.filter.toLowerCase()))]
+      }
+      return this.filteredTrainings
+    }
   }
 }
 </script>
