@@ -75,11 +75,15 @@ export default {
   },
   methods:{
     getData(){
+
       axios.get('http://localhost:8080/FitnessCenter/rest/managers/'+this.user.username)
           .then(
               result => {
                 this.manager = result.data
-                this.getFacilityTrainings(this.manager.sportFacilityId)
+                if(this.manager.sportFacilityId != ''){
+                  this.getFacilityTrainings(this.manager.sportFacilityId)
+                }
+
 
               })
     },

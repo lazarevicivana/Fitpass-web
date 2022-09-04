@@ -34,7 +34,9 @@ export default {
         .then(
             result => {
               this.manager = result.data
-              this.getFacilityTrainers(this.manager.sportFacilityId)
+              if(this.manager.sportFacilityId != ''){
+                this.getFacilityTrainers(this.manager.sportFacilityId)
+              }
             })
   },
   methods:{

@@ -4,7 +4,7 @@
       <h1>{{sportFacility.name}}</h1>
     </div>
   </div>
-  <div class="row  ">
+  <div  v-if="!(manager.sportFacilityId === '')" class="row  ">
     <div class="col-lg-6">
       <div class="container-fluid div-style  ">
         <table>
@@ -27,7 +27,7 @@
     </div>
       <div class="col-lg-6">
         <div class="container-fluid  padding-style ">
-        <img  :src="getImgUrl(sportFacility.name)" :alt="sportFacility.name" class="ico size "/>
+        <img  :src="getImgUrl(sportFacility.sportFacilityId)" :alt="sportFacility.name" class="ico size "/>
       </div>
 
     </div>
@@ -85,11 +85,13 @@ export default {
       return images('./' + facility + ".png")
     },
     getManagerFacility(sportFacilityId){
-      axios.get('http://localhost:8080/FitnessCenter/rest/facilities/'+sportFacilityId)
-          .then(
-              result => {
-                this.sportFacility = result.data
-              })
+      if(this.manager.sportFacilityId != ''){
+        axios.get('http://localhost:8080/FitnessCenter/rest/facilities/'+sportFacilityId)
+            .then(
+                result => {
+                  this.sportFacility = result.data
+                })
+      }
     },
     GetData(){
       axios.get('http://localhost:8080/FitnessCenter/rest/managers/'+this.user.username)

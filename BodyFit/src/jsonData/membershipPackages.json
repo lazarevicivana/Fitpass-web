@@ -1,0 +1,98 @@
+{
+  "0": {
+  	"id": "0",
+    "type": "MONTH",
+    "numberOfTrainings": "12",
+    "description": "aaaa"
+   },
+   "1": {
+    "id": "1",
+    "type": "MONTH",
+    "numberOfTrainings": "22",
+    "description": "aaaa"
+   },
+   "2": {
+   "id": "2",
+    "type": "MONTH",
+    "numberOfTrainings": "30",
+    "description": "aaaa"
+   },
+   "3": {
+    "id": "3",
+    "type": "MONTH",
+    "numberOfTrainings": "7000",
+    "description": "aaaa"
+   },
+   "4": {
+   "id": "4",
+    "type": "THREE_MONTHS",
+    "numberOfTrainings": "12",
+    "description": "aaaa"
+   },
+   "5": {
+   "id": "5",
+    "type": "THREE_MONTHS",
+    "numberOfTrainings": "22",
+    "description": "aaaa"
+   },
+   "6": {
+   "id": "6",
+    "type": "THREE_MONTHS",
+    "numberOfTrainings": "30",
+    "description": "aaaa"
+   },
+    "7": {
+    "id": "7",
+    "type": "THREE_MONTHS",
+    "numberOfTrainings": "7000",
+    "description": "aaaa"
+   },
+   "8": {
+   "id": "8",
+    "type": "SIX_MONTHS",
+    "numberOfTrainings": "12",
+    "description": "aaaa"
+   },
+   "9": {
+   	"id": "9",
+    "type": "SIX_MONTHS",
+    "numberOfTrainings": "22",
+    "description": "aaaa"
+   },
+   "10": {
+   "id": "10",
+    "type": "SIX_MONTHS",
+    "numberOfTrainings": "30",
+    "description": "aaaa"
+   },
+   "11": {
+   "id": "11",
+    "type": "SIX_MONTHS",
+    "numberOfTrainings": "7000",
+    "description": "aaaa"
+   },
+   "12": {
+   "id": "12",
+    "type": "YEAR",
+    "numberOfTrainings": "12",
+    "description": "aaaa"
+   },
+   "13": {
+   "id": "13",
+    "type": "YEAR",
+    "numberOfTrainings": "22",
+    "description": "aaaa"
+   },
+    "14": {
+    "id": "14",
+    "type": "YEAR",
+    "numberOfTrainings": "30",
+    "description": "aaaa"
+   }, 
+   "15": {
+   "id": "15",
+    "type": "YEAR",
+    "numberOfTrainings": "7000",
+    "description": "aaaa"
+   }
+}
