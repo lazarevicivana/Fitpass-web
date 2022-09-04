@@ -11,6 +11,11 @@ public class UserDto {
 	public String surname;
 	public String gender;
 	public Date birthday;	
+	public String userRole;
+	public boolean deleted;
+	public boolean banned;
+	public String sportFacilityId;
+	public String birthdate;
 	
 	public Gender gerGenderEnum() {
 		if (gender.equals("Male"))

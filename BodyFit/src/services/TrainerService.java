@@ -1,13 +1,9 @@
 package services;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -25,6 +21,7 @@ import beans.UserRole;
 import dao.TrainerDao;
 import dao.TrainingDao;
 import dto.TrainerDto;
+import dto.UserDto;
 
 @Path("trainers")
 public class TrainerService  {
@@ -99,6 +96,22 @@ public class TrainerService  {
 		trainerDao.create(newTrainer);
 		System.out.println(getContext());
 		
+	}
+	
+	@PUT
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Trainer updateTrainer(UserDto trainer) {
+		trainerDao.setBasePath(getContext());
+		Trainer t = trainerDao.getById(trainer.username);
+		t.setPassword(trainer.password);
+		t.setName(trainer.name);
+		t.setSurname(trainer.surname);
+		t.setGender(trainer.gerGenderEnum());
+		//Trainer trainerNew = new Trainer(trainer.username,trainer.password, trainer.name, trainer.surname, trainer.birthday, trainer.gerGenderEnum(),UserRole.TRAINER);
+		trainerDao.update(t);
+		return t;
 	}	
 
 }

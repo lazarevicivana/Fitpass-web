@@ -80,6 +80,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "register" */ '../views/ManagerTrainersView.vue')
   },
   {
+<<<<<<< HEAD
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/ProfileView.vue')
+=======
     path: '/manager-trainings/:id',
     name: 'manager-trainings/:id',
     component: () => import(/* webpackChunkName: "register" */ '../components/EditTraining.vue')
@@ -88,6 +93,7 @@ const routes = [
     path: '/add-facility',
     name: 'add-facility',
     component: () => import(/* webpackChunkName: "register" */ '../components/CreateSportFacility.vue')
+>>>>>>> Develop
   }
 ]
 
