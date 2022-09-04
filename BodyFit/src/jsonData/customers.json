@@ -46,5 +46,17 @@
     "userRole": "CUSTOMER",
     "deleted": false,
     "banned": false
+  },
+  "customer": {
+    "colletedPoints": 11.0,
+    "username": "c",
+    "password": "c",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Nov 11, 2019, 1:00:00 AM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false
   }
 }

@@ -14,15 +14,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-
-import org.apache.tomcat.jni.User;
-
 import beans.Manager;
-import beans.Training;
 import beans.UserRole;
 import dao.ManagerDao;
 import dto.ManagerDto;
-import dto.TrainingDto;
+import dto.UserDto;
 @Path("/managers")
 public class ManagerService {
 	ManagerDao managerDao = new ManagerDao();
@@ -70,6 +66,24 @@ public class ManagerService {
 		return managerNew;
 	}
 	
+
+	@PUT
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Manager updateManager(UserDto manager) {
+		managerDao.setBasePath(getContext());
+		Manager m = managerDao.getById(manager.username);
+		m.setPassword(manager.password);
+		m.setName(manager.name);
+		m.setSurname(manager.surname);
+		//m.setBirthday(manager.birthday);
+		m.setGender(manager.gerGenderEnum());
+		//Manager managerNew = new Manager(manager.username, manager.password, manager.name, manager.surname, manager.birthday, manager.gerGenderEnum(), UserRole.MANAGER, manager.sportFacilityId);
+		managerDao.update(m);
+		return m;
+	}
+
 	@GET
 	@Path("available-managers")
 	@Produces(MediaType.APPLICATION_JSON)

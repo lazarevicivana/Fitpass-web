@@ -1,13 +1,13 @@
 package services;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -51,6 +51,14 @@ public class CustomerService {
 		return customerNew;
 	}
 	
-	
-
+	@PUT
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Customer updateCustomer(UserDto customer){
+		customerDao.setBasePath(getContext());
+	Customer customerNew = new Customer(customer.username,customer.password,customer.name,customer.surname,customer.birthday,customer.gerGenderEnum(),null);
+		customerDao.update(customerNew);
+		return customerNew;
+	}
 }
