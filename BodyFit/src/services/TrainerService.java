@@ -57,8 +57,7 @@ public class TrainerService  {
 		trainerDao.setBasePath(getContext());
 		return trainerDao.getAllToList().stream()
 				.filter(trainer -> trainer.getUsername().equals(username))
-				.findFirst()
-				.get();
+				.findFirst().get();
 	}
 	
 	@GET

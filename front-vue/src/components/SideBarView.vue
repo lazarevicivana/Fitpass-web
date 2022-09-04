@@ -37,6 +37,7 @@ export default {
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-facility" icon="fas fa-home" >Facility</SideBarLink>
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainings" icon="fas fa-home" >Trainings</SideBarLink>
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainers" icon="fas fa-home" >Trainers</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'TRAINER'" to="/trainer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
     <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/memberships" icon="fas fa-home" >Memberships</SideBarLink>
     <SideBarLink to="/about" icon="fas fa-home" >About</SideBarLink>
 
