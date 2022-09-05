@@ -11,6 +11,7 @@ public class TrainingDto {
 	public String trainerId;
 	public String description;
 	public boolean deleted;
+	public boolean canceled;
 	public String price;
 	
 	public TrainingType getTrainingType() {

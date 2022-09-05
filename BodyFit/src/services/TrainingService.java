@@ -56,7 +56,7 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training createTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
+		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price), training.canceled);
 		trainingDao.create(trainingrNew);
 		return trainingrNew;
 	}
@@ -91,16 +91,15 @@ public class TrainingService {
          for (Training training : trainingDao.getAllToList()) {
         	 if(training.getTrainerId() != null) {
 		    	 if(training.getTrainerId().equals(id)) {
+		
 		    		 trainings.add(training);
 		    	 }
         	 }
 		}
          return trainings;
-		//return 
-//				(ArrayList<Training>) trainingDao.getAllToList().stream()
-//				.filter(training -> training.getTrainerId().equals(id))
-//				.collect(Collectors.toList());
 	}
+	
+	
 	
 	@PUT
 	@Path("/")	
@@ -108,7 +107,20 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training updateTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
+		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price), training.canceled);
+		trainingDao.update(trainingrNew);
+		return trainingrNew;
+	}
+	
+	@PUT
+	@Path("/cancel")	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Training cancelTraining(TrainingDto training) {
+		trainingDao.setBasePath(getContext());
+
+		Training trainingrNew = trainingDao.getById(training.id);
+		trainingrNew.setCanceled(true);
 		trainingDao.update(trainingrNew);
 		return trainingrNew;
 	}

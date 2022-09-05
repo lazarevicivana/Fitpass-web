@@ -2,55 +2,60 @@
     "id": "0",
     "name": "abs",
     "type": "GROUP",
-    "sportFacilityId": "1",
+    "sportFacilityId": "0",
     "duration": 30,
     "trainerId": "t",
     "description": "kjhgf",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "1": {
     "id": "1",
     "name": "gluteus",
     "type": "GROUP",
-    "sportFacilityId": "1",
+    "sportFacilityId": "0",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
+    "canceled": true,
      "price": 1000
   },
   "2": {
     "id": "2",
     "name": "mind",
     "type": "YOGA",
-    "sportFacilityId": "1",
+    "sportFacilityId": "0",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "3": {
     "id": "3",
     "name": "relax",
     "type": "YOGA",
-    "sportFacilityId": "1",
+    "sportFacilityId": "0",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "4": {
     "id": "4",
     "name": "spirit",
     "type": "YOGA",
-    "sportFacilityId": "1",
+    "sportFacilityId": "0",
     "duration": 60,
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "5": {
@@ -61,6 +66,7 @@
     "duration": 50,
     "description": "hgfdx",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "6": {
@@ -71,6 +77,7 @@
     "duration": 40,
     "description": "jhgfd",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "7": {
@@ -82,6 +89,7 @@
     "trainerId": "t2",
     "description": "mnbvcx",
     "deleted": false,
+    "canceled": false,
      "price": 1000
   },
   "8": {
@@ -92,7 +100,8 @@
     "duration": 45,
     "trainerId": "t2",
     "description": "gfcdx",
-    "deleted": false,
+    "deleted": true,
+    "canceled": false,
      "price": 1000
   },
   "9": {
@@ -104,6 +113,7 @@
     "trainerId": "t",
     "description": "bnvcx",
     "deleted": false,
+    "canceled": true,
     "price": 1000
   }
   }

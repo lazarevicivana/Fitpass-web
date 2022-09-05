@@ -27,9 +27,10 @@
       </div>
     </div>
     <div class="row row-style gy-4 row-cols-2 align-items-center" >
-      <div v-for="training in trainings">
-        <div class="col-lg-8 colorDiv">
+      <div v-for="training in trainings" >
+        <div class="col-lg-8 colorDiv" v-if="!training.canceled">
           <TrainingPreview :training="training"></TrainingPreview>
+          <button class="button-basic" @click="onCancel(training)">Cancel</button>
         </div>
       </div>
     </div>
@@ -48,6 +49,9 @@ export default {
   },
   data(){
       return{
+        trainingHistory:{
+
+        },
         trainer:{
           username: '',
           password : '',
@@ -86,6 +90,35 @@ export default {
               }
           )
     },
+    getTrainingHistory(trainingId){
+
+    },
+    onCancel(training){
+      if (training.type === 'PERSONAL'){
+        axios.get('http://localhost:8080/FitnessCenter/rest/training-history/get-by/'+ training.id)
+            .then(
+                result => {
+                  this.trainingHistory = result.data
+                  const now = new Date()
+                  now.setDate(now.getDate() + 2)
+                  if(this.trainingHistory.signDate > now){
+                    axios.put('http://localhost:8080/FitnessCenter/rest/trainings/cancel', training)
+                        .then(
+                            result => {
+                              training = result.data
+                              this.trainings.filter(t => t.canceled === false)
+
+                            }
+                        )
+                  }
+                }
+            )
+
+
+
+      }
+
+    },
     FilterTrainings(){
       this.filteredTrainings = this.trainings;
       if(this.filter !== 'All'){
@@ -107,7 +140,7 @@ export default {
   color: white;
 }
 .margin-style{
-  margin-left: 180px;
+  margin-left: 100px;
 }
 .padding-style{
   margin-bottom: 80px;
@@ -116,6 +149,15 @@ export default {
   padding-bottom: 100px;
   margin-bottom: 30px;
 }
+
+.button-basic{
+  background: #87182b;
+  color: white;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
 input,select {
   display: block;
   padding-right: 10px;
