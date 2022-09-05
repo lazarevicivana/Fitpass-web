@@ -20,7 +20,7 @@
   <SideBarView :user="user"
                 :loggedIn="loggedIn"/>
   <div class="container margin"  >
-    <router-view @loggedUser="loggedInUser" :user="user"/>
+    <router-view @loggedUser="loggedInUser"  :user="user"/>
   </div>
 </template>
 <style>
@@ -80,7 +80,8 @@ export default {
         deleted : false,
         banned : false
       },
-      loggedIn : false
+      loggedIn : false,
+      membership:{}
     }
   },
   created()
@@ -93,11 +94,60 @@ export default {
        this.GetCurrentUser();
      }
     },
+    countCollectedPoints(){
+      this.user.colletedPoints = (this.membership.price / 1000) * (this.membership.usedTrainings)
+      if(this.membership.usedTrainings < (this.membership.numberOfTrainings / 3)){
+        const lostPoints = (this.membership.price / 1000) * 133 * 4
+        this.user.colletedPoints = this.user.colletedPoints - lostPoints
+      }
+      this.updateCollectedPoints()
+    },
+    updateCollectedPoints(){
+      axios.put('http://localhost:8080/FitnessCenter/rest/customers/collected-points/', this.user)
+          .then(
+            response => {
+              this.user = response.data
+
+            }
+        )
+
+    },
+    deactivateMembership(){
+      axios.put('http://localhost:8080/FitnessCenter/rest/memberships/', this.membership)
+          .then(
+              response => {
+                this.membership = response.data
+              }
+          )
+    },
+    getCurrentMembershipForCustomer(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/memberships/'+ this.user.username)
+          .then(
+              response => {
+                this.membership = response.data
+                console.log(this.membership.active)
+                if(this.membership.id != null){
+                  const now = new Date()
+                  console.log(this.membership.endDate)
+                  if(this.membership.endDate < now){
+                    console.log('bbbb')
+                    this.membership.isActive = false
+                    this.membership.active = false
+                    this.deactivateMembership()
+                    this.countCollectedPoints()
+                }
+                }
+              }
+          )
+    },
     GetCurrentUser(){
       axios.get('http://localhost:8080/FitnessCenter/rest/login/loggedUser')
           .then(response =>{
             this.user =response.data;
-            console.log(this.user.userRole);
+            if(this.user.userRole === 'CUSTOMER'){
+              console.log('aaaa')
+             this.getCurrentMembershipForCustomer()
+            }
           })
     },
     logOut()

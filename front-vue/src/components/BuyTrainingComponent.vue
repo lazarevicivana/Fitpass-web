@@ -15,7 +15,9 @@ import axios from "axios";
 
 export default {
   name: "BuyTrainingComponent",
-  props:{user:Object},
+  props:{
+        user:Object,
+  },
   data(){
     return{
       trainingHistory: {
@@ -25,10 +27,12 @@ export default {
         timeOfSign : '',
         signDate : Date
       },
-      training: {}
+      training: {},
+      membership: {}
     }
   },
   created() {
+    this.getActiveMembership()
     axios.get('http://localhost:8080/FitnessCenter/rest/trainings/get-by/' + this.$route.params.id)
         .then(
             result => {
@@ -39,16 +43,37 @@ export default {
   },
   methods:{
     onBuy(){
-      this.trainingHistory.customerId = this.user.username
-      this.trainingHistory.trainingId = this.$route.params.id
-      this.trainingHistory.trainerId = this.training.trainerId
-      console.log(this.trainingHistory.signDate)
-      console.log(this.trainingHistory)
-      axios.post('http://localhost:8080/FitnessCenter/rest/training-history', this.trainingHistory)
+      if((this.membership.id != null) && (this.membership.numberOfTrainings - this.membership.usedTrainings) > 0){
+        this.trainingHistory.customerId = this.user.username
+        this.trainingHistory.trainingId = this.$route.params.id
+        this.trainingHistory.trainerId = this.training.trainerId
+        ++this.membership.usedTrainings
+        console.log(this.membership.usedTrainings)
+        axios.post('http://localhost:8080/FitnessCenter/rest/training-history', this.trainingHistory)
+            .then(
+                result => {
+                  console.log(result.data)
+                  this.increseUsedTrainings()
+                }
+            )
+      }
+    },
+    increseUsedTrainings(){
+      axios.put('http://localhost:8080/FitnessCenter/rest/memberships/used-trainings', this.membership)
           .then(
               result => {
-                console.log(result.data)
-      }
+                this.membership = result.data
+                console.log(this.membership)
+              }
+          )
+    },
+    getActiveMembership(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/memberships/' + this.user.username)
+          .then(
+              result => {
+                this.membership = result.data
+                console.log(this.membership)
+              }
           )
     }
   }

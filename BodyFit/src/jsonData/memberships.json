@@ -1,2 +1,62 @@
 {
+ "0": {
+    "id": "0",
+    "type": "MONTH",
+    "dateOfPayment": "Sep 5, 2022, 3:34:40 PM",
+    "startDate": "Sep 5, 2022, 3:34:40 PM",
+    "endDate": "Oct 5, 2022, 3:34:40 PM",
+    "price": 1700,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfTrainings": 0,
+    "usedTrainings": 0
+  },
+  "1": {
+    "id": "1",
+    "type": "MONTH",
+    "dateOfPayment": "Sep 5, 2022, 3:36:09 PM",
+    "startDate": "Sep 5, 2022, 3:36:09 PM",
+    "endDate": "Oct 5, 2022, 3:36:09 PM",
+    "price": 3400,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfTrainings": 0,
+    "usedTrainings": 0
+  },
+  "2": {
+    "id": "2",
+    "type": "MONTH",
+    "dateOfPayment": "Sep 5, 2022, 3:37:11 PM",
+    "startDate": "Sep 5, 2022, 3:37:11 PM",
+    "endDate": "Oct 5, 2022, 3:37:11 PM",
+    "price": 1700,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfTrainings": 0,
+    "usedTrainings": 0
+  },
+  "3": {
+    "id": "3",
+    "type": "MONTH",
+    "dateOfPayment": "Sep 4, 2022, 3:38:13 PM",
+    "startDate": "Sep 4, 2022, 3:38:13 PM",
+    "endDate": "Sep 4, 2022, 3:38:13 PM",
+    "price": 1700,
+    "customerId": "mikiia",
+    "isActive": false,
+    "numberOfTrainings": 12,
+    "usedTrainings": 0
+  },
+  "4": {
+    "id": "4",
+    "type": "MONTH",
+    "dateOfPayment": "Sep 4, 2022, 5:24:54 PM",
+    "startDate": "Sep 4, 2022, 5:24:54 PM",
+    "endDate": "Sep 4, 2022, 5:24:54 PM",
+    "price": 1700,
+    "customerId": "mikiia",
+    "isActive": true,
+    "numberOfTrainings": 12,
+    "usedTrainings": 11
+  }
 }

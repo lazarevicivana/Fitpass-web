@@ -12,9 +12,10 @@ public class Membership {
 	private String customerId;
 	private boolean isActive;
 	private int numberOfTrainings;
+	private int usedTrainings;
 	
 	public Membership(String id, MembershipType type, Date dateOfPayment, Date startDate, Date endDate, int price,
-			String customerId, boolean isActive, int numberOfTrainings) {
+			String customerId, boolean isActive, int numberOfTrainings, int usedTraining) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -25,7 +26,21 @@ public class Membership {
 		this.customerId = customerId;
 		this.isActive = isActive;
 		this.numberOfTrainings = numberOfTrainings;
+		this.usedTrainings = usedTrainings;
 	}
+	
+	public Membership() {
+		super();
+	}
+
+	public int getUsedTrainings() {
+		return usedTrainings;
+	}
+
+	public void setUsedTrainings(int usedTrainings) {
+		this.usedTrainings = usedTrainings;
+	}
+
 	public String getId() {
 		return id;
 	}
