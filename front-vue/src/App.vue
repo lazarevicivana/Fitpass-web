@@ -107,10 +107,44 @@ export default {
           .then(
             response => {
               this.user = response.data
-
+              console.log(this.user)
+                this.checkCollectedPoints()
+                this.updateCustomerType(customerType)
             }
         )
 
+    },
+    checkCollectedPoints(){
+      if(this.user.colletedPoints >= 3000 && this.user.customerType.name === 'BRONZE'){
+        const customerType={
+          id : this.user.username,
+          name: 'SILVER',
+          discount: 0.7,
+          minPoints : 3000
+        }
+        console.log(customerType)
+        this.updateCustomerType(customerType)
+      }
+       else if(this.user.colletedPoints >= 5000 && this.user.customerType.name === 'SILVER'){
+          const customerType={
+            id : this.user.username,
+            name: 'GOLD',
+            discount: 0.5,
+            minPoints : 5000
+          }
+        console.log(customerType)
+        this.updateCustomerType(customerType)
+      }
+    },
+    updateCustomerType(customerType){
+
+      axios.put('http://localhost:8080/FitnessCenter/rest/customers/customer-type', customerType)
+          .then(
+              response => {
+                this.user = response.data
+                console.log(this.user)
+              }
+          )
     },
     deactivateMembership(){
       axios.put('http://localhost:8080/FitnessCenter/rest/memberships/', this.membership)
@@ -147,6 +181,7 @@ export default {
             if(this.user.userRole === 'CUSTOMER'){
               console.log('aaaa')
              this.getCurrentMembershipForCustomer()
+              this.checkCollectedPoints()
             }
           })
     },
