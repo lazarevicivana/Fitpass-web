@@ -9,11 +9,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
+import beans.Manager;
 import dao.CustomerDao;
 import dto.CustomerDto;
 import dto.UserDto;
@@ -41,6 +43,18 @@ public class CustomerService {
 		customerDao.setBasePath(getContext());
 		return customerDao.getAllToList();
 	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Customer getCustomerByUsername(@PathParam(value = "id") String username) {
+		customerDao.setBasePath(getContext());
+		
+		return customerDao.getAllToList().stream()
+				.filter(customer -> customer.getUsername().equals(username))
+				.findFirst().get();
+	}
+	
 	@POST
 	@Path("/Create")	
 	@Produces(MediaType.APPLICATION_JSON)

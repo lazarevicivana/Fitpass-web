@@ -18,14 +18,17 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Manager;
 import beans.Training;
+import beans.TrainingHistory;
 import beans.UserRole;
 import dao.TrainingDao;
+import dao.TrainingHistoryDao;
 import dto.ManagerDto;
 import dto.TrainingDto;
 
 @Path("/trainings")
 public class TrainingService {
 	TrainingDao trainingDao = new TrainingDao();
+	TrainingHistoryDao trainingHistoryDao = new TrainingHistoryDao();
 	
 	@Context
 	ServletContext ctx;
@@ -81,6 +84,8 @@ public class TrainingService {
 				.filter(training -> training.getSportFacilityId().equals(id))
 				.collect(Collectors.toList());
 	}
+	
+	
 	
 	@GET
 	@Path("/trainer/{id}")

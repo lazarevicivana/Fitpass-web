@@ -126,8 +126,12 @@ const routes = [
     path: '/:id/buy-membership',
     name: '/:id/buy-membership',
     component: () => import(/* webpackChunkName: "register" */ '../components/BuyMembership.vue')
+  },
+  {
+    path: '/customer-trainings',
+    name: 'customer-trainings',
+    component: () => import('../views/AllTrainingsCustomerView.vue')
   }
-
 ]
 
 const router = createRouter({
