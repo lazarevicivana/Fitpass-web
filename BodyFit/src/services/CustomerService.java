@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import beans.Customer;
 import dao.CustomerDao;
+import dto.CustomerDto;
 import dto.UserDto;
 @Path("/customers")
 public class CustomerService {
@@ -58,6 +59,20 @@ public class CustomerService {
 	public Customer updateCustomer(UserDto customer){
 		customerDao.setBasePath(getContext());
 	Customer customerNew = new Customer(customer.username,customer.password,customer.name,customer.surname,customer.birthday,customer.gerGenderEnum(),null);
+		customerDao.update(customerNew);
+		return customerNew;
+	}
+	@PUT
+	@Path("/collected-points")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Customer updateCollectedPoints(CustomerDto customer){
+		customerDao.setBasePath(getContext());
+		Customer customerNew = customerDao.getById(customer.username);
+		double point = customerNew.getColletedPoints() + customer.colletedPoints;
+		System.out.println(customerNew.getColletedPoints());
+		customerNew.setColletedPoints(point);
+		System.out.println(customerNew.getColletedPoints());
 		customerDao.update(customerNew);
 		return customerNew;
 	}

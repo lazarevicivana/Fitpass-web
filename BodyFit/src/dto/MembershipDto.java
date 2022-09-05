@@ -5,13 +5,18 @@ import java.util.Date;
 import beans.MembershipType;
 
 public class MembershipDto {
+	public String id;
 	public String type;
 	public Date dateOfPayment;
 	public Date startDate;
+	public Date endDate;
 	public int price;
 	public String customerId;
 	public boolean isActive;
-	public int numberOfTrainings;
+	public int numberOfTrainings;	
+	public int usedTrainings;
+	public boolean active;
+
 	
 	public MembershipType getType() {
 		if(type.equals("YEAR"))

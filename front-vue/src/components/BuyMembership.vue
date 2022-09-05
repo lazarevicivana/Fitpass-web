@@ -25,12 +25,15 @@ export default {
         type: '',
         dateOfPayment: '',
         startDate: Date,
+        endDate: Date,
         price: 0,
         customerId: '',
         isActive: true,
-        numberOfTrainings: 0
+        numberOfTrainings: 0,
+        usedTrainings : 0
       },
       membershipPackage :{
+        numberOfTrainings: 0
       },
       promoCode : {
         code :'',
@@ -41,6 +44,7 @@ export default {
     }
   },
   created() {
+
     axios.get('http://localhost:8080/FitnessCenter/rest/membership-package/'+ this.$route.params.id)
         .then(
             result => {
@@ -108,10 +112,25 @@ export default {
     },
     setMembership(){
       this.checkExpireCodeDate()
+      const endDate = new Date()
       this.membership.type = this.membershipPackage.type
       this.membership.customerId = this.user.username
-      this.membership.numberOfTrainings = this.membershipPackage.numberOfUsage
+      this.membership.numberOfTrainings = this.membershipPackage.numberOfTrainings
+      console.log(this.membershipPackage.numberOfTrainings)
       this.membership.startDate =  new Date()
+      this.membership.endDate = endDate
+      if(this.membership.type === 'MONTH'){
+        this.membership.endDate.setMonth(this.membership.endDate.getMonth() + 1)
+      }else if(this.membership.type === 'THREE_MONTHS'){
+        this.membership.endDate.setMonth(this.membership.endDate.getMonth() + 3)
+      }
+      else if(this.membership.type === 'SIX_MONTHS'){
+        this.membership.endDate.setMonth(this.membership.endDate.getMonth() + 3)
+      }
+      else {
+        this.membership.endDate.setFullYear(this.membership.endDate.setFullYear() + 1)
+
+      }
     },
     discountCounter(){
       const discount = 1 - this.promoCode.percentage/100
