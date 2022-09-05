@@ -3,15 +3,18 @@
     <h1 class="padding-style">Trainings</h1>
     <div class="row padding-style">
       <div class="col">
-        <input type="range" min="10" >
+        <input type="number" v-model="minPrice" placeholder="min price"  >
       </div>
       <div class="col">
-        <select >
-          <option>All</option>
-          <option>Customer</option>
-          <option>Trainer</option>
-          <option>Manager</option>
-          <option>Admin</option>
+        <input type="number"  v-model="maxPrice" placeholder="max price"  >
+      </div>
+      <div class="col">
+        <select v-model="sort" @change="FilterTrainings">
+          <option>Sort</option>
+          <option>Price asc</option>
+          <option>Price desc</option>
+          <option>Date asc</option>
+          <option>Date desc</option>
         </select>
       </div>
       <div class="col">
@@ -66,7 +69,10 @@ export default {
       },
       trainings :[],
       filter: 'All',
-      filteredTrainings :[]
+      filteredTrainings :[],
+      sort: 'Sort',
+      minPrice: 0,
+      maxPrice: 0
     }
   },
   created() {
@@ -75,7 +81,6 @@ export default {
   },
   methods:{
     getData(){
-
       axios.get('http://localhost:8080/FitnessCenter/rest/managers/'+this.user.username)
           .then(
               result => {
@@ -83,8 +88,6 @@ export default {
                 if(this.manager.sportFacilityId != ''){
                   this.getFacilityTrainings(this.manager.sportFacilityId)
                 }
-
-
               })
     },
     getFacilityTrainings(sportFacilityId){
@@ -95,15 +98,37 @@ export default {
               }
           )
     },
+    searchTrainings(){
+      console.log(this.maxPrice)
+      console.log(this.minPrice)
+      if(this.maxPrice !== 0  && this.maxPrice.toString() !== ''){
+        return this.trainings.filter(training => training.price <= this.maxPrice && training.price >= this.minPrice)
+      }
+      return this.trainings.filter(training => training.price >= this.minPrice)
+    },
     onEdit(training){
       this.$router.push(`/manager-trainings/${training.id}`);
     },
     FilterTrainings(){
-      this.filteredTrainings = this.trainings;
+      this.filteredTrainings = this.searchTrainings();
       if(this.filter !== 'All'){
         this.filteredTrainings = [...this.filteredTrainings.filter(training =>  training.type.toLowerCase().includes(this.filter.toLowerCase()))]
       }
+      this.sortTrainings()
       return this.filteredTrainings
+    },
+    sortTrainings(){
+      if(this.sort === 'Price asc'){
+        this.filteredTrainings.sort((a,b) => (a.price < b.price) ? -1 : 1)
+      }else  if(this.sort === 'Price desc'){
+        this.filteredTrainings.sort((a,b) => (a.price < b.price) ? 1 : -1)
+      }
+      else  if(this.sort === 'Date asc'){
+        this.filteredTrainings.sort((a,b) => (a.sr < b.price) ? -1 : 1)
+      }
+      else  if(this.sort === 'Price desc'){
+        this.filteredTrainings.sort((a,b) => (a.price < b.price) ? 1 : -1)
+      }
     }
   }
 }
