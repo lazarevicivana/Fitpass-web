@@ -1,0 +1,17 @@
+{
+  "BRONZE": {
+    "name": "BRONZE",
+    "discount": 0.0,
+    "minPoints": 0
+  },
+  "SILVER": {
+    "name": "SILVER",
+    "discount": 0.7,
+    "minPoints": 3000
+  },
+  "GOLD": {
+    "name": "GOLD",
+    "discount": 0.5,
+    "minPoints": 0
+  }
+}

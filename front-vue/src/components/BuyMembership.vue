@@ -111,7 +111,15 @@ export default {
       }
     },
     setMembership(){
+      if(this.user.customerType.name !== 'BRONZE')
+      {
+        console.log(this.user)
+        this.membershipPackage.price = this.membershipPackage.price * this.user.customerType.discountFloat
+        console.log('aaaa')
+        console.log(this.membershipPackage.price)
+      }
       this.checkExpireCodeDate()
+      console.log(this.membership.price)
       const endDate = new Date()
       this.membership.type = this.membershipPackage.type
       this.membership.customerId = this.user.username
