@@ -32,6 +32,13 @@
           <TrainingPreview :training="training"></TrainingPreview>
           <button class="button-basic" @click="onCancel(training)">Cancel</button>
         </div>
+        <div class="canceled">
+          <div class="col-lg-8 color2Div" v-if="training.canceled">
+            <TrainingPreview :training="training"></TrainingPreview>
+            <label class="label-style">Canceled</label>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -139,6 +146,22 @@ export default {
   padding: 20px;
   color: white;
 }
+
+.canceled{
+  background: #5c494d;
+  border-radius: 25px;
+  opacity: 60%;
+}
+
+.color2Div{
+  border-radius: 25px;
+  border: 2px solid;
+  width: 100%;
+  padding: 20px;
+  color: white;
+}
+
+
 .margin-style{
   margin-left: 100px;
 }
@@ -154,8 +177,17 @@ export default {
   background: #87182b;
   color: white;
   border-radius: 10px;
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
+}
+
+.label-style{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: #87182b;
+  width: 50%;
+  height: 50%;
 }
 
 input,select {
