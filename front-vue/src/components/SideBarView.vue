@@ -23,8 +23,7 @@ export default {
       <span v-else>Olympus Corp</span>
     </h1>
 
-    <SideBarLink to="/" icon="fas fa-home" >Home</SideBarLink>
-    <SideBarLink to="/facilities" icon="fas fa-home" >Facilities</SideBarLink>
+    <SideBarLink to="/" icon="fas fa-home" >Facilities</SideBarLink>
     <SideBarLink v-if="loggedIn" to="/profile" icon="fas fa-home">User profile</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/add-facility" icon="fas fa-home" >Create facility</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" >Add manager</SideBarLink>

@@ -5,12 +5,12 @@
       <div class="col-sm">
     <table class="td-style">
       <tr><td style="font-size: 30px">{{sportFacility.name}}</td></tr>
-      <tr><td> Location : {{sportFacility.street }}</td></tr>
+      <tr><td> Location : {{sportFacility.street }} {{sportFacility.number}}, {{sportFacility.city}}</td></tr>
       <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
       <tr><td>Type: {{sportFacility.type}}</td></tr>
       <tr><td> Average grade: {{sportFacility.averageGrade}}</td></tr>
-      <tr><td>Open time: {{dateTime(sportFacility.openTime)}}</td></tr>
-      <tr><td> Close time: {{dateTime(sportFacility.closeTime)}}</td></tr>
+      <tr><td>Open time: {{sportFacility.openTime}}</td></tr>
+      <tr><td> Close time: {{sportFacility.closeTime}}</td></tr>
     </table>
       </div>
       <div class="col">
@@ -29,17 +29,13 @@ export default {
   },
   methods:{
     convertStatus(sportFacility) {
-      if (sportFacility.worikng === true)
+      if (sportFacility.isWorking === true)
         return "Open";
       else
         return "Closed";
     },
-    dateTime(value) {
-      return moment(value).format('hh:mm');
-    },
     getImgUrl(facility){
-      console.log(facility)
-      if(facility === ''){
+      if(facility === '' || facility === null || facility === undefined){
         return
       }
       let images = require.context('../assets/', false, /\.png$/);

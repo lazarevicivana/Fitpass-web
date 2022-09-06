@@ -1,5 +1,8 @@
 package dto;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import beans.Adress;
 import beans.FacilityType;
 import beans.SportFacility;
@@ -36,8 +39,8 @@ public class FacilityDto {
 		this.longitude = sportFacility.getLocation().getLongitude();
 		this.latitude = sportFacility.getLocation().getLatitude();
 		this.averageGrade = String.valueOf(sportFacility.getAverageGrade());
-		this.openTime = sportFacility.getOpenTime().toString();
-		this.closeTime = sportFacility.getCloseTime().toString();
+		this.openTime = FormatDate(sportFacility.getOpenTime());
+		this.closeTime = FormatDate(sportFacility.getOpenTime());
 	}
 	
 	public FacilityType getFacilityType() {
@@ -68,5 +71,10 @@ public class FacilityDto {
 	public Adress getAdress() {
 		Adress adress = new Adress(street, number, city, postalCode, longitude, latitude);
 		return adress;
+	}
+	private String FormatDate(LocalTime time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH.mm");
+		String timeString = time.format(formatter);
+		return timeString;
 	}
 }
