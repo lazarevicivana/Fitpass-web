@@ -25,11 +25,8 @@ export default {
 
     <SideBarLink to="/" icon="fas fa-home" >Home</SideBarLink>
     <SideBarLink to="/facilities" icon="fas fa-home" >Facilities</SideBarLink>
-
     <SideBarLink v-if="loggedIn" to="/profile" icon="fas fa-home">User profile</SideBarLink>
-
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/add-facility" icon="fas fa-home" >Create facility</SideBarLink>
-
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" >Add manager</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-trainer" icon="fas fa-home" >Add trainer</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/promo-codes" icon="fas fa-home" >Promo code</SideBarLink>

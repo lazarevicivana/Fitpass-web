@@ -5,16 +5,16 @@ public class Comment {
 	private String customerId; 
 	private String sportFacilityId; 
 	private String text;
-	private int rating;
+	private int grade;
 	private CommentState state = CommentState.WAITING;
 	
-	public Comment(String id, String customerId, String sportFacilityId, String text, int rating, CommentState state) {
+	public Comment(String id, String customerId, String sportFacilityId, String text, int grade, CommentState state) {
 		super();
 		this.id = id;
 		this.customerId = customerId;
 		this.sportFacilityId = sportFacilityId;
 		this.text = text;
-		this.rating = rating;
+		this.grade = grade;
 		this.state = state;
 	}
 	public String getId() {
@@ -41,11 +41,11 @@ public class Comment {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public int getRating() {
-		return rating;
+	public int getGrade() {
+		return grade;
 	}
-	public void setRating(int rating) {
-		this.rating = rating;
+	public void setGrade(int rating) {
+		this.grade = rating;
 	}
 	public CommentState getState() {
 		return state;

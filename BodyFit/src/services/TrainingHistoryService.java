@@ -3,6 +3,7 @@ package services;
 import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
@@ -15,7 +16,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Training;
 import beans.TrainingHistory;
 import dao.TrainingHistoryDao;
 import dto.TrainingHistoryDto;
@@ -55,6 +55,22 @@ public class TrainingHistoryService {
 				.filter(training -> training.getTrainingId().equals(id)).findFirst().get();
 	}
 	
+	@GET
+	@Path("/get-by-customer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean getByCustomer(@PathParam( "id") String id) {
+		trainingHistoryDao.setBasePath(getContext());
+		for (TrainingHistory t : trainingHistoryDao.getAllToList()) {
+			if(t.getCustomerId().equals(id)) {
+				Date now = new Date();
+				if(t.getSignDate().before(now)) {
+					System.out.println("aaaa");
+					return true;
+				}
+			}
+		}
+		return  false;
+}
 	@GET
 	@Path("/customer/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
