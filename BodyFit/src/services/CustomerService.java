@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Customer
+import beans.Customer;
 import beans.Manager;
 import beans.CustomerType;
 import dao.CustomerDao;
