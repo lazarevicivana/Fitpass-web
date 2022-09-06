@@ -3,6 +3,8 @@ package services;
 import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -51,6 +53,23 @@ public class TrainingHistoryService {
 		
 		return  trainingHistoryDao.getAllToList().stream()
 				.filter(training -> training.getTrainingId().equals(id)).findFirst().get();
+	}
+	
+	@GET
+	@Path("/get-by-customer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean getByCustomer(@PathParam( "id") String id) {
+		trainingHistoryDao.setBasePath(getContext());
+		for (TrainingHistory t : trainingHistoryDao.getAllToList()) {
+			if(t.getCustomerId().equals(id)) {
+				Date now = new Date();
+				if(t.getSignDate().before(now)) {
+					System.out.println("aaaa");
+					return true;
+				}
+			}
+		}
+		return  false;
 	}
 	
 	@POST

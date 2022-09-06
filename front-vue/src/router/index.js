@@ -126,6 +126,11 @@ const routes = [
     path: '/:id/buy-membership',
     name: '/:id/buy-membership',
     component: () => import(/* webpackChunkName: "register" */ '../components/BuyMembership.vue')
+  },
+  {
+    path: '/:id/comment',
+    name: '/:id/comment',
+    component: () => import(/* webpackChunkName: "register" */ '../components/LeaveAComment.vue')
   }
 
 ]

@@ -23,6 +23,8 @@
         <option>Surname desc</option>
         <option>Username asc</option>
         <option>Username desc</option>
+        <option>Points asc</option>
+        <option>Points desc</option>
       </select>
     </div>
     </div>
@@ -48,6 +50,7 @@ export default {
       search: '',
       filter: 'All',
       filteredUsers: [],
+      customers: [],
       sort: 'Sort'
     }
   },
@@ -120,17 +123,22 @@ export default {
         this.filteredUsers.sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1)
       }
       else if(this.sort === 'Surname desc'){
-        this.filteredUsers.sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1)
+        this.filteredUsers.sort((a,b) => (a.surname.toLowerCase() < b.surname.toLowerCase()) ? 1 : -1)
       }
       else if(this.sort === 'Surname asc'){
-        this.filteredUsers.sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1)
+        this.filteredUsers.sort((a,b) => (a.surname.toLowerCase() < b.surname.toLowerCase()) ? -1 : 1)
       }
       else if(this.sort === 'Username asc'){
-        this.filteredUsers.sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? -1 : 1)
+        this.filteredUsers.sort((a,b) => (a.username.toLowerCase() < b.username.toLowerCase()) ? -1 : 1)
 
       } else if(this.sort === 'Username desc'){
-        this.filteredUsers.sort((a,b) => (a.name.toLowerCase() < b.name.toLowerCase()) ? 1 : -1)
+        this.filteredUsers.sort((a,b) => (a.username.toLowerCase() < b.username.toLowerCase()) ? 1 : -1)
+      }
+      else if(this.sort === 'Points asc'){
+        this.filteredUsers.sort((a,b) => (a.colletedPoints < b.colletedPoints) ? -1 : 1)
 
+      } else if(this.sort === 'Points desc'){
+        this.filteredUsers.sort((a,b) => (a.colletedPoints < b.colletedPoints) ? 1 : -1)
       }
     }
 

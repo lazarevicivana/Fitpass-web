@@ -7,6 +7,7 @@
   <div class="row  ">
     <div class="col-lg-6">
       <div class="container-fluid div-style  ">
+        <div class="row">
         <table>
           <tr><td> Location : {{sportFacility.street}} {{sportFacility.number}}, {{sportFacility.city}}</td></tr>
           <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
@@ -15,6 +16,17 @@
           <tr><td>Open time: {{dateTime(sportFacility.openTime)}}</td></tr>
           <tr><td> Close time: {{dateTime(sportFacility.closeTime)}}</td></tr>
         </table>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="buttons" v-if="leaveComment" @click="onLeave(sportFacility.sportFacilityId)">Leave a comment</button>
+          </div>
+          <div class="col">
+            <button class="buttons" v-if="!viewComments" @click="onView(sportFacility.sportFacilityId)">View comments</button>
+            <button class="buttons" v-if="viewComments" @click="onHide(sportFacility.sportFacilityId)">Hide comments</button>
+
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-lg-6">
@@ -23,12 +35,16 @@
       </div>
 
     </div>
+    <div class="row">
+      <ViewComments v-if="viewComments" :user="user" :facilityId="sportFacility.sportFacilityId"></ViewComments>
+    </div>
     <div class="row subtitle">
       <h2>Trainings</h2>
     </div>
     <div class="row row-style gy-4 row-cols-2 align-items-center">
       <div v-for="training in this.trainings" class="colorDiv">
         <div class="col ">
+
           <div class="row">
             <TrainingPreview :training="training"></TrainingPreview>
           </div>
@@ -50,6 +66,8 @@ import SportFacility from "@/components/SportFacility";
 import TrainingPreview from "@/components/TrainingPreview";
 import axios from "axios";
 import moment from "moment";
+import sportFacility from "@/components/SportFacility";
+import ViewComments from "@/components/ViewComments";
 export default {
   name: "FacilitiesDetail",
    props:{ user: Object},
@@ -68,17 +86,27 @@ export default {
        openTime:'',
        averageGrade:'',
        facilityContent:[],
-    },trainings:[]
+    },trainings:[],
+      viewComments: false,
+      leaveComment: false
     }
   },
-  components: {SportFacility, SportFacilitieDetailPage,TrainingPreview},
+  components: {ViewComments, SportFacility, SportFacilitieDetailPage,TrainingPreview},
   created() {
     console.log(this.sportFacility.name);
     this.sportFacility = JSON.parse(this.$route.params.data);
     this.getFacilityTrainings(this.sportFacility.sportFacilityId)
+    if(this.user.userRole === 'CUSTOMER'){
+      axios.get('http://localhost:8080/FitnessCenter/rest/training-history/get-by-customer/'+ this.user.username)
+          .then(
+              result => {
+                this.leaveComment = result.data
+                console.log(this.leaveComment)
+              }
+          )
+    }
 },methods: {
     convertStatus(sportFacility) {
-      // console.log(typeof(sportFacility.isWorking))
       if (sportFacility.worikng === true)
         return "Open";
       else
@@ -108,7 +136,15 @@ export default {
     },
     onBuy(id){
       this.$router.push(`/${id}/buy-training`);
-    //  this.$router.push(`${id}/buy-training')
+    },
+    onLeave(id){
+      this.$router.push(`/${id}/comment`);
+    },
+    onView(id){
+      this.viewComments = true
+    },
+    onHide(id){
+      this.viewComments = false
     }
   }
 }
@@ -169,6 +205,22 @@ h1{
   box-sizing: border-box;
   border: none;
   width: 60%;
+  border-radius: 15px;
+  position: relative;
+  -ms-transform: translateX(-50%);
+  transform: translateX(25%);
+}
+.buttons{
+  color: white;
+  background: #2c3e50;
+  margin-top: 20px;
+  margin-right: 70px;
+  display: block;
+  font-size: 24px;
+  vertical-align: center;
+  box-sizing: border-box;
+  border: none;
+  width: 90%;
   border-radius: 15px;
   position: relative;
   -ms-transform: translateX(-50%);
