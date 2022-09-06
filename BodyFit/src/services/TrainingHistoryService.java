@@ -4,6 +4,7 @@ import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
@@ -15,7 +16,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Training;
 import beans.TrainingHistory;
 import dao.TrainingHistoryDao;
 import dto.TrainingHistoryDto;
@@ -70,6 +70,15 @@ public class TrainingHistoryService {
 			}
 		}
 		return  false;
+}
+	@GET
+	@Path("/customer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<TrainingHistory> getCustomerTraining(@PathParam(value = "id") String id) {
+		trainingHistoryDao.setBasePath(getContext());
+		return (ArrayList<TrainingHistory>) trainingHistoryDao.getAllToList().stream()
+				.filter(training -> training.getCustomerId().equals(id))
+				.collect(Collectors.toList());
 	}
 	
 	@POST

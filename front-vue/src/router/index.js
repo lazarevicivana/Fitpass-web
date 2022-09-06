@@ -131,8 +131,12 @@ const routes = [
     path: '/:id/comment',
     name: '/:id/comment',
     component: () => import(/* webpackChunkName: "register" */ '../components/LeaveAComment.vue')
+  },
+  {
+    path: '/customer-trainings',
+    name: 'customer-trainings',
+    component: () => import('../views/AllTrainingsCustomerView.vue')
   }
-
 ]
 
 const router = createRouter({

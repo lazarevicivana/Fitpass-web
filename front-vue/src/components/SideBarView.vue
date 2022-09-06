@@ -25,11 +25,8 @@ export default {
 
     <SideBarLink to="/" icon="fas fa-home" >Home</SideBarLink>
     <SideBarLink to="/facilities" icon="fas fa-home" >Facilities</SideBarLink>
-
     <SideBarLink v-if="loggedIn" to="/profile" icon="fas fa-home">User profile</SideBarLink>
-
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/add-facility" icon="fas fa-home" >Create facility</SideBarLink>
-
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" >Add manager</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-trainer" icon="fas fa-home" >Add trainer</SideBarLink>
     <SideBarLink v-if="user.userRole === 'ADMIN'" to="/promo-codes" icon="fas fa-home" >Promo code</SideBarLink>
@@ -39,6 +36,7 @@ export default {
     <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainers" icon="fas fa-home" >Trainers</SideBarLink>
     <SideBarLink v-if="user.userRole === 'TRAINER'" to="/trainer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
     <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/memberships" icon="fas fa-home" >Memberships</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/customer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
     <SideBarLink to="/about" icon="fas fa-home" >About</SideBarLink>
 
 <!--    <SidebarLink to="/friends" icon="fas fa-users">Friends</SidebarLink>-->
