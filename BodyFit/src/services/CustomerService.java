@@ -14,10 +14,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import beans.Customer;
+import beans.Customer
 import beans.Manager;
+import beans.CustomerType;
 import dao.CustomerDao;
 import dto.CustomerDto;
+import dto.CustomerTypeDto;
 import dto.UserDto;
 @Path("/customers")
 public class CustomerService {
@@ -76,6 +78,20 @@ public class CustomerService {
 		customerDao.update(customerNew);
 		return customerNew;
 	}
+	
+	@PUT
+	@Path("/customer-type")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Customer updateCustomerType(CustomerTypeDto customer){
+		customerDao.setBasePath(getContext());
+		Customer customerNew =customerDao.getById(customer.id);
+		CustomerType customerType = new CustomerType(customer.name,customer.discount,customer.minPoints);
+		customerNew.setCustomerType(customerType);
+		customerDao.update(customerNew);
+		return customerNew;
+	}
+	
 	@PUT
 	@Path("/collected-points")
 	@Produces(MediaType.APPLICATION_JSON)
