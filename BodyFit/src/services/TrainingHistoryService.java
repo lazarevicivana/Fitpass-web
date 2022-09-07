@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -81,13 +82,23 @@ public class TrainingHistoryService {
 				.collect(Collectors.toList());
 	}
 	
+	@GET
+	@Path("/trainer/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<TrainingHistory> getTrainerTraining(@PathParam(value = "id") String id) {
+		trainingHistoryDao.setBasePath(getContext());
+		return (ArrayList<TrainingHistory>) trainingHistoryDao.getAllToList().stream()
+				.filter(training -> training.getTrainerId().equals(id))
+				.collect(Collectors.toList());
+	}
+	
 	@POST
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public TrainingHistory createTrainingHistory(TrainingHistoryDto trainingHistory) {
 		trainingHistoryDao.setBasePath(getContext());
-		TrainingHistory trainingHistoryNew = new TrainingHistory(GenerateId(),LocalTime.parse(trainingHistory.timeOfSign),trainingHistory.signDate,trainingHistory.trainingId,trainingHistory.customerId,trainingHistory.trainerId);
+		TrainingHistory trainingHistoryNew = new TrainingHistory(GenerateId(),LocalTime.parse(trainingHistory.timeOfSign),trainingHistory.signDate,trainingHistory.trainingId,trainingHistory.customerId,trainingHistory.trainerId, false);
 		trainingHistoryDao.create(trainingHistoryNew);
 		return trainingHistoryNew;
 	}
@@ -96,5 +107,17 @@ public class TrainingHistoryService {
 		long id = trainingHistoryDao.getAllToList().stream().count();
 		return Long.toString(id);
 	}
+	
+	@PUT
+	@Path("/cancel")	
+	@Produces(MediaType.APPLICATION_JSON)
+	public TrainingHistory UpdateTrainingHistory(String id) {
+		trainingHistoryDao.setBasePath(getContext());
+		TrainingHistory trainingHistory = trainingHistoryDao.getById(id);
+		trainingHistory.setCanceled(true);
+		trainingHistoryDao.update(trainingHistory);
+		return trainingHistory;
+	}
+	
 	
 }

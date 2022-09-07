@@ -30,18 +30,23 @@
       <div v-for="training in trainings" >
         <div class="col-lg-8 colorDiv" v-if="!training.canceled">
           <TrainingPreview :training="training"></TrainingPreview>
-          <button class="button-basic" @click="onCancel(training)">Cancel</button>
         </div>
-        <div class="canceled">
-          <div class="col-lg-8 color2Div" v-if="training.canceled">
-            <TrainingPreview :training="training"></TrainingPreview>
-            <label class="label-style">Canceled</label>
+      </div>
+    </div>
+          <h2>Scheduled trainings:</h2>
+    <div class="row row-style gy-4 row-cols-2 align-items-center">
+        <div v-for="training in trainings2">
+          <div class="col-lg-8 colorDiv" v-if="!training.canceled" >
+            <TrainingPreview :training="training" ></TrainingPreview>
+            <button class="button-basic" @click="onCancel(training)">Cancel</button>
           </div>
         </div>
 
-      </div>
     </div>
-  </div>
+
+
+    </div>
+
 </template>
 
 <script>
@@ -71,6 +76,8 @@ export default {
           banned : false,
         },
         trainings :[],
+        trainings2 :[],
+        trainingsHistory :[],
         filter: 'All',
         filteredTrainings :[]
       }
@@ -86,7 +93,6 @@ export default {
               result => {
                 this.trainer = result.data
                 this.getFacilityTrainings(this.trainer.username)
-
               })
     },
     getFacilityTrainings(trainerId){
@@ -94,11 +100,42 @@ export default {
           .then(
               result => {
                 this.trainings = result.data
+                console.log(this.trainings)
+                console.log('aaaaa')
+                this.getTrainerTrainingHistory(this.trainer.username)
+
               }
           )
     },
-    getTrainingHistory(trainingId){
+    getTrainerTrainingHistory(trainerId){
+      axios.get('http://localhost:8080/FitnessCenter/rest/training-history/trainer/'+ trainerId)
+          .then(
+              result => {
+                this.trainingsHistory = result.data
+                console.log('bbbbb')
+                console.log(this.trainingsHistory )
 
+                this.trainingsHistory.forEach((training) =>{
+                      this.getTrainings(training)
+                    }
+                )
+              }
+          )
+    },
+    getTrainings(training){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainings/training-view/'+training.trainingId)
+          .then(
+              result => {
+                const trainingView = result.data
+                trainingView.signDate = training.sign
+                trainingView.timeOfSign = training.timeOfSign
+                trainingView.canceled = training.canceled
+                console.log('ccccc')
+                const t = []
+                this.trainings2.push(trainingView)
+                console.log(this.trainings2)
+              }
+          )
     },
     onCancel(training){
       if (training.type === 'PERSONAL'){
@@ -106,14 +143,20 @@ export default {
             .then(
                 result => {
                   this.trainingHistory = result.data
+                  const nowDate = new Date(this.trainingHistory.signDate)
                   const now = new Date()
                   now.setDate(now.getDate() + 2)
-                  if(this.trainingHistory.signDate > now){
-                    axios.put('http://localhost:8080/FitnessCenter/rest/trainings/cancel', training)
+                  console.log(now)
+                  console.log(nowDate)
+                  const compare = nowDate > now
+                  console.log(compare)
+                  if(nowDate > now) {
+                    axios.put('http://localhost:8080/FitnessCenter/rest/training-history/cancel', this.trainingHistory.id)
                         .then(
                             result => {
-                              training = result.data
-                              this.trainings.filter(t => t.canceled === false)
+                              this.trainingHistory = result.data
+                              training.canceled = this.trainingHistory.canceled
+                              this.trainings2.filter(t => !t.canceled)
 
                             }
                         )
