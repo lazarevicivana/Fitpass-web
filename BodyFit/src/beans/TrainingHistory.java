@@ -10,12 +10,13 @@ public class TrainingHistory {
 	private String customerId;
 	private String trainerId;
 	private String id;
+	private boolean canceled;
 
 	public TrainingHistory() {
 		super();
 	}
 
-	public TrainingHistory(String id,LocalTime timeOfSign ,Date signDate, String trainingId, String customerId, String trainerId) {
+	public TrainingHistory(String id,LocalTime timeOfSign ,Date signDate, String trainingId, String customerId, String trainerId, boolean canceled) {
 		super();
 		this.id = id;
 		this.timeOfSign = timeOfSign;
@@ -23,6 +24,8 @@ public class TrainingHistory {
 		this.trainingId = trainingId;
 		this.customerId = customerId;
 		this.trainerId = trainerId;
+		this.canceled = canceled;
+		
 	}
 
 	public Date getSignDate() {
@@ -67,6 +70,15 @@ public class TrainingHistory {
 	public void setTimeOfSign(LocalTime timeOfSign) {
 		this.timeOfSign = timeOfSign;
 	}
+
+	public boolean isCanceled() {
+		return canceled;
+	}
+
+	public void setCanceled(boolean canceled) {
+		this.canceled = canceled;
+	}
+	
 	
 	
 
