@@ -7,11 +7,13 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import beans.Admin;
+import beans.Trainer;
 import beans.UserRole;
 import dao.AdminDao;
 import dto.UserDto;
@@ -53,5 +55,15 @@ public class AdminService {
 		Admin adminNew = new Admin(admin.username, admin.password, admin.name, admin.surname, admin.birthday, admin.gerGenderEnum(), UserRole.ADMIN);
 		adminDao.update(adminNew);
 		return adminNew;
+	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Admin getByUsername(@PathParam(value = "id") String username) {
+		adminDao.setBasePath(getContext());
+		return adminDao.getAllToList().stream()
+				.filter(trainer -> trainer.getUsername().equals(username))
+				.findFirst().get();
 	}
 }
