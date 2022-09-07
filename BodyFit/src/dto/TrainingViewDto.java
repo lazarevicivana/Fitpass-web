@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+import beans.SportFacility;
 import beans.Training;
 import beans.TrainingHistory;
 import beans.TrainingType;
@@ -14,6 +15,7 @@ public class TrainingViewDto {
 	public String name;
 	public String type;
 	public String sportFacilityId;
+	public SportFacility facility;
 	public int duration;
 	public String trainerId;
 	public String description;
@@ -33,8 +35,6 @@ public class TrainingViewDto {
 		this.description = training.getDescription();
 		this.deleted = training.isDeleted();
 		this.price = training.getPrice();
-//		this.signDate = trainingHistory.getSignDate();
-//		this.timeOfSign = FormatDate(trainingHistory.getTimeOfSign());
 		
 	}
 	

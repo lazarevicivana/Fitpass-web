@@ -7,7 +7,7 @@
     "trainerId": "t",
     "description": "kjhgf",
     "deleted": false,
-     "price": 1000
+     "price": 2000
   },
   "1": {
     "id": "1",
@@ -18,7 +18,7 @@
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
-     "price": 1000
+     "price": 4000
   },
   "2": {
     "id": "2",
@@ -29,7 +29,7 @@
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
-     "price": 1000
+     "price": 2000
   },
   "3": {
     "id": "3",
@@ -40,7 +40,7 @@
     "trainerId": "t",
     "description": "jytbfvdsxaz",
     "deleted": false,
-     "price": 1000
+     "price": 2000
   },
   "4": {
     "id": "4",
