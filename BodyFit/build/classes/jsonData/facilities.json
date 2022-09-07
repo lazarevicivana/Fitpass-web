@@ -30,7 +30,7 @@
   "1": {
 	"sportFacilityId": "1",
     "name": "Classic",
-    "type": "GYM",
+    "type": "BOWLINGCENTER",
     "facilityContent": ["Individualni treniznizi", "Grupni treninzi"],
     "isWorking": true,
     "location": {
