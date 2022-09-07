@@ -35,9 +35,10 @@ export default {
               result => {
                 this.promoCode = result.data
                 console.log(this.promoCode)
-                this.$router.push('/promo-codes')
+                this.$router.push('/success-promocode-create')
               }
           )
+
     }
   }
 }

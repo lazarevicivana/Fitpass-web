@@ -63,6 +63,7 @@ export default {
                 console.log(result.data)
               }
           )
+      this.$router.push('/success-content-create')
     },
     onChange(){
 

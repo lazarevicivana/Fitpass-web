@@ -131,6 +131,51 @@ const routes = [
     path: '/customer-trainings',
     name: 'customer-trainings',
     component: () => import('../views/AllTrainingsCustomerView.vue')
+  },
+  {
+    path: '/success-profile-edit',
+    name: 'success-profile-edit',
+    component: () => import('../views/SuccessEditProfileView.vue')
+  },
+  {
+    path: '/success-facility-create',
+    name: 'success-facility-create',
+    component: () => import('../views/SuccessFacilityView')
+  },
+  {
+    path: '/success-manager-create',
+    name: 'success-manager-create',
+    component: () => import('../views/SuccessManagerView')
+  },
+  {
+    path: '/success-trainer-create',
+    name: 'success-trainer-create',
+    component: () => import('../views/SuccessTrainerView')
+  },
+  {
+    path: '/success-promocode-create',
+    name: 'success-promocode-create',
+    component: () => import('../views/SuccessPromoCodeView')
+  },
+  {
+    path: '/success-training-create',
+    name: 'success-training-create',
+    component: () => import('../views/SuccessTrainingView')
+  },
+  {
+    path: '/success-content-create',
+    name: 'success-content-create',
+    component: () => import('../views/SuccessContentView')
+  },
+  {
+    path: '/success-payment',
+    name: 'success-payment',
+    component: () => import('../views/SuccessPaymentView')
+  },
+  {
+    path: '/success-training-edit',
+    name: 'success-training-edit',
+    component: () => import('../views/SuccessEditTrView')
   }
 ]
 

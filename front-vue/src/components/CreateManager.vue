@@ -55,6 +55,7 @@ export default {
                 console.log(error)
               }
           )
+      this.$router.push('/success-manager-create')
     }
   }
 }

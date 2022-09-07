@@ -100,6 +100,7 @@ export default {
       else{
         this.next = true;
       }
+      this.$router.push('/success-facility-create')
     },
     GetAllFacilities(){
       axios.get('http://localhost:8080/FitnessCenter/rest/facilities/get-all-dto')

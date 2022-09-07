@@ -82,6 +82,7 @@ export default {
                   console.log(result.data)
                 }
             )
+      this.$router.push('/success-training-create')
     },
     onChange(){
 

@@ -58,6 +58,7 @@ export default {
                 }
             )
       }
+      this.$router.push('/success-payment')
     },
     increseUsedTrainings(){
       axios.put('http://localhost:8080/FitnessCenter/rest/memberships/used-trainings', this.membership)
