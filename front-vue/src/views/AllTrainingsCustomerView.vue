@@ -117,7 +117,6 @@ export default {
       minPrice: 0,
       maxPrice: 0,
       search:'',
-      facilities:[],
       minDate: '',
       maxDate: ''
     }
@@ -277,5 +276,6 @@ input,select {
   font-size: 20px;
   border-radius: 15px;
 }
+
 
 </style>

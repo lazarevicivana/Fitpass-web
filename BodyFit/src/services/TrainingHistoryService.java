@@ -87,9 +87,16 @@ public class TrainingHistoryService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ArrayList<TrainingHistory> getTrainerTraining(@PathParam(value = "id") String id) {
 		trainingHistoryDao.setBasePath(getContext());
-		return (ArrayList<TrainingHistory>) trainingHistoryDao.getAllToList().stream()
-				.filter(training -> training.getTrainerId().equals(id))
-				.collect(Collectors.toList());
+		ArrayList<TrainingHistory> trainings =  new ArrayList<TrainingHistory>();
+		for (TrainingHistory t : trainingHistoryDao.getAllToList()) {
+			if(t.getTrainerId() != null) {
+				if(t.getTrainerId().equals(id)) {
+					trainings.add(t);
+				}
+			}
+		}
+		
+		return trainings;
 	}
 	
 	@POST
