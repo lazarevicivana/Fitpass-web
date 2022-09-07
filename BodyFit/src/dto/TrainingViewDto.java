@@ -32,7 +32,6 @@ public class TrainingViewDto {
 		this.trainerId = training.getTrainerId();
 		this.description = training.getDescription();
 		this.deleted = training.isDeleted();
-		this.canceled = training.isCanceled();
 		this.price = training.getPrice();
 //		this.signDate = trainingHistory.getSignDate();
 //		this.timeOfSign = FormatDate(trainingHistory.getTimeOfSign());

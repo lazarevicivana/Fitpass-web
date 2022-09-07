@@ -25,7 +25,8 @@ export default {
         trainerId: '',
         trainingId: '',
         timeOfSign : '',
-        signDate : Date
+        signDate : Date,
+        canceled : false
       },
       training: {},
       membership: {}

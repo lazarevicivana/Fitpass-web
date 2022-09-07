@@ -11,12 +11,11 @@ public class Training {
 	private String trainerId;
 	private String description;
 	private boolean deleted;
-	private boolean canceled;
 	private int price;
 	
 	
 	public Training(String id, String name,TrainingType type, String sportFacilityId, int duration, String trainerId,
-			String description,int price, boolean canceled) {
+			String description,int price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,7 +26,6 @@ public class Training {
 		this.description = description;
 		this.price = price;
 		this.deleted = false;
-		this.canceled = false;
 	}
 	public int getPrice() {
 		return price;
@@ -83,18 +81,12 @@ public class Training {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	public boolean isCanceled() {
-		return canceled;
-	}
-	public void setCanceled(boolean canceled) {
-		this.canceled = canceled;
-	}
 	
 	@Override
 	public String toString() {
 		return "Training [id=" + id + ", name=" + name + ", type=" + type + ", sportFacilityId=" + sportFacilityId
 				+ ", duration=" + duration + ", trainerId=" + trainerId + ", description=" + description + ", deleted="
-				+ deleted + ", canceled=" + canceled + ", price=" + price + "]";
+				+ deleted + ", price=" + price + "]";
 	}
 
 }
