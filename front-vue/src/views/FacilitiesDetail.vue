@@ -13,18 +13,17 @@
           <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
           <tr><td>Type: {{sportFacility.type}}</td></tr>
           <tr><td> Average grade: {{sportFacility.averageGrade}}</td></tr>
-          <tr><td>Open time: {{dateTime(sportFacility.openTime)}}</td></tr>
-          <tr><td> Close time: {{dateTime(sportFacility.closeTime)}}</td></tr>
+          <tr><td>Open time: {{sportFacility.openTime}}</td></tr>
+          <tr><td> Close time: {{sportFacility.closeTime}}</td></tr>
         </table>
         </div>
         <div class="row">
           <div class="col">
-            <button class="buttons" v-if="leaveComment" @click="onLeave(sportFacility.sportFacilityId)">Leave a comment</button>
-          </div>
-          <div class="col">
             <button class="buttons" v-if="!viewComments" @click="onView(sportFacility.sportFacilityId)">View comments</button>
             <button class="buttons" v-if="viewComments" @click="onHide(sportFacility.sportFacilityId)">Hide comments</button>
-
+          </div>
+          <div class="col">
+            <button class="buttons" v-if="leaveComment" @click="onLeave(sportFacility.sportFacilityId)">Leave a comment</button>
           </div>
         </div>
       </div>
@@ -160,6 +159,7 @@ export default {
 }
 .subtitle{
   margin-top: 40px;
+  font-weight: bolder;
 }
 .padding-style{
   padding-top: 20px;
@@ -169,7 +169,7 @@ export default {
   border: 2px solid;
   border-color: white;
   color: black;
-  width: 80%;
+  width: 90%;
   padding-left: 40px;
   text-align: left;
   font-size: 17px;
@@ -189,9 +189,9 @@ h1{
   font-weight: bolder;
 }
 .size{
-  width: 300px;
-  height: 300px;
-  margin: 40px;
+  width: 400px;
+  height: 400px;
+  margin: 20px
 }
 .button{
   color: white;
@@ -235,6 +235,9 @@ h1{
   padding-left: 40px;
   text-align: left;
   font-size: 17px;
+}
+h2{
+  font-weight: bold;
 }
 
 

@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-  <div class="sportFacility">
     <div class="row">
       <div class="col-sm">
     <table class="td-style">
@@ -17,7 +16,6 @@
         <img  :src="getImgUrl(sportFacility.sportFacilityId)" :alt="sportFacility.name" class="ico size border border-white"/>
       </div>
     </div>
-  </div>
   </div>
 </template>
 

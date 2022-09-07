@@ -1,7 +1,7 @@
 <template>
-<div class="container-lg  ">
+<div class="container">
 <h1 class="padding-style title">Welcome</h1>
-  <div class="row padding-style ">
+  <div class="row padding-style">
     <div class="col">
       <input type="text"  v-model="search" @change="filterFacilities" placeholder="search">
     </div>
@@ -30,16 +30,16 @@
       </select>
     </div>
   </div>
-  <div class="row div ">
+  <div class="row">
     <div class="col-4 scroll">
       <div class="row  row-style text-center" v-for="sportFacility in this.filterFacilities()">
-        <div  class="col colorDiv" >
+        <div  class="col colorDiv scroll-row">
           <SportFacility @click="FacilitieDetail(sportFacility)" :sportFacility="sportFacility"/>
         </div>
       </div>
     </div>
-    <div class="col map">
-        <Map :facilities="filterFacilities()"></Map>
+    <div class="col">
+      <Map :facilities="filterFacilities()"></Map>
     </div>
   </div>
 </div>
@@ -145,17 +145,16 @@ export default {
   padding: 20px;
   color: white;
 }
-.col-style{
-  width: 100px;
+.scroll-row{
+  margin-right: 80px;
+}
+.map-row{
+  margin-left: 60px;
 }
 .padding-style{
   margin-bottom: 80px;
 }
-.div{
- width: 1800px;
-}
 .row-style{
-  width: 600px;
   margin-bottom: 60px;
 }
 .title{

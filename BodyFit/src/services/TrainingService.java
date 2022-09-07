@@ -24,6 +24,7 @@ import dao.TrainingDao;
 import dao.TrainingHistoryDao;
 import dto.ManagerDto;
 import dto.TrainingDto;
+import dto.TrainingViewDto;
 
 @Path("/trainings")
 public class TrainingService {
@@ -102,6 +103,23 @@ public class TrainingService {
         	 }
 		}
          return trainings;
+	}
+	
+	@GET
+	@Path("/training-view/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public TrainingViewDto getTrainingsForCustomer(@PathParam(value = "id") String id) {
+		trainingDao.setBasePath(getContext());
+		TrainingViewDto trainingView = new TrainingViewDto();
+		ArrayList<TrainingViewDto> trainingsView  = new ArrayList<TrainingViewDto>();
+         for (Training training : trainingDao.getAllToList()) {
+        		if(training.getId().equals(id)) {
+        			TrainingViewDto t = new TrainingViewDto(training);
+        	         return t;
+        		} 
+		}
+         return trainingView;
 	}
 	
 	
