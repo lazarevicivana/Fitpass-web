@@ -27,10 +27,19 @@
       </div>
     </div>
     <div class="row row-style gy-4 row-cols-2 align-items-center" >
-      <div v-for="training in trainings" >
-        <div class="col-lg-8 colorDiv" v-if="!training.canceled">
-          <TrainingPreview :training="training"></TrainingPreview>
-          <button class="button-basic" @click="onCancel(training)">Cancel</button>
+      <div v-for="training in trainingsView" >
+        <div class="col-lg-8 colorDiv" >
+          <div class="row">
+            <TrainingPreview :training="training"></TrainingPreview>
+          </div>
+          <div class="row">
+            <label>Date:</label>
+            <label>{{dateFormat(training.signDate)}}</label>
+          </div>
+          <div class="row">
+            <label>Time:</label>
+            <label>{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -40,6 +49,8 @@
 <script>
 import axios from "axios";
 import TrainingPreview from "@/components/TrainingPreview";
+import trainingPreview from "@/components/TrainingPreview";
+import moment from "moment";
 
 export default {
   name: "AllTrainingsCustomerView",
@@ -64,7 +75,8 @@ export default {
         collectedPoints : '',
         visitedFacilities : ''
       },
-      trainings :[]
+      trainingsHistory :[],
+      trainingsView:[]
     }
   },
   created() {
@@ -77,17 +89,38 @@ export default {
               result => {
                 this.customer = result.data
                 if(this.customer.username != ''){
-                  this.getCustomerTrainings(this.customer.username)
+                  this.getCustomerTrainingHistory(this.customer.username)
                 }
               })
     },
-    getCustomerTrainings(customerId){
+    getCustomerTrainingHistory(customerId){
       axios.get('http://localhost:8080/FitnessCenter/rest/training-history/customer/'+ customerId)
           .then(
               result => {
-                this.trainings = result.data
+                this.trainingsHistory = result.data
+                this.trainingsHistory.forEach((training) =>{
+                      this.getTrainings(training)
+                    }
+                )
               }
           )
+    },
+    getTrainings(training){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainings/training-view/'+training.trainingId)
+          .then(
+              result => {
+                const trainingView = result.data
+                trainingView.signDate = training.sign
+                trainingView.timeOfSign = training.timeOfSign
+                console.log(training.timeOfSign)
+                const t = []
+                this.trainingsView.push(trainingView)
+                console.log(this.trainingsView)
+              }
+          )
+    },
+    dateFormat(value){
+      return moment(value).format('YYYY-MM-DD')
     }
 
   }

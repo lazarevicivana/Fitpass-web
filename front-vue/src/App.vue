@@ -19,7 +19,7 @@
   </div>
   <SideBarView :user="user"
                 :loggedIn="loggedIn"/>
-  <div class="container margin"  >
+  <div class="margin">
     <router-view @loggedUser="loggedInUser" :user="user"/>
   </div>
 </template>

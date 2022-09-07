@@ -1,6 +1,6 @@
 <template>
-<div class="container-fluid margin-style">
-  <h1 class="padding-style">View users</h1>
+<div class="container-fluid">
+  <h1 class="padding-style head-align">View users</h1>
   <div class="row padding-style">
     <div class="col">
       <input type="text" v-model="search" @change="FilterUsers" placeholder="search">
@@ -28,7 +28,7 @@
       </select>
     </div>
     </div>
-  <div class="row row-style gy-4 row-cols-3 align-items-center" >
+  <div class="row row-style row-cols-3 gy-4">
     <div v-for="user in this.FilterUsers()">
       <div class="col-lg-8 colorDiv">
         <user-preview-component :user="user"></user-preview-component>
@@ -155,6 +155,9 @@ export default {
   border: 2px solid;
   padding: 20px;
   color: white;
+}
+.head-align{
+  text-align: center;
 }
 .margin-style{
   margin-left: 180px;

@@ -70,7 +70,7 @@ export default {
           )
     },
     onDenie(comment){
-      this.comment.state = 'DENIED'
+      comment.state = 'DENIED'
       axios.put('http://localhost:8080/FitnessCenter/rest/comments/', comment)
           .then(
               response => {
