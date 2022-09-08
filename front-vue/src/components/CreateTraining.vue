@@ -2,9 +2,9 @@
   <form @submit.prevent="TrainingSubmit">
     <h1>Add training</h1>
     <label>Name:</label>
-    <input type="text" v-model="training.name">
+    <input type="text" v-model="training.name" required>
     <label>Type:</label>
-    <select v-model="training.type" >
+    <select v-model="training.type" required >
       <option>GROUP</option>
       <option>PERSONAL</option>
       <option>AEROBIC</option>
@@ -16,7 +16,7 @@
       <option>DANCE</option>
     </select>
     <label>Trainer:</label>
-    <select v-model="seletedValue" @change="onChange()">
+    <select v-model="seletedValue" @change="onChange()" >
        <option v-for="trainer in trainers" :value="trainer">{{trainer.name}} {{trainer.surname}}</option>
     </select>
     <label>Duration:</label>
@@ -28,13 +28,13 @@
     <div class="row">
       <div class="col">
         <label>Picture:</label>
-        <input type="file" id="formFile" >
+        <input type="file" id="formFile" required >
       </div>
       <div class="col ">
         <button @click.prevent="OnFileUpload"  class="btn btn-primary mb-3 btn-lg  button-padding">Add photo</button>
       </div>
     </div>
-    <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
+    <input   type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>
 
@@ -57,10 +57,12 @@ export default {
         deleted: false
       },
       fileName: '',
-      isDisabled:true,
       trainers: [],
       seletedValue: '',
-      trainings:[]
+      trainings:[],
+      create: false,
+      photoUpload: false,
+      name: true
     }
   },
   created() {
@@ -74,19 +76,52 @@ export default {
   },
   methods:{
     TrainingSubmit(){
+      this.name = true
+      console.log(this.create)
+      if(this.create === false){
+        this.$notify({
+          title: 'Error while creating training',
+          type: 'error',
+          text:"You must upload photo before creating a training!",
+          closeOnClick: true
+
+        })
+        return;
+      }
+      this.trainings.forEach(t =>{
+        if(t.name === this.training.name) {
+          this.name = false
+          if (this.name === false) {
+            this.$notify({
+              title: 'Error while creating training',
+              type: 'error',
+              text: "A training with that name already exists in database!",
+              closeOnClick: true
+            })
+            return;
+          }
+        } })
         this.training.sportFacilityId = this.$route.params.id;
+      if(this.seletedValue.username !== null){
         this.training.trainerId =this.seletedValue.username;
-        axios.post('http://localhost:8080/FitnessCenter/rest/trainings/create',this.training)
-            .then(
-                result =>{
-                  console.log(result.data)
-                }
-            )
+      }
+
+        console.log(this.create)
+        if(this.create && this.name){
+          axios.post('http://localhost:8080/FitnessCenter/rest/trainings/create',this.training)
+              .then(
+                  result =>{
+                    console.log(result.data)
+                  }
+              )
+        }
+
     },
     onChange(){
 
     },
     OnFileUpload(){
+      this.create = true
       axios.post("http://localhost:8080/FitnessCenter/rest/files/uploadPhoto",this.trainings.length.toString())
           .then((response)=>{console.log("Success set up name" + response)})
           .catch((error) => console.log(error))
@@ -96,7 +131,9 @@ export default {
       reader.onload = function () {
         base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
         axios.post("http://localhost:8080/FitnessCenter/rest/files/uploadTrainingPhoto",base64String)
-            .then((response)=>{console.log("Success uploading")})
+            .then((response)=>{
+              console.log("Success uploading")
+            })
             .catch((error) => console.log(error))
       }
       reader.readAsDataURL(file);
@@ -106,6 +143,7 @@ export default {
           .then(
               result => {
                 this.trainings = result.data
+                console.log(this.trainings)
               }
           )
     }

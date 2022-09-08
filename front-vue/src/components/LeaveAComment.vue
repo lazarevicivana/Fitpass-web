@@ -2,9 +2,9 @@
   <form @submit.prevent="CommentSubmit">
     <h1>Leave a comment</h1>
     <label>Name:</label>
-    <input type="text" v-model="comment.text">
+    <input type="text" v-model="comment.text" required>
     <label>Grade:</label>
-    <input type="number" v-model="comment.grade" >
+    <input type="number" v-model="comment.grade" required>
     <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>

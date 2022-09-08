@@ -3,7 +3,7 @@
     <h1 class="padding-style">View trainers</h1>
     <div class="row padding-style">
     </div>
-    <div class="row row-style gy-4 row-cols-3 align-items-center" >
+    <div class="row row-style row-cols-3 align-items-center" >
     <div v-for="trainer in trainers">
       <div class="col-lg-8 colorDiv">
         <user-preview-component :user="trainer"></user-preview-component>
@@ -59,15 +59,20 @@ export default {
   border-radius: 25px;
   border: 2px solid;
   padding: 20px;
+  width: 100%;
   color: white;
 }
-
+h1{
+  font-weight: bolder;
+  font-size: 70px;
+}
 .padding-style{
   margin-bottom: 80px;
 }
 .row-style{
   padding-bottom: 100px;
   margin-bottom: 30px;
+  margin-left: 150px;
 }
 input,select {
   display: block;

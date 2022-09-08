@@ -60,7 +60,15 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training createTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
+		String duration = training.duration;
+		if((training.duration).isEmpty()) {
+			duration = "0";
+		}
+		String price = training.price;
+		if((training.price).isEmpty()) {
+			price = "0";
+		}
+		Training trainingrNew = new Training(GenerateId(), training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(duration) , training.trainerId, training.description,Integer.parseInt(price));
 		trainingDao.create(trainingrNew);
 		return trainingrNew;
 	}
@@ -130,7 +138,15 @@ public class TrainingService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Training updateTraining(TrainingDto training) {
 		trainingDao.setBasePath(getContext());
-		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(training.duration) , training.trainerId, training.description,Integer.parseInt(training.price));
+		String duration = training.duration;
+		if((training.duration).isEmpty()) {
+			duration = "0";
+		}
+		String price = training.price;
+		if((training.price).isEmpty()) {
+			price = "0";
+		}
+		Training trainingrNew = new Training(training.id, training.name,training.getTrainingType(), training.sportFacilityId,Integer.parseInt(duration) , training.trainerId, training.description,Integer.parseInt(price));
 		trainingDao.update(trainingrNew);
 		return trainingrNew;
 	}

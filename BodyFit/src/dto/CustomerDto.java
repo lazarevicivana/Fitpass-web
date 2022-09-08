@@ -16,12 +16,8 @@ public class CustomerDto {
 	public String userRole;
 	public boolean deleted;
 	public boolean banned;
-	public String sportFacilityId;
 	public String birthdate;
-	public CustomerType customerType;
 	public double colletedPoints;
-	public ArrayList<String> visitedFacilities;
-	public Due due;
-
+	
 
 }

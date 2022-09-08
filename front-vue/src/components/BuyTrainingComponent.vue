@@ -57,7 +57,13 @@ export default {
                   this.increseUsedTrainings()
                 }
             )
-      }
+      }else
+        this.$notify({
+          title: 'Error while buying training',
+          type: 'error',
+          text: "You have to buy membership, before buying a training!",
+          closeOnClick: true
+        })
     },
     increseUsedTrainings(){
       axios.put('http://localhost:8080/FitnessCenter/rest/memberships/used-trainings', this.membership)

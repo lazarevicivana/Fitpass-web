@@ -2,20 +2,20 @@
   <form @submit.prevent="TrainerSubmit">
     <h1>Add trainer</h1>
     <label>Name:</label>
-    <input type="text" v-model="trainer.name">
+    <input type="text" v-model="trainer.name" required>
     <label>Surname:</label>
-    <input type="text" v-model="trainer.surname">
+    <input type="text" v-model="trainer.surname" required>
     <label>Username:</label>
-    <input type="text" v-model="trainer.username">
+    <input type="text" v-model="trainer.username" required>
     <label>Password:</label>
-    <input type="password" v-model="trainer.password" autocomplete="off">
+    <input type="password" v-model="trainer.password" required autocomplete="off">
     <label>Gender:</label>
-    <select v-model="trainer.gender" >
+    <select v-model="trainer.gender" required>
       <option>Male</option>
       <option>Female</option>
     </select>
     <label>Birthday:</label>
-    <input type="date" v-model="trainer.birthday">
+    <input type="date" v-model="trainer.birthday" required>
     <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>
@@ -35,11 +35,31 @@ export default {
         birthday : '',
         gender : '',
         userRole : ''
-      }
+      },
+      trainers: [],
+      name: true
     }
+  },
+  created() {
+    this.getTrainers()
   },
   methods: {
     TrainerSubmit(){
+      this.name = true
+      this.trainers.forEach(t =>{
+        if(t.username === this.trainer.username){
+          this.name = false
+          if (this.name === false) {
+            this.$notify({
+              title: 'Error while creating trainer',
+              type: 'error',
+              text: "A trainer with that username already exists in database!",
+              closeOnClick: true
+            })
+            return;
+          }
+        }})
+      if(this.name){
       axios.post('http://localhost:8080/FitnessCenter/rest/trainers/create',this.trainer)
           .then(
               result => {
@@ -50,9 +70,16 @@ export default {
               error => {
                 console.log(error)
               }
+          )}
+    },
+    getTrainers(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/trainers/')
+          .then(
+              result => {
+                this.trainers = result.data
+              }
           )
     }
-
   }
 }
 </script>
