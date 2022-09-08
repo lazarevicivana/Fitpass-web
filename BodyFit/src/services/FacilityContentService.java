@@ -47,9 +47,17 @@ public class FacilityContentService {
 	@Path("/")	
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public FacilityContent createManger(FacilityContentDto content) {
+	public FacilityContent createContent(FacilityContentDto content) {
 		facilityContentDao.setBasePath(getContext());
-		FacilityContent facilityContentNew = new FacilityContent(GenerateId(), content.name, content.getFacilityContentType(), content.sportFacilityId,Integer.parseInt(content.duration) , content.description, content.deleted, Integer.parseInt(content.price));
+		String duration = content.duration;
+		if((content.duration).isEmpty()) {
+			duration = "0";
+		}
+		String price = content.duration;
+		if((content.price).isEmpty()) {
+			price = "0";
+		}
+		FacilityContent facilityContentNew = new FacilityContent(GenerateId(), content.name, content.getFacilityContentType(), content.sportFacilityId,Integer.parseInt(duration) , content.description, content.deleted, Integer.parseInt(price));
 		facilityContentDao.create(facilityContentNew);
 		return facilityContentNew;
 	}

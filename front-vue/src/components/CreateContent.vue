@@ -2,9 +2,9 @@
   <form @submit.prevent="ContentSubmit">
     <h1>Add content</h1>
     <label>Name:</label>
-    <input type="text" v-model="content.name">
+    <input type="text" v-model="content.name" required>
     <label>Type:</label>
-    <select v-model="content.type" >
+    <select v-model="content.type" required >
       <option>SPA</option>
       <option>POOL</option>
       <option>SAUNA</option>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col">
         <label>Picture:</label>
-        <input type="file" id="formFile" >
+        <input type="file" id="formFile" required >
       </div>
       <div class="col ">
         <button @click.prevent="OnFileUpload"  class="btn btn-primary mb-3 btn-lg  button-padding">Add photo</button>
@@ -48,7 +48,9 @@ export default {
       },
       fileName: '',
       isDisabled:true,
-      contents :[]
+      contents :[],
+      create: false,
+      name: true
     }
   },
   created() {
@@ -56,19 +58,46 @@ export default {
   },
   methods:{
     ContentSubmit(){
+      this.name = true
+      console.log(typeof this.content.duration)
+      if(this.create === false){
+        this.$notify({
+          title: 'Error while creating content',
+          type: 'error',
+          text:"You must upload photo before creating a content!",
+          closeOnClick: true
+        })
+        return;
+      }
+      this.contents.forEach(c =>{
+        if(c.name === this.content.name){
+          this.name = false
+          if (this.name === false) {
+            this.$notify({
+              title: 'Error while creating training',
+              type: 'error',
+              text: "A training with that name already exists in database!",
+              closeOnClick: true
+            })
+            return;
+        }
+      }})
       this.content.sportFacilityId = this.$route.params.id;
+      if(this.name && this.create){
       axios.post('http://localhost:8080/FitnessCenter/rest/contents',this.content)
           .then(
               result =>{
                 console.log(result.data)
+                  this.$router.push('/success-content-create')
               }
           )
-      this.$router.push('/success-content-create')
+      }
     },
     onChange(){
 
     },
     OnFileUpload(){
+      this.create = true
       axios.post("http://localhost:8080/FitnessCenter/rest/files/uploadPhoto",this.contents.length.toString())
           .then((response)=>{console.log("Success set up name" + response)})
           .catch((error) => console.log(error))
@@ -88,7 +117,7 @@ export default {
           .then(
               result => {
                 this.contents = result.data
-                console.log(this.contents.length)
+                console.log(this.contents)
               }
           )
     }

@@ -2,20 +2,20 @@
   <form @submit.prevent="ManagerSubmit">
     <h1>Add manager</h1>
     <label>Name:</label>
-    <input type="text" v-model="manager.name">
+    <input type="text" v-model="manager.name" required>
     <label>Surname:</label>
-    <input type="text" v-model="manager.surname">
+    <input type="text" v-model="manager.surname" required>
     <label>Username:</label>
-    <input type="text" v-model="manager.username">
+    <input type="text" v-model="manager.username" required>
     <label>Password:</label>
-    <input type="password" v-model="manager.password" autocomplete="off">
+    <input type="password" v-model="manager.password" autocomplete="off" required>
     <label>Gender:</label>
-    <select v-model="manager.gender" >
+    <select v-model="manager.gender"  required>
       <option>Male</option>
       <option>Female</option>
     </select>
     <label>Birthday:</label>
-    <input type="date" v-model="manager.birthday">
+    <input type="date" v-model="manager.birthday" required>
     <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>
@@ -38,15 +38,36 @@ export default {
        /* deleted : false,
         banned : false,*/
         sportFacilityId: ''
-      }
+      },
+      mangers:[],
+      name: true
     }
+  },
+  created() {
+    this.getAllManagers()
   },
   methods : {
     ManagerSubmit(){
+      this.name = true
+      this.mangers.forEach(m =>{
+        if(m.username === this.manager.username){
+          this.name = false
+          if (this.name === false) {
+            this.$notify({
+              title: 'Error while creating manager',
+              type: 'error',
+              text: "A manager with that username already exists in database!",
+              closeOnClick: true
+            })
+            return;
+          }
+        }})
+      if(this.name){
       axios.post('http://localhost:8080/FitnessCenter/rest/managers/create',this.manager)
           .then(
               res =>{
                 console.log(res.data)
+                 this.$router.push('/success-manager-create')
               }
           )
           .catch(
@@ -55,7 +76,15 @@ export default {
                 console.log(error)
               }
           )
-      this.$router.push('/success-manager-create')
+      }
+    },
+    getAllManagers(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/managers/GetAll')
+          .then(
+              res =>{
+                this.mangers = res.data
+              }
+          )
     }
   }
 }

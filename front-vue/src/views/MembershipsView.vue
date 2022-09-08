@@ -1,14 +1,14 @@
 <template>
 <div>
-  <h1>Membership packages</h1>
-  <div class="row row-style gy-4 row-cols-2 align-items-center" >
+  <h1 class="padding-style">Membership packages</h1>
+  <div class="row row-style gy-4 row-cols-4 align-items-center" >
     <div v-for="membership in memberships">
       <div class="col-lg-8 colorDiv">
         <div class="row">
           <MembershipComponent :membership="membership"></MembershipComponent>
         </div>
         <div class="row ">
-        <button v-if="customer()" @click="onBuy(membership.id)" class="button" >Buy</button>
+        <button v-if="customer()" @click="onBuy(membership.id)" class="btn btn-primary" >Buy</button>
       </div >
       </div>
 
@@ -56,6 +56,9 @@ export default {
   border: 2px solid;
   padding: 10px;
   color: white;
+  width: 105%;
+  margin-left: 100px;
+  margin-right: 50px;
 }
 .margin-style{
   margin-left: 180px;
@@ -77,7 +80,7 @@ input,select {
   font-size: 20px;
   border-radius: 15px;
 }
-.button{
+button{
    color: white;
    background: #2c3e50;
    margin-top: 40px;
@@ -94,4 +97,9 @@ input,select {
    -ms-transform: translateX(-50%);
    transform: translateX(25%);
  }
+h1{
+  font-weight: bolder;
+  font-size: 70px;
+  margin-left: 100px;
+}
 </style>

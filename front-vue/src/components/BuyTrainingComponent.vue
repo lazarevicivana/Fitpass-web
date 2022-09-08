@@ -55,10 +55,18 @@ export default {
                 result => {
                   console.log(result.data)
                   this.increseUsedTrainings()
+                    this.$router.push('/success-payment')
                 }
             )
+
+      }else
+        this.$notify({
+          title: 'Error while buying training',
+          type: 'error',
+          text: "You have to buy membership, before buying a training!",
+          closeOnClick: true
+        })
       }
-      this.$router.push('/success-payment')
     },
     increseUsedTrainings(){
       axios.put('http://localhost:8080/FitnessCenter/rest/memberships/used-trainings', this.membership)

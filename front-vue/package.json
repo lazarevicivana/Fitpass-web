@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
+    "@kyvg/vue3-notification": "^2.4.1",
     "@popperjs/core": "^2.11.5",
     "@syncfusion/ej2-vue-dropdowns": "^20.2.36",
     "@syncfusion/ej2-vue-grids": "^20.2.36",
@@ -17,8 +18,10 @@
     "moment": "^2.29.3",
     "ol": "^7.1.0",
     "vue": "^3.2.13",
+    "vue-basic-alert": "^1.1.0",
     "vue-router": "^4.0.13",
-    "vue3-openlayers": "^0.1.70"
+    "vue3-openlayers": "^0.1.70",
+    "vue3-simple-alert": "^1.0.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",

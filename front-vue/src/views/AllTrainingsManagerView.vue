@@ -36,7 +36,7 @@
     <div v-for="training in this.FilterTrainings()">
       <div class="col colorDiv">
         <TrainingPreview :training="training"></TrainingPreview>
-        <button @click="onEdit(training)">Edit</button>
+        <button class="btn btn-primary" @click="onEdit(training)">Edit</button>
       </div >
     </div>
   </div>
@@ -143,6 +143,10 @@ export default {
   padding: 20px;
   color: white;
 }
+h1{
+  font-size: 70px;
+  font-weight: bolder;
+}
 .margin-style{
   margin-left: 180px;
 }
@@ -162,5 +166,18 @@ input,select {
   color: #555;
   font-size: 20px;
   border-radius: 15px;
+}
+button{
+  color: white;
+  background: #2c3e50;
+  border-radius: 15px;
+  border: none;
+  font-size: 24px;
+  width: 90%;
+  margin-top: 30px;
+  height:90%;
+  margin-left: 30px;
+  display: block;
+  position: relative;
 }
 </style>
