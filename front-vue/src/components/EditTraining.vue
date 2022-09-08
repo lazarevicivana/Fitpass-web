@@ -96,6 +96,7 @@ export default {
                 console.log(result.data)
               }
           )
+      this.$router.push('/success-training-edit')
     },
     getTrainers(){
       axios.get('http://localhost:8080/FitnessCenter/rest/trainers/')

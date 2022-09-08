@@ -67,6 +67,7 @@ export default {
           .then(
               res =>{
                 console.log(res.data)
+                 this.$router.push('/success-manager-create')
               }
           )
           .catch(

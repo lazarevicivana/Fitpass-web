@@ -65,6 +65,7 @@ export default {
     },
     onBuySubmit(){
       this.getPromoCode()
+      this.$router.push('/success-payment')
     },
     deactivatePreviousMembership(){
       axios.put('http://localhost:8080/FitnessCenter/rest/memberships/' , this.membership)

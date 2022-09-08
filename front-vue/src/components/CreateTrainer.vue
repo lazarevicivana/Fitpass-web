@@ -79,6 +79,7 @@ export default {
                 this.trainers = result.data
               }
           )
+      this.$router.push('/success-trainer-create')
     }
   }
 }

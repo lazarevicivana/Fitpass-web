@@ -105,17 +105,15 @@ export default {
       if(this.seletedValue.username !== null){
         this.training.trainerId =this.seletedValue.username;
       }
-
-        console.log(this.create)
         if(this.create && this.name){
           axios.post('http://localhost:8080/FitnessCenter/rest/trainings/create',this.training)
               .then(
                   result =>{
                     console.log(result.data)
+                    this.$router.push('/success-training-create')
                   }
               )
         }
-
     },
     onChange(){
 

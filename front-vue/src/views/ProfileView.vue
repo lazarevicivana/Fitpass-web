@@ -92,7 +92,9 @@ export default {
                   }
               )
         }
+      this.$router.push('/success-profile-edit')
     }
+
       }
 }
 </script>
