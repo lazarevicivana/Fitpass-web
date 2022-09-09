@@ -1,6 +1,6 @@
 <template>
   <div class="div">
-    <label class="label"> Manager is successfully created!</label>
+    <label class="label">Congratulations, new manager has successfully been  added!</label>
   </div>
 </template>
 
@@ -25,20 +25,18 @@ export default {
 </script>
 
 <style scoped>
-
 .div{
-  max-width: 500px;
-  margin: 100px 150px 150px 420px;
-  alignment: center;
+  width: 70%;
+  margin: 200px 100px 50px 350px;
   background: #072238;
   text-align: center;
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 15px;
   color: white;
 }
-
 .label{
-  font-size: 28px;
+  font-size: 40px;
+  margin: 30px;
 }
 
 </style>

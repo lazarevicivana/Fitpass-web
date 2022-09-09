@@ -8,10 +8,10 @@
           </div>
           <div class="col-4">
             <div class="row">
-              <button class="button-basic" v-if="user.userRole === 'ADMIN' && comment.state === 'WAITING'" @click="onApprove(comment)" :comment="comment">Approve</button>
+              <button class="btn btn-primary" v-if="user.userRole === 'ADMIN' && comment.state === 'WAITING'" @click="onApprove(comment)" :comment="comment"><font-awesome-icon icon='thumbs-up' /> Approve</button>
             </div>
             <div class="row">
-              <button class="button-basic" v-if="user.userRole === 'ADMIN' && comment.state === 'WAITING'" @click="onDenie(comment)" :comment="comment">Denie</button>
+              <button class="btn btn-primary" v-if="user.userRole === 'ADMIN' && comment.state === 'WAITING'" @click="onDenie(comment)" :comment="comment"><font-awesome-icon icon='thumbs-down' /> Deny</button>
             </div>
           </div>
         </div>
@@ -88,21 +88,16 @@ export default {
   border-radius: 25px;
   border: 2px solid;
   width: 100%;
-  padding: 20px;
+  padding: 18px;
   color: white;
 }
-.margin-style{
-  margin-left: 100px;
-}
-.padding-style{
-  margin-bottom: 80px;
-}
+
 .row-style{
   padding-bottom: 100px;
   margin-bottom: 30px;
 }
 
-.button-basic{
+button{
   background: #2c3e50;
   color: white;
   border-radius: 10px;
@@ -120,7 +115,7 @@ input,select {
   border: 1px solid black;
   box-sizing: border-box;
   color: #555;
-  font-size: 20px;
+  font-size: 81px;
   border-radius: 15px;
 }
 </style>

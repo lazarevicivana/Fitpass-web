@@ -65,6 +65,8 @@ export default {
 h1{
   font-weight: bolder;
   font-size: 70px;
+  margin-left: 150px;
+
 }
 .padding-style{
   margin-bottom: 80px;
@@ -72,7 +74,7 @@ h1{
 .row-style{
   padding-bottom: 100px;
   margin-bottom: 30px;
-  margin-left: 150px;
+  margin-left: 40px;
 }
 input,select {
   display: block;

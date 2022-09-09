@@ -13,23 +13,24 @@
             <label>Type:</label>
           </td>
           <td class="td-style">
-            <label>{{training.type}}</label>
+            <label class="label">{{training.type}}</label>
           </td>
         </tr>
         <tr>
           <td class="td-style">
             <label>Duration:</label>
           </td>
+
           <td class="td-style">
-            <label>{{training.duration}}</label>
+            <label class="label">{{training.duration}}</label>
           </td>
         </tr>
         <tr>
           <td class="td-style">
-            <label>Description:</label>
+            <label >Description:</label>
           </td>
           <td class="td-style">
-            <label>{{training.description}}</label>
+            <label class="label">{{training.description}}</label>
           </td>
         </tr>
         <tr>
@@ -37,7 +38,7 @@
             <label>Trainer:</label>
           </td>
           <td class="td-style">
-            <label>{{getFullName(trainer)}}</label>
+            <label class="label">{{getFullName(trainer)}}</label>
           </td>
         </tr>
         <tr>
@@ -45,7 +46,7 @@
             <label>Price:</label>
           </td>
           <td class="td-style">
-            <label>{{training.price}}</label>
+            <label class="label">{{training.price}}</label>
           </td>
         </tr>
       </table>
@@ -107,6 +108,7 @@ export default {
   text-align: left;
   font-size: 18px;
   font-weight: bold;
+
 }
 .size{
   width: 200px;
@@ -117,6 +119,10 @@ export default {
   font-weight: bold;
   margin-bottom: 50px;
   padding-bottom: 10px;
+}
+.label{
+  margin-left: 35px;
+
 }
 
 </style>

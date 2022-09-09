@@ -119,13 +119,13 @@ export default {
                     this.GetAllFacilities();
                     this.selectedValue.sportFacilityId = this.id;
                       this.updateManagerFacilityId();
+                      this.$router.push('/success-facility-create')
                 }
             )}
       }
       else{
         this.next = true;
       }
-      this.$router.push('/success-facility-create')
     },
     GetAllFacilities(){
       axios.get('http://localhost:8080/FitnessCenter/rest/facilities/get-all-dto')
@@ -178,15 +178,18 @@ export default {
 
 <style scoped>
 form {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 600px;
+  margin: 80px auto 30px 300px;
   background: #072238;
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 18px;
   color: white;
-}
+}h1{
+   font-weight: bolder;
+   font-size: 50px;
+ }
 label {
   color: white;
   display: inline-block;
@@ -196,7 +199,7 @@ label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 18px;
 }input,select {
    display: block;
    padding-left: 10px;
@@ -207,7 +210,7 @@ label {
    border: none;
    border-bottom: 1px solid #ddd;
    color: #555;
-   font-size: 20px;
+   font-size: 18px;
    border-radius: 15px;
 
  }
@@ -219,6 +222,7 @@ label {
   padding-right: 10px;
   margin-left: 55px;
   font-size: 24px;
+  font-weight: bold;
   width: 50%;
   vertical-align: center;
   box-sizing: border-box;
@@ -231,7 +235,7 @@ label {
   margin-top: 40px;
 }
 .button-padding{
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 </style>

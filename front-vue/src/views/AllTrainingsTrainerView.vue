@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid margin-style">
+  <div class="container margin-style">
     <h1 class="padding-style">Trainings</h1>
     <div class="row padding-style">
       <div class="col">
@@ -75,31 +75,31 @@
                   <tr>
                     <td  class="td-style title"> <label>Date:</label></td>
                     <td class="td-style title">
-                      <label>{{dateFormat(training.signDate)}}</label>
+                      <label class="label">{{dateFormat(training.signDate)}}</label>
                     </td>
                   </tr>
                   <tr>
                     <td  class="td-style title"> <label>Time:</label></td>
                     <td class="td-style title">
-                      <label>{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
+                      <label class="label">{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
                     </td>
                   </tr>
                   <tr>
                     <td  class="td-style title">  <label>Facility:</label></td>
                     <td class="td-style title">
-                      <label>{{training.facility.name}}</label>
+                      <label class="label">{{training.facility.name}}</label>
                     </td>
                   </tr>
                   <tr>
                   <td  class="td-style title"> <label>Type:</label></td>
                   <td class="td-style title">
-                    <label>{{training.facility.type}}</label>
+                    <label class="label">{{training.facility.type}}</label>
                   </td>
                 </tr>
                 </table>
               </div>
           </div>
-            <button class="button-basic" @click="onCancel(training)">Cancel</button>
+            <button class="btn btn-primary" @click="onCancel(training)"><font-awesome-icon icon='xmark' />  Cancel</button>
         </div>
     </div>
     </div>
@@ -325,7 +325,7 @@ export default {
 }
 
 .margin-style{
-  margin-left: 100px;
+  margin-left: 20px;
 }
 .padding-style{
   margin-bottom: 80px;
@@ -339,8 +339,8 @@ export default {
   margin-bottom: 30px;
 }
 
-.button-basic{
-  background: #87182b;
+button{
+  background: #072238;
   color: white;
   border-radius: 10px;
   width: 50%;
@@ -382,5 +382,15 @@ input,select {
 }
 table{
   margin-left: 20px;
+}
+.label{
+  margin-left: 70px;
+}
+h1{
+  font-weight: bolder;
+  font-size: 70px;
+}
+h2{
+  font-weight: bold;
 }
 </style>

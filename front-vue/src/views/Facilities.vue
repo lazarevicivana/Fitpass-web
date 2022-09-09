@@ -1,5 +1,5 @@
 <template>
-<div class="container" style="margin-left: 100px">
+<div class="container">
 <h1 class="padding-style title">Welcome</h1>
   <div class="row padding-style">
     <div class="col">
@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col-4 scroll">
       <div class="row  row-style text-center" v-for="sportFacility in this.filterFacilities()">
-        <div  class="col colorDiv scroll-row">
+        <div  class="col colorDiv hover scroll-row"  >
           <SportFacility @click="FacilitieDetail(sportFacility)" :sportFacility="sportFacility"/>
         </div>
       </div>
@@ -144,6 +144,7 @@ export default {
   border: 2px solid;
   padding: 20px;
   color: white;
+  width: 50%;
 }
 .scroll-row{
   margin-right: 80px;
@@ -164,7 +165,7 @@ export default {
 .scroll{
   overflow-y: auto;
   height: 1100px;
-  width: 700px;
+  width: 580px;
 }
 
 input,select {
@@ -176,6 +177,13 @@ input,select {
   color: #555;
   font-size: 20px;
   border-radius: 15px;
+}
+.hover{
+  transition: transform .2s;
+  cursor: pointer;
+}
+.hover:hover{
+  transform: scale(1.1);
 }
 
 </style>

@@ -82,6 +82,7 @@ export default {
           .then(
               result => {
                 this.membership = result.data
+                this.$router.push('/success-payment')
               }
           )
     },
@@ -152,15 +153,17 @@ export default {
 <style scoped>
 form {
   max-width: 600px;
-  margin: 30px auto 90px 450px ;
+  margin: 80px auto 30px 300px;
   background: #072238;
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 18px;
   color: white;
-}
+}h1{
+   font-weight: bolder;
+   font-size: 50px;
+ }
 label {
   color: white;
   display: inline-block;
@@ -170,7 +173,7 @@ label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 18px;
 }input,select {
    display: block;
    padding-left: 10px;
@@ -180,12 +183,11 @@ label {
    box-sizing: border-box;
    border: none;
    border-bottom: 1px solid #ddd;
-   color: white;
-   font-size: 20px;
+   color: #555;
+   font-size: 18px;
    border-radius: 15px;
 
- }
-.input{
+ }.input{
   display: block;
   padding-left: 10px;
   padding-right: 10px;
@@ -195,7 +197,7 @@ label {
   border: none;
   border-bottom: 1px solid #ddd;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 15px;
 
 }

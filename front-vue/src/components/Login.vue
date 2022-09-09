@@ -29,6 +29,13 @@ export default {
                   res => {
                     if (res.data) {
                       this.$emit('loggedUser', res.data);
+                    }else{
+                      this.$notify({
+                        title: 'Error while login',
+                        text: 'Incorrect password or username!',
+                        closeOnClick: true,
+                        type: 'error'
+                      })
                     }
                   })
             .catch(
@@ -44,15 +51,18 @@ export default {
 
 <style scoped>
 form {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 600px;
+  margin: 80px auto 30px 300px;
   background: #072238;
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 18px;
   color: white;
-}
+}h1{
+   font-weight: bolder;
+   font-size: 50px;
+ }
 label {
   color: white;
   display: inline-block;
@@ -62,19 +72,20 @@ label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 18px;
 }input,select {
    display: block;
    padding-left: 10px;
    padding-right: 10px;
-   margin-left: 48px;
-   width: 80%;
+   margin-left: 70px;
+   width: 70%;
    box-sizing: border-box;
    border: none;
    border-bottom: 1px solid #ddd;
    color: #555;
-   font-size: 20px;
+   font-size: 18px;
    border-radius: 15px;
+
  }
 .button-basic{
   color: white;
