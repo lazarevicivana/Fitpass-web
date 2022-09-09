@@ -58,22 +58,42 @@
           <div class="row">
             <TrainingPreview :training="training"></TrainingPreview>
           </div>
-          <div class="row">
+
+          <table class="justify-content-end">
+
+            <tr>
+              <td class="td-style">
             <label>Date:</label>
+              </td>
+              <td class="td-style">
             <label>{{dateFormat(training.signDate)}}</label>
-          </div>
-          <div class="row">
-            <label>Time:</label>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-style">
+            <label>Time: </label>
+              </td>
+              <td class="td-style">
             <label>{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
-          </div>
-          <div class="row">
+              </td>
+            </tr>
+            <tr>
+              <td class="td-style">
             <label>Facility:</label>
+              </td>
+              <td class="td-style">
             <label>{{training.facility.name}}</label>
-          </div>
-          <div class="row">
+              </td>
+            </tr>
+            <tr>
+              <td class="td-style">
             <label>Type:</label>
+              </td>
+              <td class="td-style">
             <label>{{training.facility.type}}</label>
-          </div>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
@@ -275,6 +295,12 @@ input,select {
   color: #555;
   font-size: 20px;
   border-radius: 15px;
+}
+
+.td-style {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 

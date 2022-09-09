@@ -8,7 +8,7 @@
     <div class="col-lg-6">
       <div class="container-fluid div-style  ">
         <table>
-          <tr><td> Location : {{sportFacility.location}}</td></tr>
+          <tr><td> Location : {{sportFacility.location.street}} {{sportFacility.location.number}}, {{sportFacility.location.city}}</td></tr>
           <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
           <tr><td>Type: {{sportFacility.type}}</td></tr>
           <tr><td> Average grade: {{sportFacility.averageGrade}}</td></tr>

@@ -1,27 +1,17 @@
 <template>
   <div class="div">
-    <label class="label"> Trainer is successfully created!</label>
+    <label class="label"> {{user.name}}, your comment is successfully added!</label>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
-  name: "SuccessTrainerView",
-  props:{
-
-  },
-  data(){
-  },
-  created(){
-
-  },
-  methods:{
-    getData(){  }
-
+  name: "SuccessCommentView",
+  props: {
+    user: Object
   }
 }
+
 </script>
 
 <style scoped>
@@ -40,6 +30,5 @@ export default {
 .label{
   font-size: 28px;
 }
-
 
 </style>

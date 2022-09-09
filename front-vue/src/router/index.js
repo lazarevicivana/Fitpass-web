@@ -176,6 +176,11 @@ const routes = [
     path: '/success-training-edit',
     name: 'success-training-edit',
     component: () => import('../views/SuccessEditTrView')
+  },
+  {
+    path: '/success-comment',
+    name: 'success-comment',
+    component: () => import('../views/SuccessCommentView')
   }
 ]
 

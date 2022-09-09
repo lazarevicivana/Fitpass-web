@@ -28,7 +28,8 @@ export default {
 
 .div{
   max-width: 500px;
-  margin: 80px auto;
+  margin: 100px 150px 150px 420px;
+  alignment: center;
   background: #072238;
   text-align: center;
   padding: 40px;
@@ -37,7 +38,8 @@ export default {
 }
 
 .label{
-  font-size: 22px;
+  font-size: 28px;
 }
+
 
 </style>

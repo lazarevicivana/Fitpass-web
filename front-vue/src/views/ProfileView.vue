@@ -54,7 +54,18 @@ export default {
           )
         }
         else if (this.user.userRole === 'CUSTOMER') {
-          axios.put('http://localhost:8080/FitnessCenter/rest/customers/', this.user)
+          const customer = {
+            username: this.user.username,
+            password : this.user.password,
+            name : this.user.name,
+            surname : this.user.surname,
+            birthday : this.user.birthday,
+            gender : this.user.gender,
+            userRole : this.user.userRole,
+            deleted : this.user.deleted,
+            banned : this.user.banned
+          }
+          axios.put('http://localhost:8080/FitnessCenter/rest/customers/', customer)
             .then(
                 res => {
                   console.log(res.data)
