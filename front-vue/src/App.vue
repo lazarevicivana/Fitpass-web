@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid" id="app">
     <div class="row">
       <nav @loggedUser="loggedInUser" class="navbar navbar-expand-xxl navbar-light" >
         <ul class="navbar-nav ms-auto text-center">
@@ -37,11 +37,11 @@
  }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
 }
 
 #nav {

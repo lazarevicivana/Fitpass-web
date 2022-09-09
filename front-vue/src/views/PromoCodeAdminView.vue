@@ -4,9 +4,9 @@
     <h1>Promo codes</h1>
   </div>
   <div class="row padding-style">
-    <button class="button-basic" @click="onAdd()">Add promo code</button>
+    <button class="btn btn-primary button-basic" @click="onAdd()">Add promo code</button>
   </div>
-  <div class="row row-style gy-4 row-cols-3 align-items-center" >
+  <div class="row row-style gy-4 row-cols-4 align-items-center" >
   <div v-for="promoCode in promoCodes">
     <div class="col-lg-8 colorDiv">
       <PromoCode :promoCode="promoCode"></PromoCode>      </div>
@@ -52,6 +52,7 @@ export default {
   border: 2px solid;
   padding: 20px;
   color: white;
+  width: 105%;
 }
 
 .padding-style{
@@ -60,6 +61,7 @@ export default {
 .row-style{
   padding-bottom: 100px;
   margin-bottom: 30px;
+
 }
 input,select {
   display: block;
@@ -75,6 +77,7 @@ input,select {
 .button-basic{
   color: white;
   margin-top: 40px;
+  margin-left: 20px;
   display: block;
   padding-right: 10px;
   font-size: 24px;
@@ -88,6 +91,10 @@ input,select {
 }
 .button-basic{
   margin-top: 40px;
+}
+h1{
+  font-size: 60px;
+  font-weight: bolder;;
 }
 
 </style>

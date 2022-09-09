@@ -1,18 +1,12 @@
 <template>
   <div class="container-fluid margin-style">
     <h1 class="padding-style">Trainings</h1>
+
     <div class="row padding-style">
-      <div class="col">
-        <input type="number" v-model="minPrice" placeholder="min price" @change="filterTrainings()" >
-      </div>
-      <div class="col">
-        <input type="number"  v-model="maxPrice" placeholder="max price" @change="filterTrainings()" >
-      </div>
       <div class="col">
         <input type="text"  v-model="search" placeholder="search" @change="filterTrainings()" >
       </div>
-
-      <div class="col">
+    <div class="col">
         <select v-model="sort" @change="filterTrainings">
           <option>Sort</option>
           <option>Price asc</option>
@@ -46,11 +40,24 @@
     </div>
     <div class="row padding-style">
       <div class="col">
+        <input type="number" v-model="minPrice" placeholder="min price" @change="filterTrainings()" >
+      </div>
+      <div class="col">
+        <input type="number"  v-model="maxPrice" placeholder="max price" @change="filterTrainings()" >
+      </div>
+
+
+
+      <div class="col">
         <input type="date" v-model="minDate"  @change="filterTrainings()" >
       </div>
       <div class="col">
         <input type="date"  v-model="maxDate"  @change="filterTrainings()" >
       </div>
+
+    <div class="row row-style">
+      <hr  v-if="trainingsHistory.length === 0"/>
+      <h2 v-if="trainingsHistory.length === 0"> You don't have any scheduled trainings</h2>
     </div>
     <div class="row row-style gy-4 row-cols-2 align-items-center" >
       <div v-for="training in this.filterTrainings()" >
@@ -66,7 +73,7 @@
             <label>Date:</label>
               </td>
               <td class="td-style">
-            <label>{{dateFormat(training.signDate)}}</label>
+            <label class="label">{{dateFormat(training.signDate)}}</label>
               </td>
             </tr>
             <tr>
@@ -74,7 +81,7 @@
             <label>Time: </label>
               </td>
               <td class="td-style">
-            <label>{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
+            <label class="label">{{training.timeOfSign.hour}}: {{training.timeOfSign.minute}}</label>
               </td>
             </tr>
             <tr>
@@ -82,7 +89,7 @@
             <label>Facility:</label>
               </td>
               <td class="td-style">
-            <label>{{training.facility.name}}</label>
+            <label class="label">{{training.facility.name}}</label>
               </td>
             </tr>
             <tr>
@@ -90,13 +97,14 @@
             <label>Type:</label>
               </td>
               <td class="td-style">
-            <label>{{training.facility.type}}</label>
+            <label class="label">{{training.facility.type}}</label>
               </td>
             </tr>
           </table>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -277,14 +285,14 @@ export default {
   color: white;
 }
 .margin-style{
-  margin-left: 180px;
+  margin-left: 50px;
 }
 .padding-style{
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 .row-style{
-  padding-bottom: 100px;
-  margin-bottom: 30px;
+  padding-bottom: 50px;
+  margin-bottom: 10px;
 }
 input,select {
   display: block;
@@ -303,5 +311,11 @@ input,select {
   font-weight: bold;
 }
 
-
+.label{
+  margin-left: 70px;
+}
+h1{
+  font-size: 70px;
+  font-weight: bolder;
+}
 </style>

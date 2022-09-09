@@ -8,7 +8,7 @@
           <MembershipComponent :membership="membership"></MembershipComponent>
         </div>
         <div class="row ">
-        <button v-if="customer()" @click="onBuy(membership.id)" class="btn btn-primary" >Buy</button>
+        <button v-if="customer()" @click="onBuy(membership.id)" class="btn btn-primary" ><font-awesome-icon icon="credit-card"/> Buy</button>
       </div >
       </div>
 
@@ -57,12 +57,10 @@ export default {
   padding: 10px;
   color: white;
   width: 105%;
-  margin-left: 100px;
+  margin-left: 50px;
   margin-right: 50px;
 }
-.margin-style{
-  margin-left: 180px;
-}
+
 .padding-style{
   margin-bottom: 80px;
 }

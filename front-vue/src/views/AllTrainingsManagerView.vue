@@ -36,7 +36,7 @@
     <div v-for="training in this.FilterTrainings()">
       <div class="col colorDiv">
         <TrainingPreview :training="training"></TrainingPreview>
-        <button class="btn btn-primary" @click="onEdit(training)">Edit</button>
+        <button class="btn btn-primary" @click="onEdit(training)"><font-awesome-icon icon="pen-clip"/>  Edit</button>
       </div >
     </div>
   </div>
@@ -148,7 +148,7 @@ h1{
   font-weight: bolder;
 }
 .margin-style{
-  margin-left: 180px;
+  margin-left: 70px;
 }
 .padding-style{
   margin-bottom: 80px;

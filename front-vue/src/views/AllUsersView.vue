@@ -155,6 +155,7 @@ export default {
   border: 2px solid;
   padding: 20px;
   color: white;
+  width: 100%;
 }
 .head-align{
   text-align: center;
@@ -164,20 +165,28 @@ export default {
 }
 .padding-style{
   margin-bottom: 80px;
+  margin-left: 20px;
+
 }
 .row-style{
-  padding-bottom: 100px;
+  padding-bottom: 130px;
   margin-bottom: 30px;
+
 }
 input,select {
   display: block;
   padding-right: 10px;
-  width: 50%;
+  width: 70%;
   border: 1px solid black;
   box-sizing: border-box;
   color: #555;
   font-size: 20px;
   border-radius: 15px;
+}
+h1{
+  font-size: 70px;
+  font-weight: bolder;
+
 }
 
 </style>

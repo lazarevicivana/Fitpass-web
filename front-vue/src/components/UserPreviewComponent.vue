@@ -6,7 +6,7 @@
         <label>Name:</label>
       </td>
       <td class="td-style">
-        <label>  {{user.name}}</label>
+        <label  class="label">{{user.name}}</label>
       </td>
     </tr>
     <tr>
@@ -14,7 +14,7 @@
         <label>Surname:</label>
       </td>
       <td class="td-style">
-        <label>{{user.surname}}</label>
+        <label  class="label">{{user.surname}}</label>
       </td>
     </tr>
     <tr>
@@ -22,7 +22,7 @@
         <label>Username:</label>
       </td>
       <td class="td-style">
-        <label>{{user.username}}</label>
+        <label  class="label">{{user.username}}</label>
       </td>
     </tr>
    <tr>
@@ -30,7 +30,7 @@
        <label>Role:</label>
      </td>
      <td class="td-style">
-       <label>{{user.userRole}}</label>
+       <label class="label">{{user.userRole}}</label>
      </td>
    </tr>
   </table>
@@ -54,6 +54,9 @@ export default {
   text-align: left;
   font-size: 18px;
   font-weight: bold;
+}
+.label{
+  margin-left: 50px;
 }
 
 </style>

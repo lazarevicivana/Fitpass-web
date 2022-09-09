@@ -64,6 +64,7 @@ export default {
           .then(
               result => {
                 console.log(result.data)
+                this.$router.push('/success-trainer-create')
               }
           )
           .catch(
@@ -79,7 +80,6 @@ export default {
                 this.trainers = result.data
               }
           )
-      this.$router.push('/success-trainer-create')
     }
   }
 }
@@ -87,17 +87,19 @@ export default {
 
 
 <style scoped>
-
 form {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 600px;
+  margin: 80px auto 30px 300px;
   background: #072238;
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 18px;
   color: white;
-}
+}h1{
+   font-weight: bolder;
+   font-size: 50px;
+ }
 label {
   color: white;
   display: inline-block;
@@ -107,7 +109,7 @@ label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bolder;
-  font-size: 15px;
+  font-size: 18px;
 }input,select {
    display: block;
    padding-left: 10px;
@@ -118,8 +120,9 @@ label {
    border: none;
    border-bottom: 1px solid #ddd;
    color: #555;
-   font-size: 20px;
+   font-size: 18px;
    border-radius: 15px;
+
  }
 .button-basic{
   color: white;
@@ -128,7 +131,8 @@ label {
   padding-left: 10px;
   padding-right: 10px;
   margin-left: 55px;
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: bold;
   width: 50%;
   vertical-align: center;
   box-sizing: border-box;

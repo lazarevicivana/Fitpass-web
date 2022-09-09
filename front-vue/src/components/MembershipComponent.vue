@@ -3,7 +3,7 @@
     <table class="justify-content-end">
       <tr>
         <td class="td-style">
-          <label>Type:</label>
+          <label>Type: </label>
         </td>
         <td class="td-style">
           <label>  {{membership.type}}</label>
@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td class="td-style">
-          <label>Number of trainings:</label>
+          <label>Trainings: </label>
         </td>
         <td class="td-style">
           <label>{{membership.numberOfTrainings}}</label>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td class="td-style">
-          <label>Description:</label>
+          <label>Description: </label>
         </td>
         <td class="td-style">
           <label>{{membership.description}}</label>

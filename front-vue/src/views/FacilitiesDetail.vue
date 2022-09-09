@@ -1,12 +1,12 @@
 <template>
-  <div class="container-fluid ">
+  <div class="container ">
     <div class="row ">
       <h1>{{sportFacility.name}}</h1>
     </div>
   </div>
   <div class="row ">
     <div class="col-lg-6">
-      <div class="container-fluid div-style  ">
+      <div class="container div-style  ">
         <div class="row">
           <div class="col">
             <table>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <div class="container-fluid  padding-style ">
+      <div class="container  padding-style ">
         <img  :src="getImgUrl(sportFacility.sportFacilityId)" :alt="sportFacility.name" class="ico size "/>
     </div>
     </div>
@@ -44,8 +44,10 @@
     <div class="row">
       <ViewComments v-if="viewComments" :user="user" :facilityId="sportFacility.sportFacilityId"></ViewComments>
     </div>
+
     <div class="row subtitle">
-      <h2>Trainings</h2>
+      <hr/>
+      <h2 >Trainings</h2>
     </div>
     <div class="row row-style  row-cols-2 align-items-center">
       <div v-for="training in this.trainings" class="colorDiv">
@@ -54,7 +56,7 @@
             <TrainingPreview :training="training"></TrainingPreview>
           </div>
           <div class="row ">
-            <button class="btn btn-primary " v-if="customer()" @click="onBuy(training.id)" >Buy</button>
+            <button class="btn btn-primary " v-if="customer()" @click="onBuy(training.id)" ><font-awesome-icon icon='credit-card' /> Buy</button>
           </div >
 
         </div >
@@ -167,8 +169,14 @@ export default {
   padding: 40px;
   color: white;
 }
+h2{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: bold;
+}
 .subtitle{
-  margin-top: 40px;
+  margin-top: 30px;
   font-weight: bolder;
 }
 .padding-style{
@@ -176,15 +184,14 @@ export default {
   margin-top: 40px;
   background: #BBBBBB;
   border-radius: 25px;
-  border: 2px solid;
-  border-color: white;
+  border: 2px solid white;
   color: black;
-  padding-left: 40px;
+
   text-align: left;
   font-size: 17px;
 }
 .row-style{
-  margin-left: 40px;
+
 
 }
 table,img{
@@ -219,9 +226,6 @@ h1{
 }
 h2{
   font-weight: bold;
-}
-.col-style{
-  margin-left: 10px;
 }
 button{
   color: white;

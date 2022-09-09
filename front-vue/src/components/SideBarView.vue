@@ -23,20 +23,20 @@ export default {
       <span v-else>Olympus Corp</span>
     </h1>
 
-    <SideBarLink to="/" icon="fas fa-home" >Facilities</SideBarLink>
-    <SideBarLink v-if="loggedIn" to="/profile" icon="fas fa-home">User profile</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/add-facility" icon="fas fa-home" >Create facility</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" >Add manager</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-trainer" icon="fas fa-home" >Add trainer</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/promo-codes" icon="fas fa-home" >Promo code</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/all-users" icon="fas fa-home" >Users</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-facility" icon="fas fa-home" >Facility</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainings" icon="fas fa-home" >Trainings</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainers" icon="fas fa-home" >Trainers</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'TRAINER'" to="/trainer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/memberships" icon="fas fa-home" >Memberships</SideBarLink>
-    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/customer-trainings" icon="fas fa-home" >Trainings</SideBarLink>
-    <SideBarLink to="/about" icon="fas fa-home" >About</SideBarLink>
+    <SideBarLink to="/" ><font-awesome-icon icon='dumbbell' /> Facilities</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/add-facility" icon="fas fa-home" ><font-awesome-icon icon='plus' />  Create facility</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-manager" icon="fas fa-home" ><font-awesome-icon icon='users' />  Add manager</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/create-trainer" icon="fas fa-home" ><font-awesome-icon icon='users' />  Add trainer</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/promo-codes" icon="fas fa-home" ><font-awesome-icon icon='percent' />  Promo code</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'ADMIN'" to="/all-users"><font-awesome-icon icon='users' /> Users</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-facility" icon="fas fa-home" ><font-awesome-icon icon='dumbbell' /> Facility</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainings" icon="fas fa-home" ><font-awesome-icon icon='dumbbell' /> Trainings</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'MANAGER'" to="/manager-trainers" icon="fas fa-home" ><font-awesome-icon icon='users' /> Trainers</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'TRAINER'" to="/trainer-trainings" icon="fas fa-home" ><font-awesome-icon icon='dumbbell' /> Trainings</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/memberships" icon="fas fa-home" ><font-awesome-icon icon='box' /> Memberships</SideBarLink>
+    <SideBarLink v-if="user.userRole === 'CUSTOMER'" to="/customer-trainings" icon="fas fa-home" ><font-awesome-icon icon='dumbbell' /> Trainings</SideBarLink>
+    <SideBarLink v-if="loggedIn" to="/profile"> <font-awesome-icon icon='user' />  Profile</SideBarLink>
+    <SideBarLink to="/about" icon="fas fa-home" > <font-awesome-icon icon='question' /> About</SideBarLink>
 
 <!--    <SidebarLink to="/friends" icon="fas fa-users">Friends</SidebarLink>-->
 <!--    <SidebarLink to="/image" icon="fas fa-image">Images</SidebarLink>-->

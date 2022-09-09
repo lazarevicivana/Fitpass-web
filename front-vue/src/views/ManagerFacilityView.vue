@@ -132,14 +132,7 @@ import MapOne from "@/components/MapOne";
 </script>
 
 <style scoped>
-.colorDiv{
-  background: #B2C8DF;
-  border-radius: 25px;
-  border: 2px solid;
-  padding: 20px;
-  color: white;
-  width: 70%;
-}
+
 .padding-style{
   padding-top: 20px;
   margin-top: 40px;
@@ -149,24 +142,25 @@ import MapOne from "@/components/MapOne";
   border: 2px solid;
   border-color: white;
   color: black;
-  width: 120%;
+  width: 80%;
   padding-left: 40px;
   text-align: left;
-  font-size: 17px;
+  font-size: 18px;
 }
 table,img{
   margin-bottom: 30px;
   padding-bottom: 20px;
-  margin-top: 20px;
-  font-size: 20px;
+  margin-top: 18px;
+  font-size: 18px;
 }
 h1{
-  font-size: 70px;
+  font-size: 50px;
   font-weight: bolder;
+  margin: 15px;
 }
 .size{
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 105%;
 }
 button{
   color: white;
@@ -175,8 +169,9 @@ button{
   border: none;
   font-size: 24px;
   width: 90%;
-  margin-top: 50px;
-  height:90%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  height:70%;
   margin-left: 50px;
   display: block;
   position: relative;
