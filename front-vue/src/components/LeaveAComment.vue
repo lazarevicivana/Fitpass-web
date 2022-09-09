@@ -38,6 +38,7 @@ export default {
           .then(
               response => {
                 this.comment = response.data
+                this.$router.push('/success-comment')
               }
           )
     }

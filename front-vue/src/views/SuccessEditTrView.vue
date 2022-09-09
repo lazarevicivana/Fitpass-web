@@ -25,9 +25,10 @@ export default {
 
 <style scoped>
 
-.div {
+.div{
   max-width: 500px;
-  margin: 80px auto;
+  margin: 100px 150px 150px 420px;
+  alignment: center;
   background: #072238;
   text-align: center;
   padding: 40px;
@@ -35,8 +36,9 @@ export default {
   color: white;
 }
 
-.label {
-  font-size: 22px;
+.label{
+  font-size: 28px;
 }
+
 
 </style>
