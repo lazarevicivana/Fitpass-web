@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container" style="margin-left: 100px">
 <h1 class="padding-style title">Welcome</h1>
   <div class="row padding-style">
     <div class="col">
@@ -166,11 +166,7 @@ export default {
   height: 1100px;
   width: 700px;
 }
-.map{
-  width: 100px !important;
-  height: 700px !important;
-  margin-right: 500px;
-}
+
 input,select {
   display: block;
   padding-right: 10px;

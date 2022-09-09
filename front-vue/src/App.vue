@@ -22,6 +22,7 @@
   <div class="margin">
     <router-view @loggedUser="loggedInUser" :user="user"/>
   </div>
+  <notifications class="notifications " />
 </template>
 <style>
 .margin {
@@ -29,6 +30,12 @@
   max-width: 1220px;
 
 }
+.notifications {
+   display: block;
+   position: fixed;
+   z-index: 5000;
+ }
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +43,7 @@
   text-align: center;
   color: #2c3e50;
 }
+
 #nav {
   padding: 30px;
 }
@@ -46,13 +54,12 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
 .button-basic{
-background: #2c3e50;
+  background: #2c3e50;
   color: white;
   border-radius: 10px;
-  width: 100%;
-  height: 100%;
+  width: 120%;
+  height: 120%;
 }
 .button-basic{
 }
@@ -103,13 +110,24 @@ export default {
       this.updateCollectedPoints()
     },
     updateCollectedPoints(){
-      axios.put('http://localhost:8080/FitnessCenter/rest/customers/collected-points/', this.user)
+      console.log(this.user)
+      const customer={
+        username: this.user.username,
+        password : this.user.password,
+        name : this.user.name,
+        surname : this.user.surname,
+        birthday : this.user.birthday,
+        gender : this.user.gender,
+        userRole : this.user.userRole,
+        colletedPoints: this.user.colletedPoints,
+        deleted : false,
+        banned : false
+      }
+      axios.put('http://localhost:8080/FitnessCenter/rest/customers/collected-points/', customer)
           .then(
             response => {
               this.user = response.data
-              console.log(this.user)
                 this.checkCollectedPoints()
-                this.updateCustomerType(customerType)
             }
         )
 
@@ -119,30 +137,26 @@ export default {
         const customerType={
           id : this.user.username,
           name: 'SILVER',
-          discount: 0.7,
+          dicount: 0.7,
           minPoints : 3000
         }
-        console.log(customerType)
         this.updateCustomerType(customerType)
       }
        else if(this.user.colletedPoints >= 5000 && this.user.customerType.name === 'SILVER'){
           const customerType={
             id : this.user.username,
             name: 'GOLD',
-            discount: 0.5,
+            dicount: 0.5,
             minPoints : 5000
           }
-        console.log(customerType)
         this.updateCustomerType(customerType)
       }
     },
     updateCustomerType(customerType){
-
       axios.put('http://localhost:8080/FitnessCenter/rest/customers/customer-type', customerType)
           .then(
               response => {
                 this.user = response.data
-                console.log(this.user)
               }
           )
     },
@@ -159,12 +173,9 @@ export default {
           .then(
               response => {
                 this.membership = response.data
-                console.log(this.membership.active)
                 if(this.membership.id != null){
                   const now = new Date()
-                  console.log(this.membership.endDate)
                   if(this.membership.endDate < now){
-                    console.log('bbbb')
                     this.membership.isActive = false
                     this.membership.active = false
                     this.deactivateMembership()
@@ -179,7 +190,6 @@ export default {
           .then(response =>{
             this.user =response.data;
             if(this.user.userRole === 'CUSTOMER'){
-              console.log('aaaa')
              this.getCurrentMembershipForCustomer()
               this.checkCollectedPoints()
             }

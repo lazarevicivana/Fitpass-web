@@ -5,6 +5,7 @@ public class CustomerType {
 	private double discount;	// U procentima - 80%
 	private int minPoints;
 	
+	
 	public CustomerType(String name, double dicount, int minPoints) {
 		super();
 		this.name = name;

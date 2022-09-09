@@ -7,6 +7,8 @@
   <div  v-if="!(manager.sportFacilityId === '')" class="row  ">
     <div class="col-lg-6">
       <div class="container-fluid div-style  ">
+        <div class="row">
+          <div class="col">
         <table>
           <tr><td> Location : {{sportFacility.location.street}} {{sportFacility.location.number}}, {{sportFacility.location.city}}</td></tr>
           <tr><td> Status : {{convertStatus(sportFacility)}}</td></tr>
@@ -15,6 +17,13 @@
           <tr><td>Open time: {{dateTime(sportFacility.openTime)}}</td></tr>
           <tr><td> Close time: {{dateTime(sportFacility.closeTime)}}</td></tr>
         </table>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col">
+            <MapOne class="map" :latitude="sportFacility.location.latitude" :longitude="sportFacility.location.longitude"></MapOne>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col">
@@ -40,7 +49,7 @@ import SportFacility from "@/components/SportFacility";
 
 export default {
   name: "ManagerFacilityView",
-  components: {SportFacility},
+  components: {MapOne, SportFacility},
   props:{
     user: Object
   },
@@ -60,7 +69,14 @@ export default {
      },
       sportFacility:{
        name:'',
-        sportFacilityId: ''
+        sportFacilityId: '',
+        location: {
+         street: '',
+          number: '',
+          city: '',
+          longitude:0,
+          latitude: 0
+        }
       }
     }
   },
@@ -90,6 +106,7 @@ export default {
             .then(
                 result => {
                   this.sportFacility = result.data
+                  console.log(this.sportFacility)
                 })
       }
     },
@@ -111,6 +128,7 @@ export default {
   }
 }
 import moment from "moment";
+import MapOne from "@/components/MapOne";
 </script>
 
 <style scoped>
@@ -125,19 +143,16 @@ import moment from "moment";
 .padding-style{
   padding-top: 20px;
   margin-top: 40px;
+  margin-left: 150px;
   background: #BBBBBB;
   border-radius: 25px;
   border: 2px solid;
   border-color: white;
   color: black;
-  width: 80%;
+  width: 120%;
   padding-left: 40px;
   text-align: left;
   font-size: 17px;
-}
-.row-style{
-  margin-left: 40px;
-
 }
 table,img{
   margin-bottom: 30px;
@@ -146,29 +161,25 @@ table,img{
   font-size: 20px;
 }
 h1{
-  font-size: 60px;
+  font-size: 70px;
   font-weight: bolder;
 }
 .size{
-  width: 300px;
-  height: 300px;
-  margin: 40px;
+  width: 100%;
+  height: 100%;
 }
 button{
   color: white;
-  margin-top: 40px;
-  display: block;
-  padding-right: 10px;
-  margin-left: 10px;
-  font-size: 24px;
-  vertical-align: center;
-  box-sizing: border-box;
-  border: none;
-  width: 60%;
+  background: #2c3e50;
   border-radius: 15px;
+  border: none;
+  font-size: 24px;
+  width: 90%;
+  margin-top: 50px;
+  height:90%;
+  margin-left: 50px;
+  display: block;
   position: relative;
-  -ms-transform: translateX(-50%);
-  transform: translateX(25%);
 }
 .div-style{
   padding-top: 20px;
@@ -180,6 +191,13 @@ button{
   text-align: left;
   font-size: 17px;
 }
-
+table{
+  font-size: 30px;
+  font-weight: bold;
+}
+.map{
+  width: 120% !important;
+  height: 200px!important;
+}
 
 </style>

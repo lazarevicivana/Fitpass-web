@@ -2,13 +2,13 @@
   <form @submit.prevent="onBuySubmit">
     <h1>Buy membership</h1>
     <label>Type:</label>
-    <input type="text" v-model="membershipPackage.type">
+    <input type="text" v-model="membershipPackage.type" disabled>
     <label>Number of trainings:</label>
-    <input type="text" v-model="membershipPackage.numberOfTrainings" >
+    <input type="text" v-model="membershipPackage.numberOfTrainings" disabled >
     <label>Description:</label>
-    <input type="text" v-model="membershipPackage.description" >
+    <input type="text" v-model="membershipPackage.description" disabled >
     <label>Promo code:</label>
-    <input type="text" v-model="promoCode.code" >
+    <input type="text" v-model="promoCode.code" class="input" >
     <input  type="submit" class="btn btn-primary button-basic" value="Buy"/>
   </form>
 </template>
@@ -151,13 +151,14 @@ export default {
 
 <style scoped>
 form {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 600px;
+  margin: 30px auto 90px 450px ;
   background: #072238;
   text-align: center;
   padding: 40px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 30px;
+  font-weight: bold;
   color: white;
 }
 label {
@@ -179,11 +180,25 @@ label {
    box-sizing: border-box;
    border: none;
    border-bottom: 1px solid #ddd;
-   color: #555;
+   color: white;
    font-size: 20px;
    border-radius: 15px;
 
  }
+.input{
+  display: block;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 70px;
+  width: 70%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  color: black;
+  font-size: 20px;
+  border-radius: 15px;
+
+}
 .button-basic{
   color: white;
   margin-top: 40px;

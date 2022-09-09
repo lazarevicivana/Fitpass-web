@@ -37,7 +37,7 @@
             <label>Trainer:</label>
           </td>
           <td class="td-style">
-            <label>{{trainer.name}} {{trainer.surname}}</label>
+            <label>{{getFullName(trainer)}}</label>
           </td>
         </tr>
         <tr>
@@ -91,6 +91,12 @@ export default {
       }
       let images = require.context('../assets/training/', false, /\.png$/);
       return images('./' + training + ".png")
+    },
+    getFullName(trainer){
+      if(trainer.name === '')
+        return "No trainer"
+      else
+        return trainer.name + ' '+ trainer.surname
     }
   }
 }

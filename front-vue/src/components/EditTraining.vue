@@ -2,9 +2,9 @@
   <form @submit.prevent="EditTrainingSubmit" >
     <h1>Add training</h1>
     <label>Name:</label>
-    <input type="text" v-model="training.name" >
+    <input type="text" v-model="training.name" required >
     <label>Type:</label>
-    <select v-model="training.type">
+    <select v-model="training.type" required>
       <option>GROUP</option>
       <option>PERSONAL</option>
       <option>AEROBIC</option>
@@ -66,7 +66,9 @@ export default {
         .then(
             result =>{
               this.training = result.data
-              this.getTrainers();
+              if(this.training.trainerId != null){
+                this.getTrainers();
+              }
             }
         )
   },
@@ -171,6 +173,7 @@ label {
   -ms-transform: translateX(-50%);
   transform: translateX(25%);
 }
+
 .button-basic{
   margin-top: 40px;
 }

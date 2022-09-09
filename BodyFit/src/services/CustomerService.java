@@ -86,7 +86,7 @@ public class CustomerService {
 	public Customer updateCustomerType(CustomerTypeDto customer){
 		customerDao.setBasePath(getContext());
 		Customer customerNew =customerDao.getById(customer.id);
-		CustomerType customerType = new CustomerType(customer.name,customer.discount,customer.minPoints);
+		CustomerType customerType = new CustomerType(customer.name,customer.dicount,customer.minPoints);
 		customerNew.setCustomerType(customerType);
 		customerDao.update(customerNew);
 		return customerNew;

@@ -2,13 +2,13 @@
   <form @submit.prevent="promoCodeSubmit">
     <h1>Add promo code</h1>
     <label>Code:</label>
-    <input type="text" v-model="promoCode.code">
+    <input type="text" v-model="promoCode.code" required>
     <label>Expire date:</label>
-    <input type="date" v-model="promoCode.expireDate">
+    <input type="date" v-model="promoCode.expireDate" required>
     <label>Number of usage:</label>
-    <input type="number" v-model="promoCode.numberOfUsage">
+    <input type="number" v-model="promoCode.numberOfUsage" required>
     <label>Discount percentage:</label>
-    <input type="number" v-model="promoCode.percentage">
+    <input type="number" v-model="promoCode.percentage" required>
     <input  type="submit" class="btn btn-primary button-basic" value="Add"/>
   </form>
 </template>
@@ -25,17 +25,45 @@ export default {
         expireDate: Date,
         numberOfUsage: '',
         percentage: ''
-      }
+      },
+      promoCodes:[],
+      code: true
     }
   },
+  created() {
+  this.getPromoCodes()
+    },
   methods:{
     promoCodeSubmit(){
+      this.code = true
+      this.promoCodes.forEach(c =>{
+        if(c.code === this.promoCode.code){
+          this.code = false
+          if (this.code === false) {
+            this.$notify({
+              title: 'Error while creating training',
+              type: 'error',
+              text: "A training with that name already exists in database!",
+              closeOnClick: true
+            })
+            return;
+          }
+        }})
+      if(this.code){
       axios.post('http://localhost:8080/FitnessCenter/rest/promo-codes/', this.promoCode)
           .then(
               result => {
                 this.promoCode = result.data
                 console.log(this.promoCode)
                 this.$router.push('/success-promocode-create')
+              }
+          )}
+    },
+    getPromoCodes(){
+      axios.get('http://localhost:8080/FitnessCenter/rest/promo-codes/')
+          .then(
+              result => {
+                this.promoCodes = result.data
               }
           )
 
