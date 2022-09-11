@@ -14,7 +14,7 @@
           <label>Trainings: </label>
         </td>
         <td class="td-style">
-          <label>{{membership.numberOfTrainings}}</label>
+          <label>{{trainingsNumber(membership)}}</label>
         </td>
       </tr>
       <tr>
@@ -37,6 +37,14 @@ export default {
   name: "MembershipComponent",
   props:{
     membership : Object
+  },
+  methods:{
+    trainingsNumber(membership){
+      if(membership.numberOfTrainings > 30)
+      {
+        return 'unlimited'
+      }else return membership.numberOfTrainings.toString()
+    }
   }
 }
 </script>

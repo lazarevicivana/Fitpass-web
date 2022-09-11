@@ -183,7 +183,7 @@ label {
    box-sizing: border-box;
    border: none;
    border-bottom: 1px solid #ddd;
-   color: #555;
+   color: white;
    font-size: 18px;
    border-radius: 15px;
 

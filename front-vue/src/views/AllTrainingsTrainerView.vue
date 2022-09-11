@@ -203,6 +203,13 @@ export default {
           )
     },
     onCancel(training){
+      if(training.type !== 'PERSONAL'){
+        this.$notify({
+          title: 'Error while canceling training',
+          type: 'error',
+          text: 'Only personal trainings can be canceled'
+        })
+      }
       if (training.type === 'PERSONAL'){
         axios.get('http://localhost:8080/FitnessCenter/rest/training-history/get-by/'+ training.id)
             .then(
