@@ -1,0 +1,26 @@
+{
+"t": {
+    "trainingHistory": [],
+    "username": "t",
+    "password": "t",
+    "name": "t",
+    "surname": "t",
+    "birthday": "Aug 10, 2022, 2:00:00 AM",
+    "gender": "MALE",
+    "userRole": "TRAINER",
+    "deleted": false,
+    "banned": false
+  },
+  "t2": {
+    "trainingHistory": [],
+    "username": "t2",
+    "password": "t2",
+    "name": "t2",
+    "surname": "t2",
+    "birthday": "Aug 11, 2022, 2:00:00 AM",
+    "gender": "MALE",
+    "userRole": "TRAINER",
+    "deleted": false,
+    "banned": false
+  }
+  }

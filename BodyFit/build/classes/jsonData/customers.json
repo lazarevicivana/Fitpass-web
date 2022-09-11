@@ -1,0 +1,88 @@
+{
+  "mikiia": {
+    "colletedPoints": 11.0,
+    "username": "mikiia",
+    "password": "mikia",
+    "name": "marinko",
+    "surname": "marinko",
+    "birthday": "Jun 15, 2022, 2:36:51 AM",
+    "gender": "FEMALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false,
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    }
+    
+  },
+  "djokaa": {
+    "colletedPoints": 144.0,
+    "username": "djokaa",
+    "password": "Djokovic",
+    "name": "Jelena",
+    "surname": "Djokovic",
+    "birthday": "Jun 15, 2022, 2:36:51 AM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false,
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    }
+  },
+  "laza": {
+    "colletedPoints": 11.0,
+    "username": "laza",
+    "password": "lazarevic",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Jun 18, 2022, 10:16:40 PM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false,
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    }
+  },
+  "aa": {
+    "colletedPoints": 11.0,
+    "username": "aa",
+    "password": "lazarevic",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Nov 11, 2019, 1:00:00 AM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false,
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    }
+  },
+  "customer": {
+    "colletedPoints": 11.0,
+    "username": "c",
+    "password": "c",
+    "name": "m",
+    "surname": "m",
+    "birthday": "Nov 11, 2019, 1:00:00 AM",
+    "gender": "MALE",
+    "userRole": "CUSTOMER",
+    "deleted": false,
+    "banned": false,
+    "customerType": {
+      "name": "BRONZE",
+      "discount": 0.0,
+      "minPoints": 0
+    }
+  }
+}
