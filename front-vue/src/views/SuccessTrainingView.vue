@@ -27,7 +27,7 @@ export default {
 
 .div{
   width: 70%;
-  margin: 200px 100px 50px 350px;
+  margin: 200px 100px 50px 250px;
   background: #072238;
   text-align: center;
   padding: 40px;

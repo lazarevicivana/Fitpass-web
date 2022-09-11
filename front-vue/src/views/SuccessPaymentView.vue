@@ -1,6 +1,6 @@
 <template>
   <div class="div">
-    <label class="label"> Congratulations, your payment has been executed!</label>
+    <label class="label">Congratulations, your payment has been executed!</label>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 
 .div{
   width: 70%;
-  margin: 200px 100px 50px 350px;
+  margin: 200px 100px 50px 250px;
   background: #072238;
   text-align: center;
   padding: 40px;
